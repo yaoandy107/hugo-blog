@@ -1,4 +1,4 @@
-baseURL = "https://blackmaple.me/"
+baseURL = "https://master.d3wck8ks0xx2n.amplifyapp.com/"
 languageCode = "zh-TW"
 theme = "hello-friend-ng"
 title = "BlackMaple's Blog"
@@ -7,7 +7,7 @@ defaultContentLanguage = "zh-tw"
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
 
-copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
+# copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
 paginate = 10 
 rssLimit = 10 # Maximum number of items in the RSS feed.
 
@@ -81,7 +81,7 @@ enableSharingButtons = false
 # Integrate Javascript files or stylesheets by adding the url to the external assets or by
 # linking local files with their path relative to the static folder, e.g. "css/styles.css"
 #
-customCSS = ["scss/custom.css"]
+customCSS = ["css/custom.css"]
 customJS = []
 
 # Toggle this option need to rebuild SCSS, requires extended version of Hugo
@@ -97,7 +97,7 @@ themeColor = "#252627"
 # If you want, you can easily override the default footer with your own content. 
 #
 footerLeft = "Powered by <a href=\"http://gohugo.io\">Hugo</a>"
-footerRight = "Made with &#10084; by <a href=\"https://github.com/rhazdon\">Djordje Atlialp</a>"
+footerRight = "Made with &#10084; by <a href=\"https://github.com/rhazdon/hugo-theme-hello-friend-ng\">Djordje Atlialp</a>"
 
 # Colors for favicons
 #
@@ -142,7 +142,6 @@ url = "https://www.linkedin.com/in/yaoandy107/"
 
 [languages]
 [languages.zh-tw]
-copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
 subtitle = "Hello Friend NG Theme"
 weight = 1
 
@@ -155,3 +154,60 @@ url = "about/"
 identifier = "posts"
 name = "Posts"
 url = "posts/"
+
+[deployment]
+# By default, files are uploaded in an arbitrary order.
+# Files that match the regular expressions in the "Order" list
+# will be uploaded first, in the listed order.
+order = [".jpg$", ".gif$"]
+
+
+[[deployment.targets]]
+# An arbitrary name for this target.
+name = "aws s3"
+# The Go Cloud Development Kit URL to deploy to. Examples:
+# GCS; see https://gocloud.dev/howto/blob/#gcs
+# URL = "gs://<Bucket Name>"
+
+# S3; see https://gocloud.dev/howto/blob/#s3
+# For S3-compatible endpoints, see https://gocloud.dev/howto/blob/#s3-compatible
+URL = "s3://blackmaple.me?region=ap-northeast-1"
+
+# Azure Blob Storage; see https://gocloud.dev/howto/blob/#azure
+# URL = "azblob://$web"
+
+# You can use a "prefix=" query parameter to target a subfolder of the bucket:
+# URL = "gs://<Bucket Name>?prefix=a/subfolder/"
+
+# If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
+cloudFrontDistributionID = "E3RTLLOOEKLLMW"
+
+# Optionally, you can include or exclude specific files.
+# See https://godoc.org/github.com/gobwas/glob#Glob for the glob pattern syntax.
+# If non-empty, the pattern is matched against the local path.
+# All paths are matched against in their filepath.ToSlash form.
+# If exclude is non-empty, and a local or remote file's path matches it, that file is not synced.
+# If include is non-empty, and a local or remote file's path does not match it, that file is not synced.
+# As a result, local files that don't pass the include/exclude filters are not uploaded to remote,
+# and remote files that don't pass the include/exclude filters are not deleted.
+# include = "**.html" # would only include files with ".html" suffix
+# exclude = "**.{jpg, png}" # would exclude files with ".jpg" or ".png" suffix
+
+
+# [[deployment.matchers]] configure behavior for files that match the Pattern.
+# Samples:
+
+[[deployment.matchers]]
+#  Cache static assets for 1 year.
+pattern = "^.+\\.(js|css|svg|ttf)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = true
+
+[[deployment.matchers]]
+pattern = "^.+\\.(png|jpg)$"
+cacheControl = "max-age=31536000, no-transform, public"
+gzip = false
+
+[[deployment.matchers]]
+pattern = "^.+\\.(html|xml|json)$"
+gzip = true

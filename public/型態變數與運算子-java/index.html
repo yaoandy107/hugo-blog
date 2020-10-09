@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Andy Yao ">
+<meta name="description" content="資料型態 何謂資料型態？ 程式儲存資料的型態
+" />
+<meta name="keywords" content=", Java" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://blackmaple.me/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/" />
+
+
+    <title>
+        
+            型態、變數與運算子 - Java :: BlackMaple&#39;s Blog  — Hello Friend NG Theme
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://blackmaple.me/main.c699f2ce52bf1c1926de84ec093f9525185df21c4c7bce7a329f707f0cfa8fa5.css">
+
+
+    
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+    
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://blackmaple.me/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://blackmaple.me/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://blackmaple.me/favicon-16x16.png">
+    <link rel="manifest" href="https://blackmaple.me/site.webmanifest">
+    <link rel="mask-icon" href="https://blackmaple.me/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://blackmaple.me/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="型態、變數與運算子 - Java">
+<meta itemprop="description" content="資料型態
+何謂資料型態？
+程式儲存資料的型態">
+<meta itemprop="datePublished" content="2018-03-05T01:11:35+00:00" />
+<meta itemprop="dateModified" content="2018-03-05T01:11:35+00:00" />
+<meta itemprop="wordCount" content="218">
+<meta itemprop="image" content="https://blackmaple.me/"/>
+
+
+
+<meta itemprop="keywords" content="Java," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blackmaple.me/"/>
+
+<meta name="twitter:title" content="型態、變數與運算子 - Java"/>
+<meta name="twitter:description" content="資料型態
+何謂資料型態？
+程式儲存資料的型態"/>
+
+
+
+    <meta property="og:title" content="型態、變數與運算子 - Java" />
+<meta property="og:description" content="資料型態
+何謂資料型態？
+程式儲存資料的型態" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blackmaple.me/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/" />
+<meta property="og:image" content="https://blackmaple.me/"/>
+<meta property="article:published_time" content="2018-03-05T01:11:35+00:00" />
+<meta property="article:modified_time" content="2018-03-05T01:11:35+00:00" />
+
+
+
+
+    <meta property="article:section" content="Java" />
+
+
+
+    <meta property="article:published_time" content="2018-03-05 01:11:35 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://blackmaple.me/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#67a2c9;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://blackmaple.me/about/">About</a></li><li><a href="https://blackmaple.me/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2分鐘
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://blackmaple.me/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/">型態、變數與運算子 - Java</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <h2 id="資料型態">資料型態</h2>
+<h3 id="何謂資料型態">何謂資料型態？</h3>
+<p>程式儲存資料的型態</p>
+<h3 id="認識資料型態">認識資料型態</h3>
+<p>常常聽到別人提到 Java 是物件導向語言，不過 Java 本身並不是純綷的物件導向語言，像是就型態系統而言，Java 就並非每個值都是物件，而是混合了兩個型態系統：<strong>基本型態（Primitive type）<strong>與</strong>物件型態（Object type）</strong>。</p>
+<h3 id="基本型態primitive-type">基本型態（Primitive type）</h3>
+<p>在 Java 語言中有八種<strong>基本型態( Primitive Type )</strong>，可分作四個大類</p>
+<ul>
+<li>整數型態：byte、short、int、long</li>
+<li>浮點數型態：float、double</li>
+<li>字元型態：char</li>
+<li>邏輯型態：boolean</li>
+</ul>
+<h3 id="整數型態">整數型態</h3>
+<p>用於儲存整數</p>
+<table>
+<thead>
+<tr>
+<th>型態</th>
+<th>長度</th>
+<th>範圍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>8 bits</td>
+<td>−2^7^到2^7^−1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16 bits</td>
+<td>−2^15^到2^15^−1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32 bits</td>
+<td>−2^31^到2^31^−1</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64 bits</td>
+<td>−2^63^到2^63^−1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="浮點數型態">浮點數型態</h3>
+<p>用於儲存小數，<code>double</code>浮點數使用的記憶體空間比<code>float</code>浮點數來得多，可表示的精確度也比較大。想要了解確切的範圍，可以自行Google</p>
+<table>
+<thead>
+<tr>
+<th>型態</th>
+<th>長度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>32 bits</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64 bits</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字元型態">字元型態</h3>
+<p><code>char</code>型態用來儲存<code>'A'</code>、<code>'B'</code>、<code>'林'</code>等字元符號。每個字元型態佔兩個位元組，中文字元與英文字元在Java中同樣都是用兩個位元組儲存。</p>
+<h3 id="布林型態">布林型態</h3>
+<p><code>boolean</code>型態可儲存<code>true</code>與<code>false</code>，分別代表邏輯的「真」與「假」。</p>
+<h2 id="變數">變數</h2>
+<p>不懂變數概念的可以參考這篇，https://openhome.cc/Gossip/Java/Variable.html</p>
+<h3 id="變數命名規則">變數命名規則</h3>
+<p>類別以英文大寫字母開頭，若有多個英文單字組成，採取大寫駝峰型 (upper camel case)</p>
+<ul>
+<li>SampleItem</li>
+<li>MyData</li>
+<li>MySimpleThread</li>
+<li>MainActivity</li>
+</ul>
+<p>方法或變數（包括參數、屬性等）以英文小寫字母開頭，若有多個英文單字組成，採取小寫駝峰型 (lower camel case)</p>
+<ul>
+<li>setUpNetworking</li>
+<li>getView</li>
+<li>myActivity</li>
+</ul>
+<h2 id="運算子">運算子</h2>
+<h3 id="單元運算子">單元運算子</h3>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>正</td>
+<td>+a</td>
+</tr>
+<tr>
+<td>-</td>
+<td>負</td>
+<td>-a</td>
+</tr>
+<tr>
+<td>++</td>
+<td>遞增</td>
+<td>++a, a++</td>
+</tr>
+<tr>
+<td>--</td>
+<td>遞減</td>
+<td>--a, a--</td>
+</tr>
+<tr>
+<td>!</td>
+<td>反轉</td>
+<td>!a</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">boolean</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">boolean</span> b <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>a<span style="color:#f92672">;</span>    <span style="color:#75715e">// b 會等於 false
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">boolean</span> c <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>b<span style="color:#f92672">;</span>    <span style="color:#75715e">// c 會等於 true
+</span></code></pre></div><h3 id="一般運算子">一般運算子</h3>
+<p>下面為一般運算子，皆須結合兩個運算元，可用在<code>整數</code>及<code>浮點數</code>，計算結果為整數或浮點數</p>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加</td>
+<td>a + b</td>
+</tr>
+<tr>
+<td>-</td>
+<td>減</td>
+<td>a - b</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘</td>
+<td>a * b</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除</td>
+<td>a / b</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取餘數</td>
+<td>a % b</td>
+</tr>
+</tbody>
+</table>
+<h3 id="關係運算子">關係運算子</h3>
+<p>下面為關係運算子，計算結果不是<code>true</code>就是<code>false</code></p>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>相等</td>
+<td>a == b</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不相等</td>
+<td>a != b</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大於</td>
+<td>a &gt; b</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大於等於</td>
+<td>a &gt;= b</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小於</td>
+<td>a &lt; b</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小於等於</td>
+<td>a &lt;= b</td>
+</tr>
+</tbody>
+</table>
+<h3 id="指派運算子">指派運算子</h3>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>指派</td>
+<td>a = b</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>相加同時指派</td>
+<td>a += b</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>相減同時指派</td>
+<td>a -= b</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>相乘同時指派</td>
+<td>a *= b</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>相除同時指派</td>
+<td>a /= b</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>取餘數同時指派</td>
+<td>a %= b</td>
+</tr>
+</tbody>
+</table>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://blackmaple.me/tags/java/">Java</a></span>
+        
+    </p>
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://blackmaple.me/categories/java/">Java</a></span>
+        
+    </p>
+
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        218字
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-03-05 09:11
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://blackmaple.me/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/">
+                <span class="button__icon">←</span>
+                <span class="button__text">條件式與迴圈 - Java</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://blackmaple.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/">
+                <span class="button__text">Android 學習問題紀錄</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yaoandy107" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://blackmaple.me/">Andy Yao</a></span>
+            
+            <span><a href="https://blackmaple.me/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://blackmaple.me/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>
