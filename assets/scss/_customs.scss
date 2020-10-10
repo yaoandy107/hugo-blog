@@ -1,12 +1,15 @@
 
 body {
     font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",  Helvetica, Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro",
-    "LiHei Pro", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei",
+    "LiHei Pro", "蘋方-繁", "PingFang TC", "微軟正黑體", "Microsoft JhengHei",
     sans-serif;
 }
 blockquote {
-    background: #f9f9f9 !important;
+    background-color: #f9f9f9;
     margin: 16px 0px;
+    .dark-theme & {
+        background-color: #333;
+    }
 }
 img {
     border-radius: 8px;
