@@ -1,8 +1,8 @@
 baseURL = "https://blackmaple.me/"
+defaultContentLanguage = "zh-tw"
 languageCode = "zh-TW"
 theme = "hello-friend-ng"
 title = "BlackMaple's Blog"
-defaultContentLanguage = "zh-tw"
 
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
@@ -155,3 +155,32 @@ url = "https://www.linkedin.com/in/yaoandy107/"
 identifier = "posts"
 name = "Posts"
 url = "posts/"
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = false
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      keepCSS2 = true
+      precision = 0
+    [minify.tdewolff.html]
+      keepConditionalComments = true
+      keepDefaultAttrVals = true
+      keepDocumentTags = true
+      keepEndTags = true
+      keepQuotes = false
+      keepWhitespace = false
+    [minify.tdewolff.js]
+      keepVarNames = false
+      precision = 0
+    [minify.tdewolff.json]
+      precision = 0
+    [minify.tdewolff.svg]
+      precision = 0
+    [minify.tdewolff.xml]
+      keepWhitespace = false
