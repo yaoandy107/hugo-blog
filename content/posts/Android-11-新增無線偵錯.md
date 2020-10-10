@@ -1,7 +1,7 @@
 ---
 title: "Android 11 新增無線偵錯 (Wireless Debugging)"
 date: 2020-10-10T03:57:04+08:00
-draft: true
+draft: false
 toc: false
 cover: "images/android-wireless.jpg"
 categories:
@@ -19,8 +19,8 @@ tags:
 
 在 Android 11 以前，要安裝 App 到手機上只有兩種方式：
 
-1. USB 傳輸線
-2. ADB Over Wireless：這方法使用的是 ADB 的 `tcpip` 和 `connect` 指令來連接兩個裝置，但在第一次連接的時候，還是得插上傳輸線，且當中斷後要重新連上時，也還是得再次插上傳輸線。
+1. **USB 傳輸線**
+2. **ADB Over Wireless：** 這方法使用的是 ADB 的 `tcpip` 和 `connect` 指令來連接兩個裝置，但在第一次連接的時候，還是得插上傳輸線，且當中斷後要重新連上時，也還是得再次插上傳輸線。
 
 這些方法都有一些局限性，因此之前一直在期待說未來會不會有更方便的方式呢？
 

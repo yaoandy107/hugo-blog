@@ -1,4 +1,4 @@
-baseURL = "https://master.d3wck8ks0xx2n.amplifyapp.com/"
+baseURL = "https://blackmaple.me/"
 languageCode = "zh-TW"
 theme = "hello-friend-ng"
 title = "BlackMaple's Blog"
@@ -141,10 +141,10 @@ url = "https://github.com/yaoandy107"
 name = "linkedin"
 url = "https://www.linkedin.com/in/yaoandy107/"
 
-[languages]
-[languages.zh-tw]
-subtitle = "Hello Friend NG Theme"
-weight = 1
+# [languages]
+# [languages.zh-tw]
+# subtitle = "Hello Friend NG Theme"
+# weight = 1
 
 [menu]
 # [[menu.main]]

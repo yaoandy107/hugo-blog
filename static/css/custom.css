@@ -16,9 +16,6 @@ img {
 hr {
     margin: 32px 0;
 }
-.header {
-    background-color: #f7f7f7;
-}
 .pagination__buttons {
     justify-content: space-around;
 }
