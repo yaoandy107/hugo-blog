@@ -52,22 +52,22 @@ keywords:
 
    - 使用該 su 命令切換到新的 user 。
 
-   ```shell=
-   su - your_username
-   ```
+      ```shell=
+      su - your_username
+      ```
 
    - 測試是否擁有 root 權限
 
-   ```shell=
-   sudo ls -la /
-   ```
+      ```shell=
+      sudo ls -la /
+      ```
 
-   - 第一次使用 sudo 時，系統會提示你輸入 user 的密碼。輸入密碼以繼續。
+   - 第一次使用 sudo 時，系統會提示你輸入 user 的密碼。輸入密碼以繼續，如果您前面操作正確，則會以 root 權限來執行。
 
-   ```shell=
-   Output:
-   [sudo] password for username:
-   ```
+      ```shell=
+      Output:
+      [sudo] password for username:
+      ```
 
-   如果您前面操作正確，則會以 root 權限來執行。
+   
 
