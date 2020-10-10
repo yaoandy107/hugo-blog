@@ -1,5 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
 body {
-    font-family: 'Inter UI', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",  Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",  Helvetica, Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro",
+    "LiHei Pro", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei",
+    sans-serif;
+}
+blockquote {
+    background: #f9f9f9 !important;
+    margin: 16px 0px;
+}
+img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+hr {
+    margin: 32px 0;
+}
+.header {
+    background-color: #f7f7f7;
+}
+.pagination__buttons {
+    justify-content: space-around;
+}
+.post-cover {
+    width: 100%;
+    margin: 0;
+}
+#comments {
+    margin-top: 32px;
 }
