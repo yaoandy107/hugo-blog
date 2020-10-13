@@ -39,26 +39,44 @@ description:
 ## 建立 Heroku 專案
 1. 登入 Heroku 後，
   在 [Heroku](https://dashboard.heroku.com/apps) 頁面中，點選 New -> Create New App
-  ![](https://i.imgur.com/Y3njp7I.png)
+  
+    ![](https://i.imgur.com/Y3njp7I.png)
+
 2. 輸入自己喜歡的 App name ，然後點擊 Create app
-  ![](https://i.imgur.com/WJ85jXR.png)
+   
+    ![](https://i.imgur.com/WJ85jXR.png)
 
 ## 創建 Line Bot 頻道
 1. 進入 [Line 控制台](https://developers.line.me/console/)
+    
     ![](https://i.imgur.com/vseYQt1.png)
+
 2. 創建提供者
+    
     ![](https://i.imgur.com/0tnYFBd.png)
+
 3. 填入提供者名稱
+ 
     ![](https://i.imgur.com/2ne3H1F.png)
-4. 點擊 Create
+
+5. 點擊 Create
+
     ![](https://i.imgur.com/bdESW8G.png)
-5. 點擊 Create Channel
+
+6. 點擊 Create Channel
+   
     ![](https://i.imgur.com/F1nAWhK.png)
-6. 填入 Bot 資訊
+
+7. 填入 Bot 資訊
+   
     ![](https://i.imgur.com/3wYFSvl.png)
-7. 同意 Line 條款，並按 Create
+
+8. 同意 Line 條款，並按 Create
+   
     ![](https://i.imgur.com/WNzl4sL.png)
-8. 選擇剛剛創建的 Bot
+
+9.  選擇剛剛創建的 Bot
+    
     ![](https://i.imgur.com/6ocsOBW.png)
 
 ## 設定範例機器人
@@ -67,23 +85,34 @@ description:
 
 1. 下載 [範例程式碼](https://github.com/yaoandy107/line-bot-tutorial/archive/master.zip)
 2. 進入 [Line 控制台](https://developers.line.me/console/)，選擇你剛剛創建的機器人
+   
     ![](https://i.imgur.com/6ocsOBW.png)
+
 3. 開啟 webhook
-![](https://i.imgur.com/nxvFPB1.png)
-![](https://i.imgur.com/PzEKzdq.png)
+   
+    ![](https://i.imgur.com/nxvFPB1.png)
+    ![](https://i.imgur.com/PzEKzdq.png)
+
 4. 關閉預設罐頭回覆訊息
-![](https://i.imgur.com/nXPRhT4.png)
+   
+    ![](https://i.imgur.com/nXPRhT4.png)
 
 5. 產生 **Channel access token**
-![](https://i.imgur.com/QyxnpZB.png)
-![](https://i.imgur.com/quYbPx9.png)
-6. 取得 **Channel access token**
-![](https://i.imgur.com/C7OTect.png)
-7. 取得 **Channel secret**
-![](https://i.imgur.com/IwmvyzL.png)
+   
+    ![](https://i.imgur.com/QyxnpZB.png)
+    ![](https://i.imgur.com/quYbPx9.png)
 
-6. 使用編輯器開啟範例程式碼資料夾內的 app.py，將剛剛取得的 **channel secret** 和 **channel access token** 填入
-  ![](https://i.imgur.com/Uz16joi.png)
+6. 取得 **Channel access token**
+   
+    ![](https://i.imgur.com/C7OTect.png)
+
+7. 取得 **Channel secret**
+   
+    ![](https://i.imgur.com/IwmvyzL.png)
+
+8. 使用編輯器開啟範例程式碼資料夾內的 app.py，將剛剛取得的 **channel secret** 和 **channel access token** 填入
+   
+    ![](https://i.imgur.com/Uz16joi.png)
 
 ## 將程式推到 Heroku 上
 
@@ -122,7 +151,9 @@ description:
 
 ## 將 Heroku 與 Line 綁定
 1. 進入 [Line 控制台](https://developers.line.me/console/)，選擇你剛剛創建的 Bot
+   
     ![](https://i.imgur.com/6ocsOBW.png)
+
 2. 在 webhook URL 中輸入 Heroku 網址
 
     ```shell
@@ -134,7 +165,9 @@ description:
   
 ## 測試範例成果
 1. 進入 [Line 控制台](https://developers.line.me/console/)，選擇你剛剛創建的 Bot
+   
     ![](https://i.imgur.com/6ocsOBW.png)
+    
 2. 通過在控制台的 “Channel settings” 頁面上掃描 QR Code，將您的 Bot 添加到 LINE 的朋友中
 3. 在 Line 上向您的 Bot 發送文字訊息，並確認它會學你說話
 
