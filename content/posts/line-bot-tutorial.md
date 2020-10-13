@@ -228,7 +228,7 @@ line_bot_api.push_message(push_token, 訊息物件)
 修改範例程式碼中， handle_message() 方法內的程式碼，可實現多種功能
 
 ### TextSendMessage （文字訊息）
-<img src="https://i.imgur.com/LieCFAb.png" alt="TextSendMessage" width="250"/>
+{{< image src="https://i.imgur.com/LieCFAb.png" style="width: 250px;" alt="TextSendMessage" >}}
 
 ```python
 message = TextSendMessage(text='Hello, world')
@@ -236,7 +236,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### ImageSendMessage（圖片訊息）
-<img src="https://i.imgur.com/RaH7gqo.png" alt="TextSendMessage" width="250"/>
+{{< image src="https://i.imgur.com/RaH7gqo.png" style="width: 250px;" alt="ImageSendMessage" >}}
 
 ```python
 message = ImageSendMessage(
@@ -247,7 +247,8 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### VideoSendMessage（影片訊息）
-<img src="https://i.imgur.com/o6cvf3o.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/o6cvf3o.png" style="width: 250px;" alt="VideoSendMessage" >}}
+
 ```python
 message = VideoSendMessage(
     original_content_url='https://example.com/original.mp4',
@@ -257,7 +258,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### AudioSendMessage（音訊訊息）
-<img src="https://i.imgur.com/w5szZag.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/w5szZag.png" style="width: 250px;" alt="AudioSendMessage" >}}
 
 ```python
 message = AudioSendMessage(
@@ -268,7 +269,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### LocationSendMessage（位置訊息）
-<img src="https://i.imgur.com/tXE7Aus.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/tXE7Aus.png" style="width: 250px;" alt="LocationSendMessage" >}}
 
 ```python
 message = LocationSendMessage(
@@ -281,7 +282,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### StickerSendMessage（貼圖訊息）
-<img src="https://i.imgur.com/7x0mgK1.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/7x0mgK1.png" style="width: 250px;" alt="StickerSendMessage" >}}
 
 ```python
 message = StickerSendMessage(
@@ -292,7 +293,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### ImagemapSendMessage （組圖訊息）
-<img src="https://i.imgur.com/MoSf2D6.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/MoSf2D6.png" style="width: 250px;" alt="ImagemapSendMessage" >}}
 
 ```python
 message = ImagemapSendMessage(
@@ -318,7 +319,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### TemplateSendMessage - ButtonsTemplate （按鈕介面訊息）
-<img src="https://i.imgur.com/41lXWjP.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/41lXWjP.png" style="width: 250px;" alt="ButtonsTemplate" >}}
 
 ```python
 message = TemplateSendMessage(
@@ -348,7 +349,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### TemplateSendMessage - ConfirmTemplate（確認介面訊息）
-<img src="https://i.imgur.com/U8NDhrt.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/U8NDhrt.png" style="width: 250px;" alt="ConfirmTemplate" >}}
 
 ```python
 message = TemplateSendMessage(
@@ -372,7 +373,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### TemplateSendMessage - CarouselTemplate
-<img src="https://i.imgur.com/982Glgo.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/982Glgo.png" style="width: 250px;" alt="CarouselTemplate" >}}
 
 ```python
 message = TemplateSendMessage(
@@ -426,7 +427,7 @@ line_bot_api.reply_message(event.reply_token, message)
 ```
 
 ### TemplateSendMessage - ImageCarouselTemplate
-<img src="https://i.imgur.com/2ys1qqc.png" alt="" width="250"/>
+{{< image src="https://i.imgur.com/2ys1qqc.png" style="width: 250px;" alt="ImageCarouselTemplate" >}}
 
 ```python
 message = TemplateSendMessage(
