@@ -35,111 +35,113 @@ enableMissingTranslationPlaceholders = false
 enableRobotsTXT = true
 
 [permalinks]
-posts = "/:filename/"
+  posts = "/:filename/"
 
 [author]
-name = "Andy Yao"
+  name = "Andy Yao"
 
 [blackfriday]
-hrefTargetBlank = true
+  hrefTargetBlank = true
 
 [taxonomies]
-category = "categories"
-series = "series"
-tag = "tags"
+  category = "categories"
+  series = "series"
+  tag = "tags"
 
 [params]
-dateform = "Jan 2, 2006"
-dateformNum = "2006-01-02"
-dateformNumTime = "2006-01-02 15:04"
-dateformShort = "Jan 2"
+  dateform = "Jan 2, 2006"
+  dateformNum = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+  dateformShort = "Jan 2"
 
-# Metadata mostly used in document's head
-# 
-description = "Nice theme for homepages and blogs"
-images = [""]
-keywords = ""
+  # Metadata mostly used in document's head
+  # 
+  description = "Nice theme for homepages and blogs"
+  images = [""]
+  keywords = ""
 
-homeSubtitle = "記錄學習的點點滴滴"
+  homeSubtitle = "記錄學習的點點滴滴"
 
-# Prefix of link to the git commit detail page. GitInfo must be enabled.
-#
-# gitUrl = ""
+  # Prefix of link to the git commit detail page. GitInfo must be enabled.
+  #
+  # gitUrl = ""
 
-# Set disableReadOtherPosts to true in order to hide the links to other posts.
-#
-disableReadOtherPosts = false
-readOtherPosts = "Read more"
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  #
+  disableReadOtherPosts = false
+  readOtherPosts = "Read more"
 
-# Sharing buttons
-#
-# There are a lot of buttons preconfigured. If you want to change them,
-# generate the buttons here: https://sharingbuttons.io
-# and add them into your own `layouts/partials/sharing-buttons.html`
-#
-enableSharingButtons = false
+  # Sharing buttons
+  #
+  # There are a lot of buttons preconfigured. If you want to change them,
+  # generate the buttons here: https://sharingbuttons.io
+  # and add them into your own `layouts/partials/sharing-buttons.html`
+  #
+  enableSharingButtons = false
 
-# Integrate Javascript files or stylesheets by adding the url to the external assets or by
-# linking local files with their path relative to the static folder, e.g. "css/styles.css"
-#
-customCSS = []
-customJS = []
+  # Integrate Javascript files or stylesheets by adding the url to the external assets or by
+  # linking local files with their path relative to the static folder, e.g. "css/styles.css"
+  #
+  customCSS = []
+  customJS = []
 
-# Toggle this option need to rebuild SCSS, requires extended version of Hugo
-#
-justifyContent = false # Set "text-align: justify" to .post-content.
+  # Toggle this option need to rebuild SCSS, requires extended version of Hugo
+  #
+  justifyContent = false # Set "text-align: justify" to .post-content.
 
-# Default theme "light" or "dark"
-#
-defaultTheme = "dark"
-themeColor = "#252627"
+  # Default theme "light" or "dark"
+  #
+  defaultTheme = "dark"
+  themeColor = "#252627"
 
-# Custom footer 
-# If you want, you can easily override the default footer with your own content. 
-#
-footerLeft = "Powered by <a href=\"http://gohugo.io\">Hugo</a>"
-footerRight = "Made with &#10084; by <a href=\"https://github.com/rhazdon/hugo-theme-hello-friend-ng\">Djordje Atlialp</a>"
+  # Custom footer 
+  # If you want, you can easily override the default footer with your own content. 
+  #
+  footerLeft = "Powered by <a href=\"http://gohugo.io\">Hugo</a>"
+  footerRight = "Made with &#10084; by <a href=\"https://github.com/rhazdon/hugo-theme-hello-friend-ng\">Djordje Atlialp</a>"
 
-# Colors for favicons
-#
-[params.favicon.color]
-mask = "#252627"
-msapplication = "#252627"
-theme = "#252627"
+  likerID = "yaoandy107"
 
-[params.logo]
-logoHomeLink = "/"
-logoText = "$ cd /home/"
-# Set true to remove the logo cursor entirely.
-# logoCursorDisabled = false
-# Set to a valid CSS color to change the cursor in the logo.
-logoCursorColor = "#67a2c9"
-# Set to a valid CSS time value to change the animation duration, "0s" to disable.
-# logoCursorAnimate  = "2s"
+  # Colors for favicons
+  #
+  [params.favicon.color]
+    mask = "#252627"
+    msapplication = "#252627"
+    theme = "#252627"
 
-# Uncomment this if you want a portrait on your start page
-#
-# [params.portrait]
-#   path     = "/img/image.jpg"
-#   alt      = "Portrait"
-#   maxWidth = "50px"
+  [params.logo]
+    logoHomeLink = "/"
+    logoText = "$ cd /home/"
+    # Set true to remove the logo cursor entirely.
+    # logoCursorDisabled = false
+    # Set to a valid CSS color to change the cursor in the logo.
+    logoCursorColor = "#67a2c9"
+    # Set to a valid CSS time value to change the animation duration, "0s" to disable.
+    # logoCursorAnimate  = "2s"
 
-# Social icons
-[[params.social]]
-name = "twitter"
-url = "https://twitter.com/yaoandy107"
+  # Uncomment this if you want a portrait on your start page
+  #
+  # [params.portrait]
+  #   path     = "/img/image.jpg"
+  #   alt      = "Portrait"
+  #   maxWidth = "50px"
 
-[[params.social]]
-name = "email"
-url = "mailto:yaoandy107@gmail.com"
+  # Social icons
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/yaoandy107"
 
-[[params.social]]
-name = "github"
-url = "https://github.com/yaoandy107"
+  [[params.social]]
+    name = "email"
+    url = "mailto:yaoandy107@gmail.com"
 
-[[params.social]]
-name = "linkedin"
-url = "https://www.linkedin.com/in/yaoandy107/"
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/yaoandy107"
+
+  [[params.social]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/yaoandy107/"
 
 # [languages]
 # [languages.zh-tw]
@@ -147,14 +149,14 @@ url = "https://www.linkedin.com/in/yaoandy107/"
 # weight = 1
 
 [menu]
-# [[menu.main]]
-# identifier = "about"
-# name = "About"
-# url = "about/"
-[[menu.main]]
-identifier = "posts"
-name = "Posts"
-url = "posts/"
+  # [[menu.main]]
+  # identifier = "about"
+  # name = "About"
+  # url = "about/"
+  [[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "posts/"
 
 [minify]
   disableCSS = false
