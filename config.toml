@@ -35,7 +35,7 @@ enableMissingTranslationPlaceholders = false
 enableRobotsTXT = true
 
 [permalinks]
-posts = "/:title/"
+posts = "/:filename/"
 
 [author]
 name = "Andy Yao"
