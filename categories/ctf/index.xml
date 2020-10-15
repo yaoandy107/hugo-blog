@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CTF on BlackMaple's Blog</title><link>https://blackmaple.me/categories/ctf/</link><description>Recent content in CTF on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Wed, 31 Oct 2018 00:56:21 +0000</lastBuildDate><atom:link href="https://blackmaple.me/categories/ctf/index.xml" rel="self" type="application/rss+xml"/><item><title>AIS3 Final CTF - hellOwOrld</title><link>https://blackmaple.me/ais3-final-ctf-helloworld/</link><pubDate>Wed, 31 Oct 2018 00:56:21 +0000</pubDate><guid>https://blackmaple.me/ais3-final-ctf-helloworld/</guid><description>&lt;p>我們這隊都是第一次參加 AIS3 Final CTF，結果拿到第 18 名的成績，滿開心的ＸＤ
+這邊整理了一些解題過程和思路，有興趣可以看一下～
+如果有任何其他思路也歡迎在下面提出！&lt;/p></description></item><item><title>AIS3 2018 write-up</title><link>https://blackmaple.me/ais3-2018-write-up/</link><pubDate>Wed, 31 Oct 2018 00:49:29 +0000</pubDate><guid>https://blackmaple.me/ais3-2018-write-up/</guid><description>&lt;p>今年第二次參加 AIS3 pre-exam 的感想&lt;/p>
+&lt;ul>
+&lt;li>要用到程式解的地方滿多的&lt;/li>
+&lt;li>Web2 對網路環境不好的人會跑很久&lt;/li>
+&lt;li>Misc2 超多假 flag，要找到真的根本要通靈＝＝&lt;/li>
+&lt;/ul></description></item></channel></rss>

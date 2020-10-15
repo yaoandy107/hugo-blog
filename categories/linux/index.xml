@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on BlackMaple's Blog</title><link>https://blackmaple.me/categories/linux/</link><description>Recent content in Linux on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Thu, 07 May 2020 17:33:02 +0000</lastBuildDate><atom:link href="https://blackmaple.me/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>如何在 Ubuntu 20.04 創建 Sudo user？</title><link>https://blackmaple.me/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</link><pubDate>Thu, 07 May 2020 17:33:02 +0000</pubDate><guid>https://blackmaple.me/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</guid><description>&lt;p>創建 server 後，我們通常都會先在其中創建我們自己的 user 方便操作，同時也會需要有 root 權限才能操作更多指令。&lt;/p>
+&lt;blockquote>
+&lt;p>每個 Linux 發行版對於創建 sudo 使用者的操作都是大同小異，但可能會有一些差別，因此這邊紀錄了 Ubuntu 20.04 的 sudo 使用者創建方式。&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>
+&lt;p>以 root 身份登錄到你的伺服器。&lt;/p>
+&lt;blockquote>
+&lt;p>將下面 server_ip_address 替換為你伺服器的 ip&lt;/p>
+&lt;/blockquote>
+&lt;pre>&lt;code class="language-shell=" data-lang="shell=">ssh root@server_ip_address
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol></description></item><item><title>在 Ubuntu 上安裝中文輸入法</title><link>https://blackmaple.me/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</link><pubDate>Tue, 04 Sep 2018 23:39:33 +0000</pubDate><guid>https://blackmaple.me/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</guid><description>&lt;ol>
+&lt;li>點擊「系統設定值」的按鈕
+&lt;img src="https://i.imgur.com/8weBEw1.jpg" alt="">&lt;/li>
+&lt;/ol></description></item><item><title>如何在 Centos 7 創建一個 Sudo user</title><link>https://blackmaple.me/how-to-create-a-sudo-user-on-centos-quickstart/</link><pubDate>Sun, 31 Dec 2017 00:20:47 +0000</pubDate><guid>https://blackmaple.me/how-to-create-a-sudo-user-on-centos-quickstart/</guid><description>&lt;ol>
+&lt;li>以 root 身份登錄到你的伺服器。
+&lt;pre>&lt;code class="language-shell=" data-lang="shell=">ssh root@server_ip_address
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;/ol></description></item></channel></rss>

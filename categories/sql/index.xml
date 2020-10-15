@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SQL on BlackMaple's Blog</title><link>https://blackmaple.me/categories/sql/</link><description>Recent content in SQL on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Wed, 31 Oct 2018 00:52:49 +0000</lastBuildDate><atom:link href="https://blackmaple.me/categories/sql/index.xml" rel="self" type="application/rss+xml"/><item><title>SQL 語法筆記</title><link>https://blackmaple.me/sql-tutorial/</link><pubDate>Wed, 31 Oct 2018 00:52:49 +0000</pubDate><guid>https://blackmaple.me/sql-tutorial/</guid><description>&lt;h2 id="基本語法">基本語法&lt;/h2>
+&lt;h3 id="創建資料表">創建資料表&lt;/h3>
+&lt;p>&lt;code>CREATE TABLE&lt;/code>&lt;/p>
+&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE table_name (
+column_1 data_type,
+column_2 data_type,
+column_3 data_type
+);
+&lt;/code>&lt;/pre>&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
+id INTEGER,
+name TEXT,
+age INTEGER
+);
+&lt;/code>&lt;/pre>&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
+id INTEGER PRIMARY KEY,
+name TEXT UNIQUE,
+date_of_birth TEXT NOT NULL,
+date_of_death TEXT DEFAULT 'Not Applicable',
+);
+&lt;/code>&lt;/pre>&lt;ol>
+&lt;li>
+&lt;p>&lt;code>PRIMARY KEY&lt;/code>：可用於資料的唯一識別，不能重複，一個資料只能有一個欄位是 &lt;code>PRIMARY KEY&lt;/code>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>UNIQUE&lt;/code>：與 &lt;code>PRIMARY KEY&lt;/code> 很像，不過它可以設置在一個資料的多個欄位&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>NOT NULL&lt;/code>：強制該欄位一定要給定值&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>DEFAULT&lt;/code>：如果欄位沒有值，會自動定預設值&lt;/p>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>
