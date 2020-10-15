@@ -23,10 +23,13 @@ img {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-code,
+code, pre {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace !important;
+}
+:not(pre) > 
 code[class*="language-"],
 pre[class*="language-"] {
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    background-color: #3b3d42 !important;
 }
 .pagination__buttons {
     justify-content: space-around;
