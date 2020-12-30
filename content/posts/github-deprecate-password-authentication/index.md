@@ -6,9 +6,11 @@ toc: false
 cover: cover.jpg
 useRelativeCover: true
 categories:
-  - untagged
+  - Git
 tags:
-  - untagged
+  - GitHub
+  - Git
+  - Security
 ---
 
 今天我突然收到來自 GitHub 的警告信，標題為 **[GitHub] Deprecation Notice**，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
