@@ -1,4 +1,31 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on BlackMaple's Blog</title><link>https://blackmaple.me/posts/</link><description>Recent content in Posts on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Tue, 13 Oct 2020 19:51:44 +0800</lastBuildDate><atom:link href="https://blackmaple.me/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>[Android] PopupWindow 設置 gravity 無效的問題</title><link>https://blackmaple.me/android-popupwindow-gravity-issue/</link><pubDate>Tue, 13 Oct 2020 19:51:44 +0800</pubDate><guid>https://blackmaple.me/android-popupwindow-gravity-issue/</guid><description>前言 今天在寫公司專案的時候遇到部分 Android 7 的手機，PopupWindow 不會理會設置好的 gravity，會直接跑到頂部。
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on BlackMaple's Blog</title><link>https://blackmaple.me/posts/</link><description>Recent content in Posts on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Wed, 30 Dec 2020 19:07:57 +0800</lastBuildDate><atom:link href="https://blackmaple.me/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>GitHub 將取消基於密碼的驗證機制</title><link>https://blackmaple.me/github-deprecate-password-authentication/</link><pubDate>Wed, 30 Dec 2020 19:07:57 +0800</pubDate><guid>https://blackmaple.me/github-deprecate-password-authentication/</guid><description>今天我突然收到來自 GitHub 的警告信，標題為 [GitHub] Deprecation Notice，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
+GitHub 將在 2021 年 8 月 13 日禁止所有基於帳密的驗證機制，以提升帳密的安全性。
+有什麼影響？ 目前會影響到的只有需要輸入帳號密碼的驗證方式（不包括 OAuth），所以若之前是使用 SSH 驗證 或是 二階段驗證，則不在影響範圍內。
+GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，同時改用 token 驗證取代也有以幾項好處：
+允許針對 Token 來調整不同的存取的權限 可以任意撤銷發出去的 token，且不影響原本的帳密設定 可以根據不同使用者及需求產生獨一無二的 token，同時也避免帳號密碼留存在電腦中 未來該怎麼做呢？ 若你是在影響範圍內，只要升級 Git 的版本就沒問題囉！
+參考 Token authentication requirements for Git operations - The GitHub Blog
+若喜歡我的文章，可以點擊下方拍手給予我鼓勵唷～</description><content type="html"><![CDATA[<p>今天我突然收到來自 GitHub 的警告信，標題為 <strong>[GitHub] Deprecation Notice</strong>，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：</p>
+<blockquote>
+<p><strong>GitHub 將在 2021 年 8 月 13 日禁止所有基於帳密的驗證機制，以提升帳密的安全性。</strong></p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="有什麼影響">有什麼影響？</h2>
+<p>目前會影響到的只有需要輸入帳號密碼的驗證方式（不包括 OAuth），所以若之前是使用 <strong>SSH 驗證</strong> 或是 <strong>二階段驗證</strong>，則不在影響範圍內。</p>
+<h2 id="github-為什麼要這麼做呢">GitHub 為什麼要這麼做呢？</h2>
+<p>這更改是為了提升帳密的安全性，同時改用 token 驗證取代也有以幾項好處：</p>
+<ol>
+<li>允許針對 Token 來調整不同的存取的權限</li>
+<li>可以任意撤銷發出去的 token，且不影響原本的帳密設定</li>
+<li>可以根據不同使用者及需求產生獨一無二的 token，同時也避免帳號密碼留存在電腦中</li>
+</ol>
+<h2 id="未來該怎麼做呢">未來該怎麼做呢？</h2>
+<p>若你是在影響範圍內，只要升級 Git 的版本就沒問題囉！</p>
+<h2 id="參考">參考</h2>
+<p><a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/">Token authentication requirements for Git operations - The GitHub Blog</a></p>
+<blockquote>
+<p><strong>若喜歡我的文章，可以點擊下方拍手給予我鼓勵唷～</strong></p>
+</blockquote>
+]]></content></item><item><title>[Android] PopupWindow 設置 gravity 無效的問題</title><link>https://blackmaple.me/android-popupwindow-gravity-issue/</link><pubDate>Tue, 13 Oct 2020 19:51:44 +0800</pubDate><guid>https://blackmaple.me/android-popupwindow-gravity-issue/</guid><description>前言 今天在寫公司專案的時候遇到部分 Android 7 的手機，PopupWindow 不會理會設置好的 gravity，會直接跑到頂部。
 原因 在 Android Code Search 追了一下原始碼，發現 Android 7 在執行 PopupWindow.update() 的時候，會將 gravity 重設，因此造成 gravity 被重置為 Gravity.START | Gravity.TOP。
 有興趣的話可以自己看一下 Google 後來修復的 commit
 解法 剛好出問題的那段程式看起來沒有必要使用 update()，因此拿掉後問題就修復了。當然如果你一定需要使用 update() 的話，可以參考這篇 SlackOverflow，裡面有各種大神給的解法，這邊就不贅述囉！</description><content type="html"><![CDATA[<h2 id="前言">前言</h2>
