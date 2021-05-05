@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5 {
 blockquote {
     background-color: #f9f9f9;
     margin: 16px 0px;
-    @media (prefers-color-scheme: dark) {
+    [data-theme=dark] & {
         background-color: #333;
     }
 }
@@ -25,6 +25,14 @@ img {
 }
 code, pre {
     font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace !important;
+    background-color: #333;
+}
+pre[class*="language-"] {
+    border: none;
+    box-shadow: none;
+}
+code[class*="language-"], pre[class*="language-"] {
+    text-shadow: 0 -.1em 1em black;
 }
 :not(pre) > 
 code[class*="language-"],
