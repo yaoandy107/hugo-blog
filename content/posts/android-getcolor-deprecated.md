@@ -26,9 +26,9 @@ ContextCompat.getColor(context, R.color.your_color);
 
 此方法來自官方 JavaDoc 的描述：
 
-    Returns a color associated with a particular resource ID
-    
-    Starting in M, the returned color will be styled for the specified Context's theme.
+> Returns a color associated with a particular resource ID
+>
+> Starting in M, the returned color will be styled for the specified Context's theme.
 
 這是 ContextCompat.getColor() 的程式碼：
 ```java=
