@@ -3,12 +3,12 @@ body {
     font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",  Helvetica, Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro",
     "LiHei Pro", "蘋方-繁", "PingFang TC", "微軟正黑體", "Microsoft JhengHei",
     sans-serif;
-    @media (prefers-color-scheme: dark) {
+    [data-theme=dark] & {
         color: rgba(255, 255, 255, 0.6);
     }
 }
 h1, h2, h3, h4, h5 {
-    @media (prefers-color-scheme: dark) {
+    [data-theme=dark] & {
         color: rgba(255, 255, 255, 0.87);
     }
 }
