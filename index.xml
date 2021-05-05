@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BlackMaple's Blog</title><link>https://blackmaple.me/</link><description>Recent content on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Wed, 30 Dec 2020 19:07:57 +0800</lastBuildDate><atom:link href="https://blackmaple.me/index.xml" rel="self" type="application/rss+xml"/><item><title>GitHub 將取消基於密碼的驗證機制</title><link>https://blackmaple.me/github-deprecate-password-authentication/</link><pubDate>Wed, 30 Dec 2020 19:07:57 +0800</pubDate><guid>https://blackmaple.me/github-deprecate-password-authentication/</guid><description>今天我突然收到來自 GitHub 的警告信，標題為 [GitHub] Deprecation Notice，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BlackMaple's Blog</title><link>https://blackmaple.me/</link><description>Recent content on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Wed, 05 May 2021 16:56:45 +0800</lastBuildDate><atom:link href="https://blackmaple.me/index.xml" rel="self" type="application/rss+xml"/><item><title>在 M1 Macbook 下開發 Android</title><link>https://blackmaple.me/android-studio-in-m1-mac/</link><pubDate>Wed, 05 May 2021 16:56:45 +0800</pubDate><guid>https://blackmaple.me/android-studio-in-m1-mac/</guid><description>&lt;p>在購買 Macbook Air M1 後，被它的效能和續航驚艷到了，但同時，還有許多應用沒有很好的支援 M1 晶片。所以身為 Android Developer 的我 ，當然要來嘗試在 M1 晶片下運行 Android Studio 看看啦～&lt;/p></description></item><item><title>GitHub 將取消基於密碼的驗證機制</title><link>https://blackmaple.me/github-deprecate-password-authentication/</link><pubDate>Wed, 30 Dec 2020 19:07:57 +0800</pubDate><guid>https://blackmaple.me/github-deprecate-password-authentication/</guid><description>今天我突然收到來自 GitHub 的警告信，標題為 [GitHub] Deprecation Notice，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
 GitHub 將在 2021 年 8 月 13 日禁止所有基於帳密的驗證機制，以提升帳密的安全性。
 有什麼影響？ 目前會影響到的只有需要輸入帳號密碼的驗證方式（不包括 OAuth），所以若之前是使用 SSH 驗證 或是 二階段驗證，則不在影響範圍內。
 GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，同時改用 token 驗證取代也有以幾項好處：
@@ -61,9 +61,4 @@ date_of_death TEXT DEFAULT 'Not Applicable',
 &lt;li>
 &lt;p>&lt;code>DEFAULT&lt;/code>：如果欄位沒有值，會自動定預設值&lt;/p>
 &lt;/li>
-&lt;/ol></description></item><item><title>AIS3 2018 write-up</title><link>https://blackmaple.me/ais3-2018-write-up/</link><pubDate>Wed, 31 Oct 2018 00:49:29 +0000</pubDate><guid>https://blackmaple.me/ais3-2018-write-up/</guid><description>&lt;p>今年第二次參加 AIS3 pre-exam 的感想&lt;/p>
-&lt;ul>
-&lt;li>要用到程式解的地方滿多的&lt;/li>
-&lt;li>Web2 對網路環境不好的人會跑很久&lt;/li>
-&lt;li>Misc2 超多假 flag，要找到真的根本要通靈＝＝&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;/ol></description></item></channel></rss>
