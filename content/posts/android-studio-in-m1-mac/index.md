@@ -8,8 +8,8 @@ categories:
   - Android
 tags:
   - Android
-  - PopupWindow
-  - Error
+  - M1
+  - Macbook
 ---
 
 在購買 Macbook Air M1 後，被它的效能和續航驚艷到了，但同時，還有許多應用沒有很好的支援 M1 晶片。所以身為 Android Developer 的我 ，當然要來嘗試在 M1 晶片下運行 Android Studio 看看啦～
