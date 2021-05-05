@@ -1723,10 +1723,10 @@ passwd: all authentication tokens updated successfully.
 </code></pre><p>如果要兼容 Android 6 以下的版本，建議使用 Support Library v4 的方法：</p>
 <pre><code class="language-java=" data-lang="java=">ContextCompat.getColor(context, R.color.your_color);
 </code></pre><p>此方法來自官方 JavaDoc 的描述：</p>
-<pre><code>Returns a color associated with a particular resource ID
-
-Starting in M, the returned color will be styled for the specified Context's theme.
-</code></pre>
+<blockquote>
+<p>Returns a color associated with a particular resource ID</p>
+<p>Starting in M, the returned color will be styled for the specified Context&rsquo;s theme.</p>
+</blockquote>
 <p>這是 ContextCompat.getColor() 的程式碼：</p>
 <pre><code class="language-java=" data-lang="java=">public static final int getColor(Context context, @ColorRes int id) {
     if (Build.VERSION.SDK_INT &gt;= 23) {
