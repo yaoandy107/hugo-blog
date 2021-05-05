@@ -4,7 +4,6 @@ date: 2020-10-10T03:57:04+08:00
 draft: false
 toc: false
 cover: "cover.jpg"
-useRelativeCover: true
 categories:
   - Android
 tags:

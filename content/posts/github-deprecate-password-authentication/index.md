@@ -4,7 +4,6 @@ date: 2020-12-30T19:07:57+08:00
 draft: false
 toc: false
 cover: cover.jpg
-useRelativeCover: true
 categories:
   - Git
 tags:

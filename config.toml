@@ -71,6 +71,14 @@ enableRobotsTXT = true
   disableReadOtherPosts = false
   readOtherPosts = "Read more"
 
+  # Enable theme toggle
+  # 
+  # This options enables the theme toggle for the theme. 
+  # Per default, this option is off. 
+  # The theme is respecting the prefers-color-scheme of the operating systeme. 
+  # With this option on, the page user is able to set the scheme he wants. 
+  enableThemeToggle = true
+
   # Sharing buttons
   #
   # There are a lot of buttons preconfigured. If you want to change them,
