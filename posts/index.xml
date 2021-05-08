@@ -10,12 +10,12 @@
 <p>Gradle 在 7.0 開始也支援 M1 晶片了，想體驗 M1 的超強效能，就馬上更新起來吧！詳細可以參考官方的 <a href="https://docs.gradle.org/7.0/release-notes.html">Release Notes</a>。</p>
 <h2 id="jvm">JVM</h2>
 <p>Android Studio Canary 裡的 JDK 也支援 M1 晶片囉！</p>
-<p>![Screen Shot 2021-05-05 at 4.06.50 PM](/Users/yaoandy107/Library/Application Support/typora-user-images/Screen Shot 2021-05-05 at 4.06.50 PM.png)</p>
+<p><img src="https://i.imgur.com/5ZnxK2W.jpg" alt="Screen Shot 2021-05-05 at 4.06.50 PM"></p>
 <p>如果不是使用 Canary 版本，但想要體驗更快的速度，也可以自行安裝 <a href="https://www.azul.com/downloads/zulu-community/?version=java-8-lts&amp;os=macos&amp;architecture=arm-64-bit&amp;package=jdk">Azul Zulu Arm64 Open JDK</a>，它有提供 M1 ARM 版本的 JVM 唷！</p>
 <p>安裝完後，前往「Build, Execution, Deployment」-&gt;「Build Tools」-&gt;「Gradle」，可以自行調整想要使用的 JVM 版本喔～</p>
 <p><img src="https://i.imgur.com/TnmpmMG.png" alt="Screen Shot 2021-05-05 at 4.11.10 PM"></p>
 <h2 id="結論">結論</h2>
-<p>Android 相關的開發工具目前都逐步開始支援 M1 晶片了。整體使用下來，已經能體會到 M1 強大的效能了！但可惜的是，Android Studio 在 M1 晶片下還有許多問題待解決，因此並不適合當主力開發機，但相信距離完全支援已經不遠了！</p>]]></content></item><item><title>GitHub 將取消基於密碼的驗證機制</title><link>https://blackmaple.me/github-deprecate-password-authentication/</link><pubDate>Wed, 30 Dec 2020 19:07:57 +0800</pubDate><guid>https://blackmaple.me/github-deprecate-password-authentication/</guid><description>今天我突然收到來自 GitHub 的警告信，標題為 [GitHub] Deprecation Notice，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
+<p>Android 相關的開發工具目前都逐步開始支援 M1 晶片了。整體使用下來，已經能免強堪用了！但可惜的是，Android Studio 在 M1 晶片下還有許多問題待解決，因此並不適合當主力開發機，但相信距離完全支援已經不遠了！</p>]]></content></item><item><title>GitHub 將取消基於密碼的驗證機制</title><link>https://blackmaple.me/github-deprecate-password-authentication/</link><pubDate>Wed, 30 Dec 2020 19:07:57 +0800</pubDate><guid>https://blackmaple.me/github-deprecate-password-authentication/</guid><description>今天我突然收到來自 GitHub 的警告信，標題為 [GitHub] Deprecation Notice，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
 GitHub 將在 2021 年 8 月 13 日禁止所有基於帳密的驗證機制，以提升帳密的安全性。
 有什麼影響？ 目前會影響到的只有需要輸入帳號密碼的驗證方式（不包括 OAuth），所以若之前是使用 SSH 驗證 或是 二階段驗證，則不在影響範圍內。
 GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，同時改用 token 驗證取代也有以幾項好處：
