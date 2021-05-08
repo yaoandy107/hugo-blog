@@ -37,7 +37,7 @@ Gradle 在 7.0 開始也支援 M1 晶片了，想體驗 M1 的超強效能，就
 
 Android Studio Canary 裡的 JDK 也支援 M1 晶片囉！
 
-![Screen Shot 2021-05-05 at 4.06.50 PM](/Users/yaoandy107/Library/Application Support/typora-user-images/Screen Shot 2021-05-05 at 4.06.50 PM.png)
+![Screen Shot 2021-05-05 at 4.06.50 PM](https://i.imgur.com/5ZnxK2W.jpg)
 
 如果不是使用 Canary 版本，但想要體驗更快的速度，也可以自行安裝 [Azul Zulu Arm64 Open JDK](https://www.azul.com/downloads/zulu-community/?version=java-8-lts&os=macos&architecture=arm-64-bit&package=jdk)，它有提供 M1 ARM 版本的 JVM 唷！
 
@@ -47,4 +47,4 @@ Android Studio Canary 裡的 JDK 也支援 M1 晶片囉！
 
 ## 結論
 
-Android 相關的開發工具目前都逐步開始支援 M1 晶片了。整體使用下來，已經能體會到 M1 強大的效能了！但可惜的是，Android Studio 在 M1 晶片下還有許多問題待解決，因此並不適合當主力開發機，但相信距離完全支援已經不遠了！
+Android 相關的開發工具目前都逐步開始支援 M1 晶片了。整體使用下來，已經能免強堪用了！但可惜的是，Android Studio 在 M1 晶片下還有許多問題待解決，因此並不適合當主力開發機，但相信距離完全支援已經不遠了！
