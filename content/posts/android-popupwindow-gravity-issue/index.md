@@ -3,7 +3,9 @@ title: "[Android] PopupWindow 設置 gravity 無效的問題"
 date: 2020-10-13T19:51:44+08:00
 draft: false
 toc: false
-cover: cover.jpg
+cover:
+  image: cover.jpg
+  relative: true
 categories: 
   - Android
 tags:

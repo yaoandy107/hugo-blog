@@ -1,0 +1,117 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",  Helvetica, Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "蘋方-繁", "PingFang TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+}
+:root {
+    --tertiary: rgba(0, 0, 0, 0.05);
+    --shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+.dark {
+    --primary: rgba(255, 255, 255, .95);
+    --shadow: 1px 1px 4px rgba(255, 255, 255, 0.15);
+}
+
+strong {
+    color: var(--primary);
+}
+
+.terms-tags a {
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    font-size: 1rem;
+}
+.terms-tags a:hover {
+    color: var(--theme);
+    background-color: var(--primary);
+}
+.share-buttons {
+    background-color: transparent;
+    border: none;
+}
+.share-buttons svg {
+    border-radius: 12px;
+}
+.share-buttons a:not(:last-of-type) {
+    margin-inline-end: 16px;
+}
+
+#menu span:is(.active, :hover) {
+    padding: 6px 0;
+    border-bottom: 2px solid;
+}
+
+.post-content h2 {
+    margin: 64px auto 24px;
+}
+
+.post-tags li {
+    display: inline-block;
+    margin-inline-end: 12px;
+    margin-bottom: 5px;
+}
+
+.paginav {
+    padding: 8px;
+    background: none;
+}
+
+.post-entry, .post-tags a, .share-buttons svg {
+    border: none;
+    box-shadow: var(--shadow);
+}
+
+.button {
+    border-radius: 24px;
+    padding: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    /* theme-vars */
+    :root {
+        --gap: 24px;
+    }
+}
+
+/*
+
+blockquote {
+    background-color: #f9f9f9;
+    margin: 16px 0px;
+    [data-theme=dark] & {
+        background-color: #333;
+    }
+}
+img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+code, pre {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace !important;
+    background-color: #333;
+}
+pre[class*="language-"] {
+    border: none;
+    box-shadow: none;
+}
+code[class*="language-"], pre[class*="language-"] {
+    text-shadow: 0 -.1em 1em black;
+}
+:not(pre) > 
+code[class*="language-"],
+pre[class*="language-"] {
+    background-color: #3b3d42 !important;
+}
+.pagination__buttons {
+    justify-content: space-around;
+}
+.post-cover {
+    width: 100%;
+    margin: 0;
+}
+#comments {
+    margin-top: 32px;
+} */

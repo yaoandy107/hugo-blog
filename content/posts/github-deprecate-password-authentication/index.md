@@ -3,7 +3,9 @@ title: "GitHub 將取消基於密碼的驗證機制"
 date: 2020-12-30T19:07:57+08:00
 draft: false
 toc: false
-cover: cover.jpg
+cover:
+  image: cover.jpg
+  relative: true
 categories:
   - Git
 tags:

@@ -3,7 +3,9 @@ title: "Android 11 新增無線偵錯 (Wireless Debugging)"
 date: 2020-10-10T03:57:04+08:00
 draft: false
 toc: false
-cover: "cover.jpg"
+cover:
+    image: "cover.jpg"
+    relative: true
 categories:
   - Android
 tags:
