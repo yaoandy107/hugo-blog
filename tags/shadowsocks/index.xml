@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Shadowsocks on BlackMaple&#39;s Blog</title>
-    <link>https://blackmaple.com/tags/shadowsocks/</link>
+    <link>https://blackmaple.me/tags/shadowsocks/</link>
     <description>Recent content in Shadowsocks on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 20 Jan 2018 15:45:09 +0000</lastBuildDate><atom:link href="https://blackmaple.com/tags/shadowsocks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jan 2018 15:45:09 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/shadowsocks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac 下使用 Shadowsocks 翻牆</title>
-      <link>https://blackmaple.com/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</link>
+      <link>https://blackmaple.me/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</link>
       <pubDate>Sat, 20 Jan 2018 15:45:09 +0000</pubDate>
       
-      <guid>https://blackmaple.com/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</guid>
+      <guid>https://blackmaple.me/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</guid>
       <description>這邊教大家如何使用 ShadowsocksX-NG 來進行 Shadowsocks 代理，以達到 翻牆 效果。
 下載 ShadowsocksX-NG GitHub 載點：https://github.com/shadowsocks/ShadowsocksX-NG/releases/
 編輯代理伺服器 點擊「紙飛機」選擇「Server」，然後點擊【Server Preferences&amp;hellip;】選項：

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>HTTP on BlackMaple&#39;s Blog</title>
-    <link>https://blackmaple.com/categories/http/</link>
+    <link>https://blackmaple.me/categories/http/</link>
     <description>Recent content in HTTP on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 27 Apr 2020 11:49:49 +0000</lastBuildDate><atom:link href="https://blackmaple.com/categories/http/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Apr 2020 11:49:49 +0000</lastBuildDate><atom:link href="https://blackmaple.me/categories/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HTTP/3 改用 UDP？ HTTP 的過去、現在和未來</title>
-      <link>https://blackmaple.com/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</link>
+      <link>https://blackmaple.me/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</link>
       <pubDate>Mon, 27 Apr 2020 11:49:49 +0000</pubDate>
       
-      <guid>https://blackmaple.com/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</guid>
+      <guid>https://blackmaple.me/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</guid>
       <description>&lt;h2 id=&#34;一前言&#34;&gt;一、前言&lt;/h2&gt;
 &lt;p&gt;聽到 HTTP/3 竟然要放棄 TCP 改用 UDP，相信不少人應該都感到很驚訝。在過往教課書及老師都告訴我們「UDP 不可靠，所以 HTTP 使用比較可靠的 TCP」，從來沒有想過這知識有一天竟然會被推翻，因此在震驚之餘，也來研究了一下 HTTP/3 內容及 HTTP 的過去、現在和未來。&lt;/p&gt;</description>
     </item>

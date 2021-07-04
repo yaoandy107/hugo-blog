@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CentOS on BlackMaple&#39;s Blog</title>
-    <link>https://blackmaple.com/tags/centos/</link>
+    <link>https://blackmaple.me/tags/centos/</link>
     <description>Recent content in CentOS on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 31 Dec 2017 00:20:47 +0000</lastBuildDate><atom:link href="https://blackmaple.com/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Dec 2017 00:20:47 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何在 Centos 7 創建一個 Sudo user</title>
-      <link>https://blackmaple.com/posts/how-to-create-a-sudo-user-on-centos-quickstart/</link>
+      <link>https://blackmaple.me/posts/how-to-create-a-sudo-user-on-centos-quickstart/</link>
       <pubDate>Sun, 31 Dec 2017 00:20:47 +0000</pubDate>
       
-      <guid>https://blackmaple.com/posts/how-to-create-a-sudo-user-on-centos-quickstart/</guid>
+      <guid>https://blackmaple.me/posts/how-to-create-a-sudo-user-on-centos-quickstart/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;以 root 身份登錄到你的伺服器。
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
