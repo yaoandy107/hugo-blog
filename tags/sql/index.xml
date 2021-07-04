@@ -1,33 +1,85 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SQL on BlackMaple's Blog</title><link>https://blackmaple.me/tags/sql/</link><description>Recent content in SQL on BlackMaple's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Wed, 31 Oct 2018 00:52:49 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/sql/index.xml" rel="self" type="application/rss+xml"/><item><title>SQL 語法筆記</title><link>https://blackmaple.me/sql-tutorial/</link><pubDate>Wed, 31 Oct 2018 00:52:49 +0000</pubDate><guid>https://blackmaple.me/sql-tutorial/</guid><description>&lt;h2 id="基本語法">基本語法&lt;/h2>
-&lt;h3 id="創建資料表">創建資料表&lt;/h3>
-&lt;p>&lt;code>CREATE TABLE&lt;/code>&lt;/p>
-&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE table_name (
-column_1 data_type,
-column_2 data_type,
-column_3 data_type
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SQL on BlackMaple&#39;s Blog</title>
+    <link>https://examplesite.com/tags/sql/</link>
+    <description>Recent content in SQL on BlackMaple&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Oct 2018 00:52:49 +0000</lastBuildDate><atom:link href="https://examplesite.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL 語法筆記</title>
+      <link>https://examplesite.com/posts/sql-tutorial/</link>
+      <pubDate>Wed, 31 Oct 2018 00:52:49 +0000</pubDate>
+      
+      <guid>https://examplesite.com/posts/sql-tutorial/</guid>
+      <description>&lt;h2 id=&#34;基本語法&#34;&gt;基本語法&lt;/h2&gt;
+&lt;h3 id=&#34;創建資料表&#34;&gt;創建資料表&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;CREATE TABLE&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;CREATE TABLE table_name (
+   column_1 data_type, 
+   column_2 data_type, 
+   column_3 data_type
 );
-&lt;/code>&lt;/pre>&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
-id INTEGER,
-name TEXT,
-age INTEGER
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;CREATE TABLE celebs (
+    id INTEGER,
+    name TEXT, 
+    age INTEGER
 );
-&lt;/code>&lt;/pre>&lt;pre>&lt;code class="language-sql=" data-lang="sql=">CREATE TABLE celebs (
-id INTEGER PRIMARY KEY,
-name TEXT UNIQUE,
-date_of_birth TEXT NOT NULL,
-date_of_death TEXT DEFAULT 'Not Applicable',
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;CREATE TABLE celebs (
+   id INTEGER PRIMARY KEY, 
+   name TEXT UNIQUE,
+   date_of_birth TEXT NOT NULL,
+   date_of_death TEXT DEFAULT &amp;#39;Not Applicable&amp;#39;,
 );
-&lt;/code>&lt;/pre>&lt;ol>
-&lt;li>
-&lt;p>&lt;code>PRIMARY KEY&lt;/code>：可用於資料的唯一識別，不能重複，一個資料只能有一個欄位是 &lt;code>PRIMARY KEY&lt;/code>。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>UNIQUE&lt;/code>：與 &lt;code>PRIMARY KEY&lt;/code> 很像，不過它可以設置在一個資料的多個欄位&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>NOT NULL&lt;/code>：強制該欄位一定要給定值&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>DEFAULT&lt;/code>：如果欄位沒有值，會自動定預設值&lt;/p>
-&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;PRIMARY KEY&lt;/code&gt;：可用於資料的唯一識別，不能重複，一個資料只能有一個欄位是 &lt;code&gt;PRIMARY KEY&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;UNIQUE&lt;/code&gt;：與 &lt;code&gt;PRIMARY KEY&lt;/code&gt; 很像，不過它可以設置在一個資料的多個欄位&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;NOT NULL&lt;/code&gt;：強制該欄位一定要給定值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;DEFAULT&lt;/code&gt;：如果欄位沒有值，會自動定預設值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
