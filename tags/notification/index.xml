@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Notification on BlackMaple&#39;s Blog</title>
-    <link>https://examplesite.com/tags/notification/</link>
+    <link>https://blackmaple.com/tags/notification/</link>
     <description>Recent content in Notification on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 19 Dec 2017 21:23:54 +0000</lastBuildDate><atom:link href="https://examplesite.com/tags/notification/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2017 21:23:54 +0000</lastBuildDate><atom:link href="https://blackmaple.com/tags/notification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android: NotificationCompat 與 Notification 差別</title>
-      <link>https://examplesite.com/posts/android-notificationcompat-vs-notification/</link>
+      <link>https://blackmaple.com/posts/android-notificationcompat-vs-notification/</link>
       <pubDate>Tue, 19 Dec 2017 21:23:54 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/android-notificationcompat-vs-notification/</guid>
+      <guid>https://blackmaple.com/posts/android-notificationcompat-vs-notification/</guid>
       <description>&lt;p&gt;Notification.Builder 是 Android 3.0 (API 11) 引入的。如要兼容低版本，可以使用 Support V4 包提供的 NotificationCompat.Builder。&lt;/p&gt;</description>
     </item>
     

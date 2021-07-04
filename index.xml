@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>BlackMaple&#39;s Blog</title>
-    <link>https://examplesite.com/</link>
+    <link>https://blackmaple.com/</link>
     <description>Recent content on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 05 May 2021 16:56:45 +0800</lastBuildDate><atom:link href="https://examplesite.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 May 2021 16:56:45 +0800</lastBuildDate><atom:link href="https://blackmaple.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 M1 Macbook 下開發 Android</title>
-      <link>https://examplesite.com/posts/android-studio-in-m1-mac/</link>
+      <link>https://blackmaple.com/posts/android-studio-in-m1-mac/</link>
       <pubDate>Wed, 05 May 2021 16:56:45 +0800</pubDate>
       
-      <guid>https://examplesite.com/posts/android-studio-in-m1-mac/</guid>
+      <guid>https://blackmaple.com/posts/android-studio-in-m1-mac/</guid>
       <description>&lt;p&gt;在購買 Macbook Air M1 後，被它的效能和續航驚艷到了，但同時，還有許多應用沒有很好的支援 M1 晶片。所以身為 Android Developer 的我 ，當然要來嘗試在 M1 晶片下運行 Android Studio 看看啦～&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>GitHub 將取消基於密碼的驗證機制</title>
-      <link>https://examplesite.com/posts/github-deprecate-password-authentication/</link>
+      <link>https://blackmaple.com/posts/github-deprecate-password-authentication/</link>
       <pubDate>Wed, 30 Dec 2020 19:07:57 +0800</pubDate>
       
-      <guid>https://examplesite.com/posts/github-deprecate-password-authentication/</guid>
+      <guid>https://blackmaple.com/posts/github-deprecate-password-authentication/</guid>
       <description>今天我突然收到來自 GitHub 的警告信，標題為 [GitHub] Deprecation Notice，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
  GitHub 將在 2021 年 8 月 13 日禁止所有基於帳密的驗證機制，以提升帳密的安全性。
  有什麼影響？ 目前會影響到的只有需要輸入帳號密碼的驗證方式（不包括 OAuth），所以若之前是使用 SSH 驗證 或是 二階段驗證，則不在影響範圍內。
@@ -33,10 +33,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>[Android] PopupWindow 設置 gravity 無效的問題</title>
-      <link>https://examplesite.com/posts/android-popupwindow-gravity-issue/</link>
+      <link>https://blackmaple.com/posts/android-popupwindow-gravity-issue/</link>
       <pubDate>Tue, 13 Oct 2020 19:51:44 +0800</pubDate>
       
-      <guid>https://examplesite.com/posts/android-popupwindow-gravity-issue/</guid>
+      <guid>https://blackmaple.com/posts/android-popupwindow-gravity-issue/</guid>
       <description>前言 今天在寫公司專案的時候遇到部分 Android 7 的手機，PopupWindow 不會理會設置好的 gravity，會直接跑到頂部。
 原因 在 Android Code Search 追了一下原始碼，發現 Android 7 在執行 PopupWindow.update() 的時候，會將 gravity 重設，因此造成 gravity 被重置為 Gravity.START | Gravity.TOP。
 有興趣的話可以自己看一下 Google 後來修復的 commit
@@ -45,19 +45,19 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>Android 11 新增無線偵錯 (Wireless Debugging)</title>
-      <link>https://examplesite.com/posts/android-11-wireless-debug/</link>
+      <link>https://blackmaple.com/posts/android-11-wireless-debug/</link>
       <pubDate>Sat, 10 Oct 2020 03:57:04 +0800</pubDate>
       
-      <guid>https://examplesite.com/posts/android-11-wireless-debug/</guid>
+      <guid>https://blackmaple.com/posts/android-11-wireless-debug/</guid>
       <description>&lt;p&gt;不久前 Android 11 正式發布，可以看到有許多很酷炫的新功能，其中對身為 Android 開發者的我來說最興奮的應該就是「無線偵錯」了，這樣出門就可以更方便的開發了，因此趁著這段空閑就來試試看！&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>如何在 Ubuntu 20.04 創建 Sudo user？</title>
-      <link>https://examplesite.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</link>
+      <link>https://blackmaple.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</link>
       <pubDate>Thu, 07 May 2020 17:33:02 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</guid>
+      <guid>https://blackmaple.com/posts/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</guid>
       <description>&lt;p&gt;創建 server 後，我們通常都會先在其中創建我們自己的 user 方便操作，同時也會需要有 root 權限才能操作更多指令。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;每個 Linux 發行版對於創建 sudo 使用者的操作都是大同小異，但可能會有一些差別，因此這邊紀錄了 Ubuntu 20.04 的 sudo 使用者創建方式。&lt;/p&gt;
@@ -82,10 +82,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>商業智慧筆記（一）- 大數據時代的商業智慧簡介</title>
-      <link>https://examplesite.com/posts/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</link>
+      <link>https://blackmaple.com/posts/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</link>
       <pubDate>Sun, 03 May 2020 13:33:05 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</guid>
+      <guid>https://blackmaple.com/posts/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</guid>
       <description>&lt;h2 id=&#34;商業智慧的含義&#34;&gt;商業智慧的含義&lt;/h2&gt;
 &lt;h3 id=&#34;什麼是商業智慧&#34;&gt;什麼是商業智慧？&lt;/h3&gt;
 &lt;p&gt;資料倉儲學院（TDWI）將商業智慧比喻成 &lt;strong&gt;資料煉油廠&lt;/strong&gt;：&lt;/p&gt;
@@ -98,29 +98,29 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>HTTP/3 改用 UDP？ HTTP 的過去、現在和未來</title>
-      <link>https://examplesite.com/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</link>
+      <link>https://blackmaple.com/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</link>
       <pubDate>Mon, 27 Apr 2020 11:49:49 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</guid>
+      <guid>https://blackmaple.com/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</guid>
       <description>&lt;h2 id=&#34;一前言&#34;&gt;一、前言&lt;/h2&gt;
 &lt;p&gt;聽到 HTTP/3 竟然要放棄 TCP 改用 UDP，相信不少人應該都感到很驚訝。在過往教課書及老師都告訴我們「UDP 不可靠，所以 HTTP 使用比較可靠的 TCP」，從來沒有想過這知識有一天竟然會被推翻，因此在震驚之餘，也來研究了一下 HTTP/3 內容及 HTTP 的過去、現在和未來。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Flutter: const vs final</title>
-      <link>https://examplesite.com/posts/flutter-const-vs-final/</link>
+      <link>https://blackmaple.com/posts/flutter-const-vs-final/</link>
       <pubDate>Thu, 23 Apr 2020 00:57:52 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/flutter-const-vs-final/</guid>
+      <guid>https://blackmaple.com/posts/flutter-const-vs-final/</guid>
       <description>Const  需要在創建時就給定值，且會在編譯時期決定好，因此如果是執行時期才知道的值是不能用 const 的。 const 裡的值也得要是 const，不能是在執行階段才知道或是可改變的值，因此下面的範例會失敗： 1 2  const arr = [1, 2, 3] arr[1] = 11 // 執行失敗     Final  給定值之後就不能再更改，但可以在建構子之中再給。  </description>
     </item>
     
     <item>
       <title>AIS3 Final CTF - hellOwOrld</title>
-      <link>https://examplesite.com/posts/ais3-final-ctf-helloworld/</link>
+      <link>https://blackmaple.com/posts/ais3-final-ctf-helloworld/</link>
       <pubDate>Wed, 31 Oct 2018 00:56:21 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/ais3-final-ctf-helloworld/</guid>
+      <guid>https://blackmaple.com/posts/ais3-final-ctf-helloworld/</guid>
       <description>&lt;p&gt;我們這隊都是第一次參加 AIS3 Final CTF，結果拿到第 18 名的成績，滿開心的ＸＤ
 這邊整理了一些解題過程和思路，有興趣可以看一下～
 如果有任何其他思路也歡迎在下面提出！&lt;/p&gt;</description>
@@ -128,10 +128,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>SQL 語法筆記</title>
-      <link>https://examplesite.com/posts/sql-tutorial/</link>
+      <link>https://blackmaple.com/posts/sql-tutorial/</link>
       <pubDate>Wed, 31 Oct 2018 00:52:49 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/sql-tutorial/</guid>
+      <guid>https://blackmaple.com/posts/sql-tutorial/</guid>
       <description>&lt;h2 id=&#34;基本語法&#34;&gt;基本語法&lt;/h2&gt;
 &lt;h3 id=&#34;創建資料表&#34;&gt;創建資料表&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;CREATE TABLE&lt;/code&gt;&lt;/p&gt;
@@ -203,10 +203,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>AIS3 2018 write-up</title>
-      <link>https://examplesite.com/posts/ais3-2018-write-up/</link>
+      <link>https://blackmaple.com/posts/ais3-2018-write-up/</link>
       <pubDate>Wed, 31 Oct 2018 00:49:29 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/ais3-2018-write-up/</guid>
+      <guid>https://blackmaple.com/posts/ais3-2018-write-up/</guid>
       <description>&lt;p&gt;今年第二次參加 AIS3 pre-exam 的感想&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;要用到程式解的地方滿多的&lt;/li&gt;
@@ -217,10 +217,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>在 Ubuntu 上安裝中文輸入法</title>
-      <link>https://examplesite.com/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</link>
+      <link>https://blackmaple.com/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</link>
       <pubDate>Tue, 04 Sep 2018 23:39:33 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</guid>
+      <guid>https://blackmaple.com/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;點擊「系統設定值」的按鈕
 &lt;img loading=&#34;lazy&#34; src=&#34;https://i.imgur.com/8weBEw1.jpg&#34; alt=&#34;&#34;  /&gt;
@@ -230,20 +230,20 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>使用 Parallels Desktop Lite 安裝 Ubuntu 16.04（macOS）</title>
-      <link>https://examplesite.com/posts/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</link>
+      <link>https://blackmaple.com/posts/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</link>
       <pubDate>Tue, 04 Sep 2018 23:36:13 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</guid>
+      <guid>https://blackmaple.com/posts/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</guid>
       <description>&lt;h2 id=&#34;安裝-parallels-desktop-lite&#34;&gt;安裝 Parallels Desktop Lite&lt;/h2&gt;
 &lt;p&gt;到 &lt;a href=&#34;https://itunes.apple.com/tw/app/parallels-desktop-lite/id1085114709&#34;&gt;Mac App Store&lt;/a&gt; 上面可以找到&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>條件式與迴圈 - Java</title>
-      <link>https://examplesite.com/posts/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</link>
+      <link>https://blackmaple.com/posts/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</link>
       <pubDate>Wed, 14 Mar 2018 02:04:41 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</guid>
+      <guid>https://blackmaple.com/posts/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</guid>
       <description>&lt;p&gt;為了告訴電腦特定條件下該做什麼動作，要使用各種條件式來定義程式執行的流程。&lt;/p&gt;
 &lt;h2 id=&#34;條件式&#34;&gt;條件式&lt;/h2&gt;
 &lt;p&gt;「如果OOO成立，就要…」，Java提供了 &lt;code&gt;if...else&lt;/code&gt; 條件式，語法如下：&lt;/p&gt;</description>
@@ -251,10 +251,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>型態、變數與運算子 - Java</title>
-      <link>https://examplesite.com/posts/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</link>
+      <link>https://blackmaple.com/posts/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</link>
       <pubDate>Mon, 05 Mar 2018 01:11:35 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</guid>
+      <guid>https://blackmaple.com/posts/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</guid>
       <description>&lt;h2 id=&#34;資料型態&#34;&gt;資料型態&lt;/h2&gt;
 &lt;h3 id=&#34;何謂資料型態&#34;&gt;何謂資料型態？&lt;/h3&gt;
 &lt;p&gt;程式儲存資料的型態&lt;/p&gt;</description>
@@ -262,10 +262,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>Android 學習問題紀錄</title>
-      <link>https://examplesite.com/posts/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</link>
+      <link>https://blackmaple.com/posts/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</link>
       <pubDate>Wed, 28 Feb 2018 14:46:05 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</guid>
+      <guid>https://blackmaple.com/posts/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</guid>
       <description>&lt;h2 id=&#34;紀錄-1&#34;&gt;紀錄 1&lt;/h2&gt;
 &lt;h3 id=&#34;問題&#34;&gt;問題&lt;/h3&gt;
 &lt;p&gt;在 OkHttp 的 onResponse 中使用 Toast 會噴錯，但 Retrofit 不會。
@@ -274,10 +274,10 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>Mac 下使用 Shadowsocks 翻牆</title>
-      <link>https://examplesite.com/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</link>
+      <link>https://blackmaple.com/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</link>
       <pubDate>Sat, 20 Jan 2018 15:45:09 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</guid>
+      <guid>https://blackmaple.com/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</guid>
       <description>這邊教大家如何使用 ShadowsocksX-NG 來進行 Shadowsocks 代理，以達到 翻牆 效果。
 下載 ShadowsocksX-NG GitHub 載點：https://github.com/shadowsocks/ShadowsocksX-NG/releases/
 編輯代理伺服器 點擊「紙飛機」選擇「Server」，然後點擊【Server Preferences&amp;hellip;】選項：
@@ -290,19 +290,19 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>android:gravity 和 android:layout_gravity 的差別</title>
-      <link>https://examplesite.com/posts/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</link>
+      <link>https://blackmaple.com/posts/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</link>
       <pubDate>Sat, 20 Jan 2018 15:01:10 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</guid>
+      <guid>https://blackmaple.com/posts/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</guid>
       <description>&lt;p&gt;在 Android 介面設計中，常會用到  android:gravity 和 android:layout_gravity 兩種屬性，但卻容易被搞混，因此這邊做簡單的介紹，讓大家釐清差別。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>解決 Android Studio 卡頓的問題</title>
-      <link>https://examplesite.com/posts/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <link>https://blackmaple.com/posts/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
       <pubDate>Sat, 20 Jan 2018 13:01:25 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <guid>https://blackmaple.com/posts/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
       <description>問題描述 在使用 Macbook Pro 13 2017 開發案子，發現 Android Studio 會常常出現卡頓。
 解決辦法 上網查了一下，發現不少人都有這種狀況。問題好像是出在 Android Studio 的啟動參數限制了 JVM 獲得足夠的記憶體，導致了運行時只能頻繁的與磁盤交換。 因此我們要修改一下 Android Studio 的 JVM 參數文件，他的問位置在：
 1  /Applications/Android\ Studio.app/Contents/bin/studio.vmoptions   在我的電腦上，參數預設是：
@@ -315,19 +315,19 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>Android Studio 技巧整理</title>
-      <link>https://examplesite.com/posts/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</link>
+      <link>https://blackmaple.com/posts/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</link>
       <pubDate>Sat, 13 Jan 2018 13:13:32 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</guid>
+      <guid>https://blackmaple.com/posts/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</guid>
       <description>&lt;p&gt;最近開始研究 Android Studio，得知一些可以增加開發速度的小技巧，因此在這邊做一下記錄。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>如何在 Centos 7 創建一個 Sudo user</title>
-      <link>https://examplesite.com/posts/how-to-create-a-sudo-user-on-centos-quickstart/</link>
+      <link>https://blackmaple.com/posts/how-to-create-a-sudo-user-on-centos-quickstart/</link>
       <pubDate>Sun, 31 Dec 2017 00:20:47 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/how-to-create-a-sudo-user-on-centos-quickstart/</guid>
+      <guid>https://blackmaple.com/posts/how-to-create-a-sudo-user-on-centos-quickstart/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;以 root 身份登錄到你的伺服器。
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
@@ -344,29 +344,29 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>[Android] 在 static method  中取得 String Resource</title>
-      <link>https://examplesite.com/posts/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</link>
+      <link>https://blackmaple.com/posts/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</link>
       <pubDate>Thu, 21 Dec 2017 19:29:30 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</guid>
+      <guid>https://blackmaple.com/posts/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</guid>
       <description>&lt;h2 id=&#34;遇到問題&#34;&gt;遇到問題&lt;/h2&gt;
 &lt;p&gt;最近在寫一個 Singleton 的類別時，遇到需要透過 Resource id 取得 string 的需求，原本想用 context.getString(int resId) 的方式取得，但發現 Context 不適合被 static 成員或類別引用，會導致內存泄露。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Android: getColor(int id) deprecated</title>
-      <link>https://examplesite.com/posts/android-getcolor-deprecated/</link>
+      <link>https://blackmaple.com/posts/android-getcolor-deprecated/</link>
       <pubDate>Wed, 20 Dec 2017 12:27:18 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/android-getcolor-deprecated/</guid>
+      <guid>https://blackmaple.com/posts/android-getcolor-deprecated/</guid>
       <description>&lt;p&gt;從 Android 6 開始，一個新的 getColor() 方法出現，舊的 Resource.getColor(int id) 則被廢棄。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Android] Error：Fragment already added</title>
-      <link>https://examplesite.com/posts/error-fragment-already-added/</link>
+      <link>https://blackmaple.com/posts/error-fragment-already-added/</link>
       <pubDate>Tue, 19 Dec 2017 21:46:44 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/error-fragment-already-added/</guid>
+      <guid>https://blackmaple.com/posts/error-fragment-already-added/</guid>
       <description>&lt;h2 id=&#34;遇到狀況&#34;&gt;遇到狀況&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;java.lang.IllegalStateException: Fragment already added
 &lt;/code&gt;&lt;/pre&gt;</description>
@@ -374,28 +374,28 @@ GitHub 為什麼要這麼做呢？ 這更改是為了提升帳密的安全性，
     
     <item>
       <title>Android: NotificationCompat 與 Notification 差別</title>
-      <link>https://examplesite.com/posts/android-notificationcompat-vs-notification/</link>
+      <link>https://blackmaple.com/posts/android-notificationcompat-vs-notification/</link>
       <pubDate>Tue, 19 Dec 2017 21:23:54 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/android-notificationcompat-vs-notification/</guid>
+      <guid>https://blackmaple.com/posts/android-notificationcompat-vs-notification/</guid>
       <description>&lt;p&gt;Notification.Builder 是 Android 3.0 (API 11) 引入的。如要兼容低版本，可以使用 Support V4 包提供的 NotificationCompat.Builder。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Hexo&#43;GitHub，新手也可以快速建立部落格</title>
-      <link>https://examplesite.com/posts/hexo-tutorial/</link>
+      <link>https://blackmaple.com/posts/hexo-tutorial/</link>
       <pubDate>Tue, 19 Dec 2017 16:43:39 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/hexo-tutorial/</guid>
+      <guid>https://blackmaple.com/posts/hexo-tutorial/</guid>
       <description>&lt;p&gt;之前使用過 Wordpress 一段時間，但發現了 Hexo 更方便，所以這邊來紀錄一下使用過程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>LineBot&#43;Python，輕鬆建立聊天機器人</title>
-      <link>https://examplesite.com/posts/line-bot-tutorial/</link>
+      <link>https://blackmaple.com/posts/line-bot-tutorial/</link>
       <pubDate>Tue, 19 Dec 2017 16:39:52 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/line-bot-tutorial/</guid>
+      <guid>https://blackmaple.com/posts/line-bot-tutorial/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本教學由 &lt;strong&gt;北科程式設計研究社&lt;/strong&gt; 所屬
 喜歡這篇教學，可以到我的 &lt;a href=&#34;https://github.com/yaoandy107/line-bot-tutorial&#34;&gt;Github&lt;/a&gt; 上面給我一顆 Star

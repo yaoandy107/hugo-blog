@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Andriod on BlackMaple&#39;s Blog</title>
-    <link>https://examplesite.com/tags/andriod/</link>
+    <link>https://blackmaple.com/tags/andriod/</link>
     <description>Recent content in Andriod on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 10 Oct 2020 03:57:04 +0800</lastBuildDate><atom:link href="https://examplesite.com/tags/andriod/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Oct 2020 03:57:04 +0800</lastBuildDate><atom:link href="https://blackmaple.com/tags/andriod/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android 11 新增無線偵錯 (Wireless Debugging)</title>
-      <link>https://examplesite.com/posts/android-11-wireless-debug/</link>
+      <link>https://blackmaple.com/posts/android-11-wireless-debug/</link>
       <pubDate>Sat, 10 Oct 2020 03:57:04 +0800</pubDate>
       
-      <guid>https://examplesite.com/posts/android-11-wireless-debug/</guid>
+      <guid>https://blackmaple.com/posts/android-11-wireless-debug/</guid>
       <description>&lt;p&gt;不久前 Android 11 正式發布，可以看到有許多很酷炫的新功能，其中對身為 Android 開發者的我來說最興奮的應該就是「無線偵錯」了，這樣出門就可以更方便的開發了，因此趁著這段空閑就來試試看！&lt;/p&gt;</description>
     </item>
     
