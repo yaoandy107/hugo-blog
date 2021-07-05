@@ -8,10 +8,10 @@
     <lastBuildDate>Tue, 19 Dec 2017 16:39:52 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/line/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LineBot&#43;Python，輕鬆建立聊天機器人</title>
-      <link>https://blackmaple.me/posts/line-bot-tutorial/</link>
+      <link>https://blackmaple.me/line-bot-tutorial/</link>
       <pubDate>Tue, 19 Dec 2017 16:39:52 +0000</pubDate>
       
-      <guid>https://blackmaple.me/posts/line-bot-tutorial/</guid>
+      <guid>https://blackmaple.me/line-bot-tutorial/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;本教學由 &lt;strong&gt;北科程式設計研究社&lt;/strong&gt; 所屬
 喜歡這篇教學，可以到我的 &lt;a href=&#34;https://github.com/yaoandy107/line-bot-tutorial&#34;&gt;Github&lt;/a&gt; 上面給我一顆 Star

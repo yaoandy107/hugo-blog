@@ -8,10 +8,10 @@
     <lastBuildDate>Tue, 19 Dec 2017 21:23:54 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/notification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android: NotificationCompat 與 Notification 差別</title>
-      <link>https://blackmaple.me/posts/android-notificationcompat-vs-notification/</link>
+      <link>https://blackmaple.me/android-notificationcompat-vs-notification/</link>
       <pubDate>Tue, 19 Dec 2017 21:23:54 +0000</pubDate>
       
-      <guid>https://blackmaple.me/posts/android-notificationcompat-vs-notification/</guid>
+      <guid>https://blackmaple.me/android-notificationcompat-vs-notification/</guid>
       <description>&lt;p&gt;Notification.Builder 是 Android 3.0 (API 11) 引入的。如要兼容低版本，可以使用 Support V4 包提供的 NotificationCompat.Builder。&lt;/p&gt;</description>
     </item>
     

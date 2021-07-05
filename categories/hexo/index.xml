@@ -8,10 +8,10 @@
     <lastBuildDate>Tue, 19 Dec 2017 16:43:39 +0000</lastBuildDate><atom:link href="https://blackmaple.me/categories/hexo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hexo&#43;GitHub，新手也可以快速建立部落格</title>
-      <link>https://blackmaple.me/posts/hexo-tutorial/</link>
+      <link>https://blackmaple.me/hexo-tutorial/</link>
       <pubDate>Tue, 19 Dec 2017 16:43:39 +0000</pubDate>
       
-      <guid>https://blackmaple.me/posts/hexo-tutorial/</guid>
+      <guid>https://blackmaple.me/hexo-tutorial/</guid>
       <description>&lt;p&gt;之前使用過 Wordpress 一段時間，但發現了 Hexo 更方便，所以這邊來紀錄一下使用過程。&lt;/p&gt;</description>
     </item>
     

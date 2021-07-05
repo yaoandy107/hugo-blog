@@ -26,7 +26,7 @@
     <loc>https://blackmaple.me/tags/</loc>
     <lastmod>2021-05-05T16:56:45+08:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-studio-in-m1-mac/</loc>
+    <loc>https://blackmaple.me/android-studio-in-m1-mac/</loc>
     <lastmod>2021-05-05T16:56:45+08:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/git/</loc>
@@ -38,13 +38,13 @@
     <loc>https://blackmaple.me/tags/github/</loc>
     <lastmod>2020-12-30T19:07:57+08:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/github-deprecate-password-authentication/</loc>
+    <loc>https://blackmaple.me/github-deprecate-password-authentication/</loc>
     <lastmod>2020-12-30T19:07:57+08:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/security/</loc>
     <lastmod>2020-12-30T19:07:57+08:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-popupwindow-gravity-issue/</loc>
+    <loc>https://blackmaple.me/android-popupwindow-gravity-issue/</loc>
     <lastmod>2020-10-13T19:51:44+08:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/error/</loc>
@@ -56,7 +56,7 @@
     <loc>https://blackmaple.me/tags/andriod/</loc>
     <lastmod>2020-10-10T03:57:04+08:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-11-wireless-debug/</loc>
+    <loc>https://blackmaple.me/android-11-wireless-debug/</loc>
     <lastmod>2020-10-10T03:57:04+08:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/debug/</loc>
@@ -71,7 +71,7 @@
     <loc>https://blackmaple.me/tags/ubuntu/</loc>
     <lastmod>2020-05-07T17:33:02+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</loc>
+    <loc>https://blackmaple.me/%E5%A6%82%E4%BD%95%E5%9C%A8-ubuntu-20-04-%E5%89%B5%E5%BB%BA-sudo-user/</loc>
     <lastmod>2020-05-07T17:33:02+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7/</loc>
@@ -80,7 +80,7 @@
     <loc>https://blackmaple.me/categories/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7/</loc>
     <lastmod>2020-05-03T13:33:05+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</loc>
+    <loc>https://blackmaple.me/%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%AD%86%E8%A8%98%E4%B8%80-%E5%A4%A7%E6%95%B8%E6%93%9A%E6%99%82%E4%BB%A3%E7%9A%84%E5%95%86%E6%A5%AD%E6%99%BA%E6%85%A7%E7%B0%A1%E4%BB%8B/</loc>
     <lastmod>2020-05-03T13:33:05+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/http/</loc>
@@ -89,7 +89,7 @@
     <loc>https://blackmaple.me/categories/http/</loc>
     <lastmod>2020-04-27T11:49:49+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</loc>
+    <loc>https://blackmaple.me/http-3-%E6%94%B9%E6%88%90%E5%9F%BA%E6%96%BC-udphttp-%E7%9A%84%E9%81%8E%E5%8E%BB%E7%8F%BE%E5%9C%A8%E5%92%8C%E6%9C%AA%E4%BE%86/</loc>
     <lastmod>2020-04-27T11:49:49+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/flutter/</loc>
@@ -98,13 +98,13 @@
     <loc>https://blackmaple.me/categories/flutter/</loc>
     <lastmod>2020-04-23T00:57:52+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/flutter-const-vs-final/</loc>
+    <loc>https://blackmaple.me/flutter-const-vs-final/</loc>
     <lastmod>2020-04-23T00:57:52+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/ais3/</loc>
     <lastmod>2018-10-31T00:56:21+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/ais3-final-ctf-helloworld/</loc>
+    <loc>https://blackmaple.me/ais3-final-ctf-helloworld/</loc>
     <lastmod>2018-10-31T00:56:21+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/ctf/</loc>
@@ -119,19 +119,19 @@
     <loc>https://blackmaple.me/categories/sql/</loc>
     <lastmod>2018-10-31T00:52:49+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/sql-tutorial/</loc>
+    <loc>https://blackmaple.me/sql-tutorial/</loc>
     <lastmod>2018-10-31T00:52:49+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/%E7%AD%86%E8%A8%98/</loc>
     <lastmod>2018-10-31T00:52:49+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/ais3-2018-write-up/</loc>
+    <loc>https://blackmaple.me/ais3-2018-write-up/</loc>
     <lastmod>2018-10-31T00:49:29+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</loc>
+    <loc>https://blackmaple.me/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9D%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95/</loc>
     <lastmod>2018-09-04T23:39:33+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</loc>
+    <loc>https://blackmaple.me/%E4%BD%BF%E7%94%A8-parallels-desktop-lite-%E5%AE%89%E8%A3%9D-ubuntu-16-04macos/</loc>
     <lastmod>2018-09-04T23:36:13+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/java/</loc>
@@ -140,16 +140,16 @@
     <loc>https://blackmaple.me/categories/java/</loc>
     <lastmod>2018-03-14T02:04:41+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</loc>
+    <loc>https://blackmaple.me/%E6%A2%9D%E4%BB%B6%E5%BC%8F%E8%88%87%E8%BF%B4%E5%9C%88-java/</loc>
     <lastmod>2018-03-14T02:04:41+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</loc>
+    <loc>https://blackmaple.me/%E5%9E%8B%E6%85%8B%E8%AE%8A%E6%95%B8%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90-java/</loc>
     <lastmod>2018-03-05T01:11:35+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</loc>
+    <loc>https://blackmaple.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</loc>
     <lastmod>2018-02-28T14:46:05+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</loc>
+    <loc>https://blackmaple.me/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</loc>
     <lastmod>2018-01-20T15:45:09+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/macos/</loc>
@@ -164,7 +164,7 @@
     <loc>https://blackmaple.me/tags/%E7%BF%BB%E7%89%86/</loc>
     <lastmod>2018-01-20T15:45:09+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</loc>
+    <loc>https://blackmaple.me/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</loc>
     <lastmod>2018-01-20T15:01:10+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/android-studio/</loc>
@@ -173,37 +173,37 @@
     <loc>https://blackmaple.me/categories/android-studio/</loc>
     <lastmod>2018-01-20T13:01:25+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</loc>
+    <loc>https://blackmaple.me/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</loc>
     <lastmod>2018-01-20T13:01:25+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</loc>
+    <loc>https://blackmaple.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</loc>
     <lastmod>2018-01-13T13:13:32+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/centos/</loc>
     <lastmod>2017-12-31T00:20:47+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/how-to-create-a-sudo-user-on-centos-quickstart/</loc>
+    <loc>https://blackmaple.me/how-to-create-a-sudo-user-on-centos-quickstart/</loc>
     <lastmod>2017-12-31T00:20:47+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/%E6%95%99%E5%AD%B8/</loc>
     <lastmod>2017-12-31T00:20:47+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</loc>
+    <loc>https://blackmaple.me/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</loc>
     <lastmod>2017-12-21T19:29:30+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-getcolor-deprecated/</loc>
+    <loc>https://blackmaple.me/android-getcolor-deprecated/</loc>
     <lastmod>2017-12-20T12:27:18+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/deprecated/</loc>
     <lastmod>2017-12-20T12:27:18+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/error-fragment-already-added/</loc>
+    <loc>https://blackmaple.me/error-fragment-already-added/</loc>
     <lastmod>2017-12-19T21:46:44+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/fragment/</loc>
     <lastmod>2017-12-19T21:46:44+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/android-notificationcompat-vs-notification/</loc>
+    <loc>https://blackmaple.me/android-notificationcompat-vs-notification/</loc>
     <lastmod>2017-12-19T21:23:54+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/notification/</loc>
@@ -215,7 +215,7 @@
     <loc>https://blackmaple.me/categories/hexo/</loc>
     <lastmod>2017-12-19T16:43:39+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/hexo-tutorial/</loc>
+    <loc>https://blackmaple.me/hexo-tutorial/</loc>
     <lastmod>2017-12-19T16:43:39+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/next/</loc>
@@ -230,7 +230,7 @@
     <loc>https://blackmaple.me/categories/linebot/</loc>
     <lastmod>2017-12-19T16:39:52+00:00</lastmod>
   </url><url>
-    <loc>https://blackmaple.me/posts/line-bot-tutorial/</loc>
+    <loc>https://blackmaple.me/line-bot-tutorial/</loc>
     <lastmod>2017-12-19T16:39:52+00:00</lastmod>
   </url><url>
     <loc>https://blackmaple.me/tags/python/</loc>

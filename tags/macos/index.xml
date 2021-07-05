@@ -8,10 +8,10 @@
     <lastBuildDate>Sat, 20 Jan 2018 15:45:09 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac 下使用 Shadowsocks 翻牆</title>
-      <link>https://blackmaple.me/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</link>
+      <link>https://blackmaple.me/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</link>
       <pubDate>Sat, 20 Jan 2018 15:45:09 +0000</pubDate>
       
-      <guid>https://blackmaple.me/posts/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</guid>
+      <guid>https://blackmaple.me/mac%E4%B8%8B%E4%BD%BF%E7%94%A8shadowsocks%E7%BF%BB%E7%89%86/</guid>
       <description>這邊教大家如何使用 ShadowsocksX-NG 來進行 Shadowsocks 代理，以達到 翻牆 效果。
 下載 ShadowsocksX-NG GitHub 載點：https://github.com/shadowsocks/ShadowsocksX-NG/releases/
 編輯代理伺服器 點擊「紙飛機」選擇「Server」，然後點擊【Server Preferences&amp;hellip;】選項：

@@ -8,10 +8,10 @@
     <lastBuildDate>Sat, 10 Oct 2020 03:57:04 +0800</lastBuildDate><atom:link href="https://blackmaple.me/tags/debug/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android 11 新增無線偵錯 (Wireless Debugging)</title>
-      <link>https://blackmaple.me/posts/android-11-wireless-debug/</link>
+      <link>https://blackmaple.me/android-11-wireless-debug/</link>
       <pubDate>Sat, 10 Oct 2020 03:57:04 +0800</pubDate>
       
-      <guid>https://blackmaple.me/posts/android-11-wireless-debug/</guid>
+      <guid>https://blackmaple.me/android-11-wireless-debug/</guid>
       <description>&lt;p&gt;不久前 Android 11 正式發布，可以看到有許多很酷炫的新功能，其中對身為 Android 開發者的我來說最興奮的應該就是「無線偵錯」了，這樣出門就可以更方便的開發了，因此趁著這段空閑就來試試看！&lt;/p&gt;</description>
     </item>
     
