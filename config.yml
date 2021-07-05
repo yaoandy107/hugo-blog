@@ -155,3 +155,6 @@ outputs:
 
 # Disqus comments
 disqusShortname: yaoandy107
+
+permalinks:
+  posts: "/:filename/"
