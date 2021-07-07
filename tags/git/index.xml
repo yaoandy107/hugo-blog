@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Git on BlackMaple&#39;s Blog</title>
-    <link>https://blackmaple.me/tags/git/</link>
+    <link>https://yaoandy107.github.io/hugo-blog/tags/git/</link>
     <description>Recent content in Git on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 30 Dec 2020 19:07:57 +0800</lastBuildDate><atom:link href="https://blackmaple.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Dec 2020 19:07:57 +0800</lastBuildDate><atom:link href="https://yaoandy107.github.io/hugo-blog/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub 將取消基於密碼的驗證機制</title>
-      <link>https://blackmaple.me/github-deprecate-password-authentication/</link>
+      <link>https://yaoandy107.github.io/hugo-blog/github-deprecate-password-authentication/</link>
       <pubDate>Wed, 30 Dec 2020 19:07:57 +0800</pubDate>
       
-      <guid>https://blackmaple.me/github-deprecate-password-authentication/</guid>
+      <guid>https://yaoandy107.github.io/hugo-blog/github-deprecate-password-authentication/</guid>
       <description>今天我突然收到來自 GitHub 的警告信，標題為 [GitHub] Deprecation Notice，其內容大致上是在建議使用者升級 Git 客戶端的版本，後來查看其中附的連結後發現 GitHub 公佈了一項新政策：
  GitHub 將在 2021 年 8 月 13 日禁止所有基於帳密的驗證機制，以提升帳密的安全性。
  有什麼影響？ 目前會影響到的只有需要輸入帳號密碼的驗證方式（不包括 OAuth），所以若之前是使用 SSH 驗證 或是 二階段驗證，則不在影響範圍內。

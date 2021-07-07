@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Hexo on BlackMaple&#39;s Blog</title>
-    <link>https://blackmaple.me/categories/hexo/</link>
+    <link>https://yaoandy107.github.io/hugo-blog/categories/hexo/</link>
     <description>Recent content in Hexo on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 19 Dec 2017 16:43:39 +0000</lastBuildDate><atom:link href="https://blackmaple.me/categories/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2017 16:43:39 +0000</lastBuildDate><atom:link href="https://yaoandy107.github.io/hugo-blog/categories/hexo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hexo&#43;GitHub，新手也可以快速建立部落格</title>
-      <link>https://blackmaple.me/hexo-tutorial/</link>
+      <link>https://yaoandy107.github.io/hugo-blog/hexo-tutorial/</link>
       <pubDate>Tue, 19 Dec 2017 16:43:39 +0000</pubDate>
       
-      <guid>https://blackmaple.me/hexo-tutorial/</guid>
+      <guid>https://yaoandy107.github.io/hugo-blog/hexo-tutorial/</guid>
       <description>&lt;p&gt;之前使用過 Wordpress 一段時間，但發現了 Hexo 更方便，所以這邊來紀錄一下使用過程。&lt;/p&gt;</description>
     </item>
     
