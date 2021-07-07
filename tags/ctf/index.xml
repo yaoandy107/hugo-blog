@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CTF on BlackMaple&#39;s Blog</title>
-    <link>https://yaoandy107.github.io/hugo-blog/tags/ctf/</link>
+    <link>https://yaoandy107.me/tags/ctf/</link>
     <description>Recent content in CTF on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 31 Oct 2018 00:56:21 +0000</lastBuildDate><atom:link href="https://yaoandy107.github.io/hugo-blog/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Oct 2018 00:56:21 +0000</lastBuildDate><atom:link href="https://yaoandy107.me/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AIS3 Final CTF - hellOwOrld</title>
-      <link>https://yaoandy107.github.io/hugo-blog/ais3-final-ctf-helloworld/</link>
+      <link>https://yaoandy107.me/ais3-final-ctf-helloworld/</link>
       <pubDate>Wed, 31 Oct 2018 00:56:21 +0000</pubDate>
       
-      <guid>https://yaoandy107.github.io/hugo-blog/ais3-final-ctf-helloworld/</guid>
+      <guid>https://yaoandy107.me/ais3-final-ctf-helloworld/</guid>
       <description>&lt;p&gt;我們這隊都是第一次參加 AIS3 Final CTF，結果拿到第 18 名的成績，滿開心的ＸＤ
 這邊整理了一些解題過程和思路，有興趣可以看一下～
 如果有任何其他思路也歡迎在下面提出！&lt;/p&gt;</description>
@@ -19,10 +19,10 @@
     
     <item>
       <title>AIS3 2018 write-up</title>
-      <link>https://yaoandy107.github.io/hugo-blog/ais3-2018-write-up/</link>
+      <link>https://yaoandy107.me/ais3-2018-write-up/</link>
       <pubDate>Wed, 31 Oct 2018 00:49:29 +0000</pubDate>
       
-      <guid>https://yaoandy107.github.io/hugo-blog/ais3-2018-write-up/</guid>
+      <guid>https://yaoandy107.me/ais3-2018-write-up/</guid>
       <description>&lt;p&gt;今年第二次參加 AIS3 pre-exam 的感想&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;要用到程式解的地方滿多的&lt;/li&gt;
