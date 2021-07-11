@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Android on BlackMaple&#39;s Blog</title>
-    <link>https://yaoandy107.me/tags/android/</link>
+    <link>https://blackmaple.me/tags/android/</link>
     <description>Recent content in Android on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 05 May 2021 16:56:45 +0800</lastBuildDate><atom:link href="https://yaoandy107.me/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 May 2021 16:56:45 +0800</lastBuildDate><atom:link href="https://blackmaple.me/tags/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 M1 Macbook 下開發 Android</title>
-      <link>https://yaoandy107.me/android-studio-in-m1-mac/</link>
+      <link>https://blackmaple.me/android-studio-in-m1-mac/</link>
       <pubDate>Wed, 05 May 2021 16:56:45 +0800</pubDate>
       
-      <guid>https://yaoandy107.me/android-studio-in-m1-mac/</guid>
+      <guid>https://blackmaple.me/android-studio-in-m1-mac/</guid>
       <description>&lt;p&gt;在購買 Macbook Air M1 後，被它的效能和續航驚艷到了，但同時，還有許多應用沒有很好的支援 M1 晶片。所以身為 Android Developer 的我 ，當然要來嘗試在 M1 晶片下運行 Android Studio 看看啦～&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Android] PopupWindow 設置 gravity 無效的問題</title>
-      <link>https://yaoandy107.me/android-popupwindow-gravity-issue/</link>
+      <link>https://blackmaple.me/android-popupwindow-gravity-issue/</link>
       <pubDate>Tue, 13 Oct 2020 19:51:44 +0800</pubDate>
       
-      <guid>https://yaoandy107.me/android-popupwindow-gravity-issue/</guid>
+      <guid>https://blackmaple.me/android-popupwindow-gravity-issue/</guid>
       <description>前言 今天在寫公司專案的時候遇到部分 Android 7 的手機，PopupWindow 不會理會設置好的 gravity，會直接跑到頂部。
 原因 在 Android Code Search 追了一下原始碼，發現 Android 7 在執行 PopupWindow.update() 的時候，會將 gravity 重設，因此造成 gravity 被重置為 Gravity.START | Gravity.TOP。
 有興趣的話可以自己看一下 Google 後來修復的 commit
@@ -29,10 +29,10 @@
     
     <item>
       <title>Android 學習問題紀錄</title>
-      <link>https://yaoandy107.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</link>
+      <link>https://blackmaple.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</link>
       <pubDate>Wed, 28 Feb 2018 14:46:05 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</guid>
+      <guid>https://blackmaple.me/android-%E5%AD%B8%E7%BF%92%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84/</guid>
       <description>&lt;h2 id=&#34;紀錄-1&#34;&gt;紀錄 1&lt;/h2&gt;
 &lt;h3 id=&#34;問題&#34;&gt;問題&lt;/h3&gt;
 &lt;p&gt;在 OkHttp 的 onResponse 中使用 Toast 會噴錯，但 Retrofit 不會。
@@ -41,47 +41,47 @@
     
     <item>
       <title>android:gravity 和 android:layout_gravity 的差別</title>
-      <link>https://yaoandy107.me/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</link>
+      <link>https://blackmaple.me/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</link>
       <pubDate>Sat, 20 Jan 2018 15:01:10 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</guid>
+      <guid>https://blackmaple.me/android-gravity%E5%92%8Candroid-layout-gravity%E7%9A%84%E5%B7%AE%E5%88%A5/</guid>
       <description>&lt;p&gt;在 Android 介面設計中，常會用到  android:gravity 和 android:layout_gravity 兩種屬性，但卻容易被搞混，因此這邊做簡單的介紹，讓大家釐清差別。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Android Studio 技巧整理</title>
-      <link>https://yaoandy107.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</link>
+      <link>https://blackmaple.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</link>
       <pubDate>Sat, 13 Jan 2018 13:13:32 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</guid>
+      <guid>https://blackmaple.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</guid>
       <description>&lt;p&gt;最近開始研究 Android Studio，得知一些可以增加開發速度的小技巧，因此在這邊做一下記錄。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Android] 在 static method  中取得 String Resource</title>
-      <link>https://yaoandy107.me/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</link>
+      <link>https://blackmaple.me/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</link>
       <pubDate>Thu, 21 Dec 2017 19:29:30 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</guid>
+      <guid>https://blackmaple.me/%E5%9C%A8-static-method-%E5%8F%96%E5%BE%97-string-resourse/</guid>
       <description>&lt;h2 id=&#34;遇到問題&#34;&gt;遇到問題&lt;/h2&gt;
 &lt;p&gt;最近在寫一個 Singleton 的類別時，遇到需要透過 Resource id 取得 string 的需求，原本想用 context.getString(int resId) 的方式取得，但發現 Context 不適合被 static 成員或類別引用，會導致內存泄露。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Android: getColor(int id) deprecated</title>
-      <link>https://yaoandy107.me/android-getcolor-deprecated/</link>
+      <link>https://blackmaple.me/android-getcolor-deprecated/</link>
       <pubDate>Wed, 20 Dec 2017 12:27:18 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/android-getcolor-deprecated/</guid>
+      <guid>https://blackmaple.me/android-getcolor-deprecated/</guid>
       <description>&lt;p&gt;從 Android 6 開始，一個新的 getColor() 方法出現，舊的 Resource.getColor(int id) 則被廢棄。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>[Android] Error：Fragment already added</title>
-      <link>https://yaoandy107.me/error-fragment-already-added/</link>
+      <link>https://blackmaple.me/error-fragment-already-added/</link>
       <pubDate>Tue, 19 Dec 2017 21:46:44 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/error-fragment-already-added/</guid>
+      <guid>https://blackmaple.me/error-fragment-already-added/</guid>
       <description>&lt;h2 id=&#34;遇到狀況&#34;&gt;遇到狀況&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;java.lang.IllegalStateException: Fragment already added
 &lt;/code&gt;&lt;/pre&gt;</description>
@@ -89,10 +89,10 @@
     
     <item>
       <title>Android: NotificationCompat 與 Notification 差別</title>
-      <link>https://yaoandy107.me/android-notificationcompat-vs-notification/</link>
+      <link>https://blackmaple.me/android-notificationcompat-vs-notification/</link>
       <pubDate>Tue, 19 Dec 2017 21:23:54 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/android-notificationcompat-vs-notification/</guid>
+      <guid>https://blackmaple.me/android-notificationcompat-vs-notification/</guid>
       <description>&lt;p&gt;Notification.Builder 是 Android 3.0 (API 11) 引入的。如要兼容低版本，可以使用 Support V4 包提供的 NotificationCompat.Builder。&lt;/p&gt;</description>
     </item>
     

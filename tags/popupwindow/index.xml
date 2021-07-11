@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>PopupWindow on BlackMaple&#39;s Blog</title>
-    <link>https://yaoandy107.me/tags/popupwindow/</link>
+    <link>https://blackmaple.me/tags/popupwindow/</link>
     <description>Recent content in PopupWindow on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 13 Oct 2020 19:51:44 +0800</lastBuildDate><atom:link href="https://yaoandy107.me/tags/popupwindow/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Oct 2020 19:51:44 +0800</lastBuildDate><atom:link href="https://blackmaple.me/tags/popupwindow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Android] PopupWindow 設置 gravity 無效的問題</title>
-      <link>https://yaoandy107.me/android-popupwindow-gravity-issue/</link>
+      <link>https://blackmaple.me/android-popupwindow-gravity-issue/</link>
       <pubDate>Tue, 13 Oct 2020 19:51:44 +0800</pubDate>
       
-      <guid>https://yaoandy107.me/android-popupwindow-gravity-issue/</guid>
+      <guid>https://blackmaple.me/android-popupwindow-gravity-issue/</guid>
       <description>前言 今天在寫公司專案的時候遇到部分 Android 7 的手機，PopupWindow 不會理會設置好的 gravity，會直接跑到頂部。
 原因 在 Android Code Search 追了一下原始碼，發現 Android 7 在執行 PopupWindow.update() 的時候，會將 gravity 重設，因此造成 gravity 被重置為 Gravity.START | Gravity.TOP。
 有興趣的話可以自己看一下 Google 後來修復的 commit

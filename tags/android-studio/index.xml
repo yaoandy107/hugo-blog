@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Android Studio on BlackMaple&#39;s Blog</title>
-    <link>https://yaoandy107.me/tags/android-studio/</link>
+    <link>https://blackmaple.me/tags/android-studio/</link>
     <description>Recent content in Android Studio on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 20 Jan 2018 13:01:25 +0000</lastBuildDate><atom:link href="https://yaoandy107.me/tags/android-studio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jan 2018 13:01:25 +0000</lastBuildDate><atom:link href="https://blackmaple.me/tags/android-studio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>解決 Android Studio 卡頓的問題</title>
-      <link>https://yaoandy107.me/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <link>https://blackmaple.me/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
       <pubDate>Sat, 20 Jan 2018 13:01:25 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <guid>https://blackmaple.me/%E8%A7%A3%E6%B1%BAandroid-studio%E5%8D%A1%E9%A0%93%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
       <description>問題描述 在使用 Macbook Pro 13 2017 開發案子，發現 Android Studio 會常常出現卡頓。
 解決辦法 上網查了一下，發現不少人都有這種狀況。問題好像是出在 Android Studio 的啟動參數限制了 JVM 獲得足夠的記憶體，導致了運行時只能頻繁的與磁盤交換。 因此我們要修改一下 Android Studio 的 JVM 參數文件，他的問位置在：
 1  /Applications/Android\ Studio.app/Contents/bin/studio.vmoptions   在我的電腦上，參數預設是：
@@ -24,10 +24,10 @@
     
     <item>
       <title>Android Studio 技巧整理</title>
-      <link>https://yaoandy107.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</link>
+      <link>https://blackmaple.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</link>
       <pubDate>Sat, 13 Jan 2018 13:13:32 +0000</pubDate>
       
-      <guid>https://yaoandy107.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</guid>
+      <guid>https://blackmaple.me/android-studio%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/</guid>
       <description>&lt;p&gt;最近開始研究 Android Studio，得知一些可以增加開發速度的小技巧，因此在這邊做一下記錄。&lt;/p&gt;</description>
     </item>
     
