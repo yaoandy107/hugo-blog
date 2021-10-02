@@ -5,13 +5,31 @@
     <link>https://blackmaple.me/tags/</link>
     <description>Recent content in Tags on BlackMaple&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 05 May 2021 16:56:45 +0800</lastBuildDate><atom:link href="https://blackmaple.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Oct 2021 22:34:24 +0800</lastBuildDate><atom:link href="https://blackmaple.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android</title>
       <link>https://blackmaple.me/tags/android/</link>
-      <pubDate>Wed, 05 May 2021 16:56:45 +0800</pubDate>
+      <pubDate>Sat, 02 Oct 2021 22:34:24 +0800</pubDate>
       
       <guid>https://blackmaple.me/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flow</title>
+      <link>https://blackmaple.me/tags/flow/</link>
+      <pubDate>Sat, 02 Oct 2021 22:34:24 +0800</pubDate>
+      
+      <guid>https://blackmaple.me/tags/flow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LiveData</title>
+      <link>https://blackmaple.me/tags/livedata/</link>
+      <pubDate>Sat, 02 Oct 2021 22:34:24 +0800</pubDate>
+      
+      <guid>https://blackmaple.me/tags/livedata/</guid>
       <description></description>
     </item>
     

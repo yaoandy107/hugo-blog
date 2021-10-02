@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>LiveData on BlackMaple&#39;s Blog</title>
+    <link>https://blackmaple.me/tags/livedata/</link>
+    <description>Recent content in LiveData on BlackMaple&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 02 Oct 2021 22:34:24 +0800</lastBuildDate><atom:link href="https://blackmaple.me/tags/livedata/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google I/O 2021：LiveData 即將被取代？</title>
+      <link>https://blackmaple.me/googleio-2021-livedata-replacement/</link>
+      <pubDate>Sat, 02 Oct 2021 22:34:24 +0800</pubDate>
+      
+      <guid>https://blackmaple.me/googleio-2021-livedata-replacement/</guid>
+      <description>在 Google I/O 2021 的 Q&amp;amp;A 中，有一個有趣的問題被提起：Is LiveData going to be deprecated? 翻譯成中文的意思就是，LiveData 會被棄用嗎？
+應該有一些人看到這問題被嚇到，想說 LiveData 不是近幾年才出現的嗎？怎麼沒多久就要面臨這問題（囧。
+這問題其來有因，讓我們從 LiveData 的出現開始說起吧！
+LiveData 的出現 LiveData 在 2017 隨著 Google 推行的 MVVM 架構一同出現，其目的是為了協助使用者實作 MVVM 中 ViewModel 的雙向綁定。LiveData 實做方式是用觀察者模式，這讓很多人聯想到 RxJava，甚至常被拿來與 RxJava 做比較。這邊篇幅有限，因此不會贅述其差異，有興趣的可以自行去了解。
+ 備註：雖然 RxJava 和 LiveData 都是使用觀察者模式，但其目的和應用場境都有些差異，因此放在一起比較誰好誰壞沒有意義。
+ LiveData 的特色 因為 LiveData 簡單易用的特性，使它很適合用來處理資料與介面之間的綁定。當資料更新時，它可以自動去更新介面。同時，它結合了另一個 Jetpack 套件 — Lifecycle，讓它只會在介面處於 STARTED 或 RESUMED 的時候，才會觸發更新，避免許多生命週期的問題。
+或許有人會覺得 RxJava 不就可以做到一樣的事情了嗎？確實，上面提到的需求 RxJava 都可以實現，但 RxJava 使用起來遠比 LiveData 複雜，因此在簡單的場景，LiveData 更能勝任，所以常會看到一些文章或專案將 LiveData 與 RxJava 互相搭配使用。</description>
+    </item>
+    
+  </channel>
+</rss>
